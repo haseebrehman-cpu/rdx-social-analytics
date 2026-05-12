@@ -92,7 +92,7 @@ export default function AuthNavbar(props) {
 
   let brand = (
     <Link
-      href={`${process.env.PUBLIC_URL}/#/`}
+      href={`/#/`}
       target='_blank'
       display='flex'
       lineHeight='100%'
@@ -112,7 +112,7 @@ export default function AuthNavbar(props) {
     brand = (
       <Link
         minW='175px'
-        href={`${process.env.PUBLIC_URL}/#/`}
+        href={`/#/`}
         target='_blank'
         display='flex'
         lineHeight='100%'
