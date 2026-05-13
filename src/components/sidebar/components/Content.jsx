@@ -1,30 +1,25 @@
-// chakra imports
-import { Box, Flex, Stack } from "@chakra-ui/react";
-//   Custom components
-import Brand from "components/sidebar/components/Brand";
-import Links from "components/sidebar/components/Links";
-import SidebarCard from "components/sidebar/components/SidebarCard";
-import React from "react";
+import React, { useContext } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 
-// FUNCTIONS
+import Brand from 'components/sidebar/components/Brand';
+import Links from 'components/sidebar/components/Links';
+import { SidebarContext } from 'contexts/SidebarContext';
 
 function SidebarContent(props) {
   const { routes } = props;
-  // SIDEBAR
-  return (
-    <Flex direction='column' height='100%' pt='25px' px="16px" borderRadius='30px'>
-      <Brand />
-      <Stack direction='column' mb='auto' mt='8px'>
-        <Box ps='20px' pe={{ md: "16px", "2xl": "1px" }}>
-          <Links routes={routes} />
-        </Box>
-      </Stack>
+  const { isOpen } = useContext(SidebarContext);
 
-      <Box
-        mt='60px'
-        mb='40px'
-        borderRadius='30px'>
-        <SidebarCard />
+  return (
+    <Flex
+      direction="column"
+      height="100%"
+      pt="20px"
+      pb="24px"
+      px={isOpen ? '14px' : '8px'}
+    >
+      <Brand />
+      <Box flex="1" mt="8px">
+        <Links routes={routes} />
       </Box>
     </Flex>
   );

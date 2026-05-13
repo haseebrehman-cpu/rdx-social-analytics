@@ -15,15 +15,12 @@ import {
 } from '@chakra-ui/react';
 // Custom Components
 import { SearchBar } from 'components/navbar/searchBar/SearchBar';
-import { SidebarResponsive } from 'components/sidebar/Sidebar';
 import PropTypes from 'prop-types';
 import React from 'react';
 // Assets
 import navImage from 'assets/img/layout/Navbar.png';
 import { MdInfoOutline } from 'react-icons/md';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
-// import { FaEthereum } from 'react-icons/fa';
-import routes from 'routes';
 export default function HeaderLinks(props) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
@@ -59,7 +56,6 @@ export default function HeaderLinks(props) {
         me="10px"
         borderRadius="30px"
       />
-      <SidebarResponsive routes={routes} />
       {/* <Menu>
         <MenuButton p="0px">
           <Icon

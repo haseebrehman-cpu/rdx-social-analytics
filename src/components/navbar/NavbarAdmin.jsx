@@ -1,8 +1,10 @@
 // Chakra Imports
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, IconButton, Icon, Text, useColorModeValue } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { IoMenuOutline } from 'react-icons/io5';
 import AdminNavbarLinks from 'components/navbar/NavbarLinksAdmin';
+import { SidebarContext } from 'contexts/SidebarContext';
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
@@ -16,10 +18,12 @@ export default function AdminNavbar(props) {
   });
 
   const { secondary, message, brandText } = props;
+  const { isOpen, onToggle } = useContext(SidebarContext);
 
   // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
   // let mainText = useColorModeValue('navy.700', 'white');
   let secondaryText = useColorModeValue('gray.700', 'white');
+  let menuIconColor = useColorModeValue('gray.700', 'white');
   let navbarPosition = 'fixed';
   let navbarFilter = 'none';
   let navbarBackdrop = 'blur(20px)';
@@ -54,48 +58,48 @@ export default function AdminNavbar(props) {
       transitionDuration=' 0.25s, 0.25s, 0.25s, 0s'
       transition-property='box-shadow, background-color, filter, border'
       transitionTimingFunction='linear, linear, linear, linear'
-      alignItems={{ xl: 'center' }}
+      alignItems={{ base: 'stretch', md: 'center' }}
       display={secondary ? 'block' : 'flex'}
       minH='75px'
-      justifyContent={{ xl: 'center' }}
       lineHeight='25.6px'
-      mx='auto'
       mt={secondaryMargin}
+      zIndex='100'
       pb='8px'
-      right={{ base: '12px', md: '30px', lg: '30px', xl: '30px' }}
-      px={{
-        sm: paddingX,
-        md: '10px'
-      }}
-      ps={{
-        xl: '12px'
-      }}
       pt='8px'
-      top={{ base: '12px', md: '16px', lg: '20px', xl: '20px' }}
-      w={{
-        base: 'calc(100vw - 6%)',
-        md: 'calc(100vw - 8%)',
-        lg: 'calc(100vw - 6%)',
-        xl: 'calc(100vw - 350px)',
-        '2xl': 'calc(100vw - 425px)'
-      }}>
+      px={{ base: paddingX, md: '20px' }}
+      top={{ base: '12px', md: '16px', lg: '20px' }}
+      left={{ base: '12px', md: '24px', xl: isOpen ? '300px' : '80px' }}
+      right={{ base: '12px', md: '24px' }}>
       <Flex
         w='100%'
         flexDirection={{
-          sm: 'column',
+          base: 'column',
           md: 'row'
         }}
-        alignItems={{ xl: 'center' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        gap={{ base: '8px', md: '0' }}
         mb={gap}>
-        <Box mb={{ sm: '8px', md: '0px' }}>
+        <Flex alignItems='center' mb={{ base: '8px', md: '0px' }}>
+          <IconButton
+            aria-label='Toggle sidebar'
+            variant='ghost'
+            size='lg'
+            me='10px'
+            onClick={onToggle}
+            icon={<Icon as={IoMenuOutline} w='22px' h='22px' color={menuIconColor} />}
+            _hover={{ bg: 'purple.500' }}
+            _active={{ bg: 'purple.500' }}
+            _focus={{ boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.1)' }}
+            borderRadius='10px'
+          />
           <Breadcrumb>
-            <BreadcrumbItem color={secondaryText} fontSize='sm' mb='5px'>
+            <BreadcrumbItem color={secondaryText} fontSize='md'>
               <BreadcrumbLink href='#' color={secondaryText}>
                 Pages
               </BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbItem color={secondaryText} fontSize='sm' mb='5px'>
+            <BreadcrumbItem color={secondaryText} fontSize='md'>
               <BreadcrumbLink href='#' color={secondaryText}>
                 {brandText}
               </BreadcrumbLink>
@@ -120,8 +124,8 @@ export default function AdminNavbar(props) {
 						}}>
 						{brandText}
 					</Link> */}
-        </Box>
-        <Box ms='auto' w={{ sm: '100%', md: 'unset' }}>
+        </Flex>
+        <Box ms={{ base: '0', md: 'auto' }} w={{ base: '100%', md: 'auto' }}>
           <AdminNavbarLinks
             onOpen={props.onOpen}
             logoText={props.logoText}

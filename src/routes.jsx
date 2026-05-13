@@ -16,6 +16,8 @@ import {
   FaInstagram,
   FaYoutube,
   FaTiktok,
+  FaRocket,
+  FaChartLine,
 } from 'react-icons/fa';
 
 // Admin Imports
@@ -34,8 +36,16 @@ import InstagramPosts from 'views/admin/InstagramPosts';
 import YoutubeData from 'views/admin/youtubeData';
 import TiktokOverview from 'views/admin/tiktokOverview';
 import TiktokVideo from 'views/admin/tiktokVideo';
+import ConversionRate from 'views/admin/conversionRate';
 
 const routes = [
+  {
+    name: 'Conversion Rate',
+    layout: '/admin',
+    path: '/conversion-rate',
+    icon: <Icon as={FaRocket} width="20px" height="20px" color="inherit" />,
+    component: <ConversionRate />,
+  },
   {
     name: 'Channel Performance',
     layout: '/admin',
@@ -65,19 +75,51 @@ const routes = [
     path: '/coupons',
     component: <DataTables />,
   },
-  {
-    name: 'Conversion Funnel',
-    layout: '/admin',
-    path: '/conversion-funnel',
-    icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
-    component: <Profile />,
-  },
+
   {
     name: 'Weekly Organic Order',
     layout: '/admin',
     path: '/weekly-organic-order-session',
     icon: <Icon as={MdTrendingUp} width="20px" height="20px" color="inherit" />,
     component: <WeeklyOrganic />,
+  },
+
+  {
+    name: 'NewsLetters',
+    layout: '/admin',
+    icon: <Icon as={MdEmail} width="20px" height="20px" color="inherit" />,
+    path: '/newsletters',
+    component: <NewsLetters />,
+  },
+  {
+    name: 'TikTok Compaign',
+    layout: '/admin',
+    icon: <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />,
+    path: '/tiktok-compaign',
+    component: <DataTables />,
+  },
+  {
+    name: 'Conversion Funnel',
+    layout: '/admin',
+    path: '/conversion-funnel',
+    icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
+    component: <Profile />,
+    items: [
+      {
+        name: 'Report',
+        layout: '/admin',
+        path: '/conversion-funnel/report',
+        icon: <Icon as={FaChartLine} width="20px" height="20px" color="inherit" />,
+        component: <ConversionRate />,
+      },
+      {
+        name: 'Dashboard',
+        layout: '/admin',
+        path: '/conversion-funnel/dashboard',
+        icon: <Icon as={FaRocket} width="20px" height="20px" color="inherit" />,
+        component: <ConversionRate />,
+      },
+    ],
   },
   {
     name: 'RDX Social Data',
@@ -91,28 +133,36 @@ const routes = [
         name: 'FB Data',
         layout: '/admin',
         path: '/rdx-social-data/facebook-data',
-        icon: <Icon as={FaFacebook} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={FaFacebook} width="20px" height="20px" color="inherit" />
+        ),
         component: <FBData />,
       },
       {
         name: 'Instagram Stories Data',
         layout: '/admin',
         path: '/rdx-social-data/instagram-stories',
-        icon: <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />
+        ),
         component: <InstagramStories />,
       },
       {
         name: 'Instagram Posts Data',
         layout: '/admin',
         path: '/rdx-social-data/instagram-posts',
-        icon: <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />
+        ),
         component: <InstagramPosts />,
       },
       {
         name: 'Youtube Data',
         layout: '/admin',
         path: '/rdx-social-data/youtube-data',
-        icon: <Icon as={FaYoutube} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={FaYoutube} width="20px" height="20px" color="inherit" />
+        ),
         component: <YoutubeData />,
       },
       {
@@ -129,22 +179,7 @@ const routes = [
         icon: <Icon as={FaTiktok} width="20px" height="20px" color="inherit" />,
         component: <TiktokVideo />,
       },
-
     ],
-  },
-  {
-    name: 'NewsLetters',
-    layout: '/admin',
-    icon: <Icon as={MdEmail} width="20px" height="20px" color="inherit" />,
-    path: '/newsletters',
-    component: <NewsLetters />,
-  },
-  {
-    name: 'TikTok Compaign',
-    layout: '/admin',
-    icon: <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />,
-    path: '/tiktok-compaign',
-    component: <DataTables />,
   },
 ];
 
