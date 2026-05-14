@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Region Wise Grid
+        Source Wise Traffic
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -53,7 +53,7 @@ const columns = [
   { field: 'age', headerName: 'Age', flex: 1 },
   { field: 'city', headerName: 'City', flex: 1 },
 ];
-const RegionWiseGrid = () => {
+const SourceWiseTraffic = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -62,8 +62,8 @@ const RegionWiseGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 140px)' },
-        minHeight: '400px',
+        height: '100%',
+        minHeight: 0,
         px: { xs: 2, sm: 3 },
         pt: 2,
         pb: 1.5,
@@ -77,7 +77,7 @@ const RegionWiseGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Region Wise Grid"
+        label="Source Wise Traffic"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -93,4 +93,4 @@ const RegionWiseGrid = () => {
   );
 };
 
-export default RegionWiseGrid;
+export default SourceWiseTraffic;

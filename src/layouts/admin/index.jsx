@@ -1,6 +1,5 @@
 // Chakra imports
 import { Portal, Box } from '@chakra-ui/react';
-import Footer from 'components/footer/FooterAdmin';
 // Layout components
 import Navbar from 'components/navbar/NavbarAdmin';
 import Sidebar from 'components/sidebar/Sidebar';
@@ -117,10 +116,10 @@ function DashboardInner(props) {
         <Sidebar routes={routes} {...rest} />
         <Box
           minHeight="100vh"
-          height="100%"
+          display="flex"
+          flexDirection="column"
           overflow="auto"
           position="relative"
-          maxHeight="100%"
           w={{
             base: '100%',
             xl: isOpen ? 'calc(100% - 300px)' : 'calc(100% - 80px)',
@@ -142,26 +141,27 @@ function DashboardInner(props) {
             </Box>
           </Portal>
 
-          {getRoute() ? (
-            <Box
-              mx="auto"
-              p={{ base: '20px', md: '30px' }}
-              pe="20px"
-              minH="100vh"
-              pt="50px"
-            >
+          <Box
+            flex="1"
+            mx="auto"
+            w="100%"
+            p={{ base: '20px', md: '15px' }}
+            pe="20px"
+            pt="50px"
+          >
+            {getRoute() ? (
               <Routes>
                 {getRoutes(routes)}
                 <Route
                   path="/"
-                  element={<Navigate to="/admin/conversion-rate" replace />}
+                  element={<Navigate to="/admin/conversion-rate-summary" replace />}
                 />
               </Routes>
-            </Box>
-          ) : null}
-          <Box>
-            <Footer />
+            ) : null}
           </Box>
+          {/* <Box flexShrink="0">
+            <Footer />
+          </Box> */}
         </Box>
       </Box>
     </Box>

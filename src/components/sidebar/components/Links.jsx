@@ -72,7 +72,13 @@ export function SidebarLinks(props) {
   const { routes } = props;
 
   const activeRoute = (routeName) => {
-    return location.pathname.includes(routeName);
+    if (!routeName) return false;
+    const pathname = location.pathname.toLowerCase();
+    const target = routeName.toLowerCase();
+    const idx = pathname.indexOf(target);
+    if (idx === -1) return false;
+    const endChar = pathname[idx + target.length];
+    return endChar === undefined || endChar === '/';
   };
 
   const renderIconBox = (route, isActive, size = 36) => (

@@ -14,7 +14,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 // Custom Components
-import { SearchBar } from 'components/navbar/searchBar/SearchBar';
+// import { SearchBar } from 'components/navbar/searchBar/SearchBar';
 import PropTypes from 'prop-types';
 import React from 'react';
 // Assets
@@ -26,7 +26,7 @@ export default function HeaderLinks(props) {
   const { colorMode, toggleColorMode } = useColorMode();
   // Chakra Color Mode
   const navbarIcon = useColorModeValue('gray.400', 'white');
-  let menuBg = useColorModeValue('white', 'navy.800');
+  let menuBg = useColorModeValue('white', 'navy.700');
   // const ethColor = useColorModeValue('gray.700', 'white');
   // const ethBg = useColorModeValue('secondaryGray.300', 'navy.900');
   // const ethBox = useColorModeValue('white', 'navy.800');
@@ -42,11 +42,12 @@ export default function HeaderLinks(props) {
       flexDirection="row"
       bg={menuBg}
       flexWrap={secondary ? { base: 'wrap', md: 'nowrap' } : 'unset'}
-      p="10px"
+      px="10px"
+      py="5px"
       borderRadius="30px"
       boxShadow={shadow}
     >
-      <SearchBar
+      {/* <SearchBar
         mb={() => {
           if (secondary) {
             return { base: '10px', md: 'unset' };
@@ -55,7 +56,7 @@ export default function HeaderLinks(props) {
         }}
         me="10px"
         borderRadius="30px"
-      />
+      /> */}
       {/* <Menu>
         <MenuButton p="0px">
           <Icon
@@ -114,7 +115,7 @@ export default function HeaderLinks(props) {
           </Flex>
         </MenuList>
       </Menu> */}
-
+{/* 
       <Menu>
         <MenuButton p="0px">
           <Icon
@@ -139,7 +140,7 @@ export default function HeaderLinks(props) {
         >
           <Image src={navImage} borderRadius="16px" mb="28px" />
         </MenuList>
-      </Menu>
+      </Menu> */}
 
       <Button
         variant="no-hover"
@@ -153,8 +154,8 @@ export default function HeaderLinks(props) {
       >
         <Icon
           me="10px"
-          h="18px"
-          w="18px"
+          h="28px"
+          w="28px"
           color={navbarIcon}
           as={colorMode === 'light' ? IoMdMoon : IoMdSunny}
         />

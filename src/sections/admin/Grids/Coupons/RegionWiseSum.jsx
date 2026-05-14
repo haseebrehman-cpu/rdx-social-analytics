@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Region Wise Grid
+        Region Wise Sum of applied discounts
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -53,7 +53,7 @@ const columns = [
   { field: 'age', headerName: 'Age', flex: 1 },
   { field: 'city', headerName: 'City', flex: 1 },
 ];
-const RegionWiseGrid = () => {
+const RegionWiseSum = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -77,7 +77,7 @@ const RegionWiseGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Region Wise Grid"
+        label="Region Wise Sum of applied discounts"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -91,6 +91,6 @@ const RegionWiseGrid = () => {
       />
     </Box>
   );
-};
+}
 
-export default RegionWiseGrid;
+export default RegionWiseSum

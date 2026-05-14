@@ -83,23 +83,19 @@ function Sidebar(props) {
             ? 'right'
             : 'left'
         }
+        size="xs"
       >
         <DrawerOverlay />
-        <DrawerContent w="300px" maxW="300px" bg={sidebarBg}>
+        <DrawerContent bg={sidebarBg}>
           <DrawerCloseButton
             zIndex="3"
+            top="12px"
+            right="12px"
             _focus={{ boxShadow: 'none' }}
             _hover={{ boxShadow: 'none' }}
           />
-          <DrawerBody maxW="285px" px="0rem" pb="0">
-            <Scrollbars
-              autoHide
-              renderTrackVertical={renderTrack}
-              renderThumbVertical={renderThumb}
-              renderView={renderView}
-            >
-              <Content routes={routes} />
-            </Scrollbars>
+          <DrawerBody p="0" overflowY="auto">
+            <Content routes={routes} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

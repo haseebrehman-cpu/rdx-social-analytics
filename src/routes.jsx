@@ -2,27 +2,41 @@ import React from 'react';
 
 import { Icon } from '@chakra-ui/react';
 import {
-  MdBarChart,
-  MdOutlineShoppingCart,
   MdLocalOffer,
   MdFilterAlt,
   MdTrendingUp,
   MdShare,
-  MdEmail,
   MdCampaign,
+  MdAssessment,
+  MdAttachMoney,
+  MdCompareArrows,
+  MdDashboard,
+  MdDiscount,
+  MdFlag,
+  MdInventory2,
+  MdMarkEmailRead,
+  MdMovie,
+  MdPaid,
+  MdPercent,
+  MdPieChart,
+  MdPublic,
+  MdQueryStats,
+  MdSell,
+  MdShoppingBag,
+  MdShoppingCartCheckout,
+  MdShowChart,
+  MdSummarize,
+  MdTableChart,
+  MdVideoLibrary,
 } from 'react-icons/md';
 import {
   FaFacebook,
   FaInstagram,
   FaYoutube,
   FaTiktok,
-  FaRocket,
-  FaChartLine,
 } from 'react-icons/fa';
 
 // Admin Imports
-import MainDashboard from 'views/admin/default';
-import NFTMarketplace from 'views/admin/marketplace';
 import Profile from 'views/admin/profile';
 import DataTables from 'views/admin/dataTables';
 
@@ -37,94 +51,285 @@ import YoutubeData from 'views/admin/youtubeData';
 import TiktokOverview from 'views/admin/tiktokOverview';
 import TiktokVideo from 'views/admin/tiktokVideo';
 import ConversionRate from 'views/admin/conversionRate';
+import TargetView from 'views/admin/ChannelPerformance/Target';
+import MarketingCostView from 'views/admin/ChannelPerformance/MarketingCost';
+import ReportBaseView from 'views/admin/ChannelPerformance/ReportBase';
+import ReportView from 'views/admin/ChannelPerformance/Report';
+import ChannelConsolidationView from 'views/admin/ChannelPerformance/ChannelConsolidation/index';
+import AverageSellingView from 'views/admin/ProductMix/AverageSelling/index';
+import QuantityShareView from 'views/admin/ProductMix/QuantityShare/index';
+import QuantityOrderedView from 'views/admin/ProductMix/QuantityOrdered';
+import RegionWiseView from 'views/admin/ProductMix/RegionWise/index';
+import GrossSaleView from 'views/admin/ProductMix/GrossSale/index';
+import AvgItemOrderView from 'views/admin/ProductMix/AvgItemOrder/index';
+import CouponsSourceView from 'views/admin/coupons/CouponsSource';
+import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
+import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrandcamp';
+import FunnelView from 'views/admin/ConversionFunnel/Funnel';
 
 const routes = [
   {
-    name: 'Conversion Rate',
+    name: 'Conversion Rate Summary',
     layout: '/admin',
-    path: '/conversion-rate',
-    icon: <Icon as={FaRocket} width="20px" height="20px" color="inherit" />,
+    path: '/conversion-rate-summary',
+    icon: <Icon as={MdPercent} width="20px" height="20px" color="inherit" />,
     component: <ConversionRate />,
   },
   {
     name: 'Channel Performance',
     layout: '/admin',
     path: '/channel-performance',
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    component: <MainDashboard />,
+    icon: <Icon as={MdAssessment} width="20px" height="20px" color="inherit" />,
+    collapse: true,
+    items: [
+      {
+        name: 'Channel Consolidation',
+        layout: '/admin',
+        path: '/channel-performance/channel-consolidation',
+        icon: (
+          <Icon
+            as={MdCompareArrows}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <ChannelConsolidationView />,
+      },
+      {
+        name: 'Report Base',
+        layout: '/admin',
+        path: '/channel-performance/report-base',
+        icon: (
+          <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
+        ),
+        component: <ReportBaseView />,
+      },
+      {
+        name: 'Target',
+        layout: '/admin',
+        path: '/channel-performance/target',
+        icon: (
+          <Icon as={MdFlag} width="20px" height="20px" color="inherit" />
+        ),
+        component: <TargetView />,
+      },
+      {
+        name: 'Marketing Cost',
+        layout: '/admin',
+        path: '/channel-performance/marketing-cost',
+        icon: (
+          <Icon as={MdPaid} width="20px" height="20px" color="inherit" />
+        ),
+        component: <MarketingCostView />,
+      },
+      {
+        name: 'Report',
+        layout: '/admin',
+        path: '/channel-performance/report',
+        icon: (
+          <Icon as={MdSummarize} width="20px" height="20px" color="inherit" />
+        ),
+        component: <ReportView />,
+      },
+    ],
   },
   {
     name: 'Product Mix',
     layout: '/admin',
-    path: '/product-mix',
     icon: (
       <Icon
-        as={MdOutlineShoppingCart}
+        as={MdInventory2}
         width="20px"
         height="20px"
         color="inherit"
       />
     ),
-    component: <NFTMarketplace />,
     secondary: true,
+    collapse: true,
+    items: [
+      {
+        name: 'Quantity Ordered',
+        layout: '/admin',
+        path: '/product-mix/quantity-ordered',
+        icon: (
+          <Icon
+            as={MdShoppingCartCheckout}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <QuantityOrderedView />,
+      },
+      {
+        name: 'Average Selling',
+        layout: '/admin',
+        path: '/product-mix/average-selling',
+        icon: (
+          <Icon
+            as={MdAttachMoney}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <AverageSellingView />,
+      },
+      {
+        name: 'Region Wise',
+        layout: '/admin',
+        path: '/product-mix/region-wise',
+        icon: (
+          <Icon
+            as={MdPublic}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <RegionWiseView />,
+      },
+      {
+        name: 'Gross Sale',
+        layout: '/admin',
+        path: '/product-mix/gross-sale',
+        icon: (
+          <Icon
+            as={MdSell}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <GrossSaleView />,
+      },
+      {
+        name: 'Avg Item Order',
+        layout: '/admin',
+        path: '/product-mix/avg-item-order',
+        icon: (
+          <Icon
+            as={MdShoppingBag}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <AvgItemOrderView />,
+      },
+      {
+        name: 'Quantity Share',
+        layout: '/admin',
+        path: '/product-mix/quantity-share',
+        icon: (
+          <Icon
+            as={MdPieChart}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <QuantityShareView />,
+      },
+    ],
   },
   {
     name: 'Coupons',
     layout: '/admin',
     icon: <Icon as={MdLocalOffer} width="20px" height="20px" color="inherit" />,
-    path: '/coupons',
-    component: <DataTables />,
-  },
+    collapse: true,
+    items: [
+      {
+        name: 'Coupons Source',
 
-  {
-    name: 'Weekly Organic Order',
-    layout: '/admin',
-    path: '/weekly-organic-order-session',
-    icon: <Icon as={MdTrendingUp} width="20px" height="20px" color="inherit" />,
-    component: <WeeklyOrganic />,
-  },
-
-  {
-    name: 'NewsLetters',
-    layout: '/admin',
-    icon: <Icon as={MdEmail} width="20px" height="20px" color="inherit" />,
-    path: '/newsletters',
-    component: <NewsLetters />,
-  },
-  {
-    name: 'TikTok Compaign',
-    layout: '/admin',
-    icon: <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />,
-    path: '/tiktok-compaign',
-    component: <DataTables />,
+        layout: '/admin',
+        path: '/coupons/coupons-source',
+        icon: (
+          <Icon as={MdLocalOffer} width="20px" height="20px" color="inherit" />
+        ),
+        component: <CouponsSourceView />,
+      },
+      {
+        name: 'Region Wise Sum of applied discounts',
+        layout: '/admin',
+        path: '/coupons/region-wise-sum',
+        icon: (
+          <Icon as={MdPublic} width="20px" height="20px" color="inherit" />
+        ),
+        component: <RegionWiseSumView />,
+      },
+      {
+        name: 'Coupons Without Brandcamp Cost',
+        layout: '/admin',
+        path: '/coupons/coupons-without-brandcamp-cost',
+        icon: (
+          <Icon as={MdDiscount} width="20px" height="20px" color="inherit" />
+        ),
+        component: <CouponsWithoutBrandcampView />,
+      },
+    ],
   },
   {
     name: 'Conversion Funnel',
     layout: '/admin',
-    path: '/conversion-funnel',
+    path: null,
     icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
-    component: <Profile />,
+    component: null,
+    collapse: true,
     items: [
       {
         name: 'Report',
         layout: '/admin',
         path: '/conversion-funnel/report',
-        icon: <Icon as={FaChartLine} width="20px" height="20px" color="inherit" />,
-        component: <ConversionRate />,
+        icon: (
+          <Icon as={MdQueryStats} width="20px" height="20px" color="inherit" />
+        ),
+        component: <FunnelView />,
       },
       {
         name: 'Dashboard',
         layout: '/admin',
         path: '/conversion-funnel/dashboard',
-        icon: <Icon as={FaRocket} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={MdDashboard} width="20px" height="20px" color="inherit" />
+        ),
         component: <ConversionRate />,
+      },
+    ],
+  },
+  {
+    name: 'Weekly Organic Order',
+    layout: '/admin',
+    path: null,
+    icon: <Icon as={MdTrendingUp} width="20px" height="20px" color="inherit" />,
+    component: null,
+    collapse: true,
+    items: [
+      {
+        name: 'Order Session Graph',
+        layout: '/admin',
+        path: '/weekly-organic-order-session/order-session-graph',
+        icon: (
+          <Icon as={MdShowChart} width="20px" height="20px" color="inherit" />
+        ),
+        component: <WeeklyOrganic />,
+      },
+      {
+        name: 'Order Session Grid',
+        layout: '/admin',
+        path: '/weekly-organic-order-session/order-session-grid/',
+        icon: (
+          <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
+        ),
+        component: <WeeklyOrganic />,
       },
     ],
   },
   {
     name: 'RDX Social Data',
     layout: '/admin',
-    path: '/newsletter',
+    path: null,
     icon: <Icon as={MdShare} width="20px" height="20px" color="inherit" />,
     component: null,
     collapse: true,
@@ -143,7 +348,7 @@ const routes = [
         layout: '/admin',
         path: '/rdx-social-data/instagram-stories',
         icon: (
-          <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />
+          <Icon as={MdMovie} width="20px" height="20px" color="inherit" />
         ),
         component: <InstagramStories />,
       },
@@ -176,8 +381,28 @@ const routes = [
         name: 'TikTok Video Data',
         layout: '/admin',
         path: '/rdx-social-data/tiktok-video-data',
-        icon: <Icon as={FaTiktok} width="20px" height="20px" color="inherit" />,
+        icon: (
+          <Icon as={MdVideoLibrary} width="20px" height="20px" color="inherit" />
+        ),
         component: <TiktokVideo />,
+      },
+      {
+        name: 'NewsLetters',
+        layout: '/admin',
+        icon: (
+          <Icon as={MdMarkEmailRead} width="20px" height="20px" color="inherit" />
+        ),
+        path: '/newsletters',
+        component: <NewsLetters />,
+      },
+      {
+        name: 'TikTok Compaign',
+        layout: '/admin',
+        icon: (
+          <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />
+        ),
+        path: '/tiktok-compaign',
+        component: <DataTables />,
       },
     ],
   },
