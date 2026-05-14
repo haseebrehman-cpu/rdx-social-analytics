@@ -153,6 +153,14 @@ function DashboardInner(props) {
               <Routes>
                 {getRoutes(routes)}
                 <Route
+                  index
+                  element={<Navigate to="/admin/conversion-rate-summary" replace />}
+                />
+                <Route
+                  path="/conversion-rate"
+                  element={<Navigate to="/admin/conversion-rate-summary" replace />}
+                />
+                <Route
                   path="/"
                   element={<Navigate to="/admin/conversion-rate-summary" replace />}
                 />
