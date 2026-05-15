@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Source Wise Traffic
+        Source Wise Sale
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -44,16 +44,32 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Jim Beam', age: 35, city: 'Chicago' },
+  { id: 1, value: 'Klaviyo', date: '4/25/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 2, value: 'Direct', date: '4/26/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 3, value: 'Influencers', date: '4/27/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 4, value: 'chatgpt.com', date: '4/28/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 5, value: 'shop_app', date: '4/29/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 6, value: 'Meta', date: '4/30/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 7, value: 'livechat.com', date: '5/01/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+  { id: 8, value: 'affiliate', date: '5/02/2026', grandTotal: '100', average: '100', difference: '100', growth: '100' },
+
 ];
 const columns = [
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'age', headerName: 'Age', flex: 1 },
-  { field: 'city', headerName: 'City', flex: 1 },
+  { field: 'value', headerName: 'Value', flex: 3 },
+  { field: 'date', headerName: '4/25/2026', flex: 3 },
+  { field: 'date', headerName: '4/26/2026', flex: 3 },
+  { field: 'date', headerName: '4/27/2026', flex: 3 },
+  { field: 'date', headerName: '4/28/2026', flex: 3 },
+  { field: 'date', headerName: '4/29/2026', flex: 3 },
+  { field: 'date', headerName: '4/30/2026', flex: 3 },
+  { field: 'date', headerName: '5/01/2026', flex: 3 },
+  { field: 'date', headerName: '5/02/2026', flex: 3 },
+  { field: 'grandTotal', headerName: 'Grand Total', flex: 4 },
+  { field: 'average', headerName: 'Average', flex: 3 },
+  { field: 'difference', headerName: 'Difference', flex: 4 },
+  { field: 'growth', headerName: 'Growth', flex: 4 },
 ];
-const SourceWiseTraffic = () => {
+const SourceWiseSale = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -77,7 +93,7 @@ const SourceWiseTraffic = () => {
       }}
     >
       <DataGridPremium
-        label="Source Wise Traffic"
+        label="Source Wise Sale"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -93,4 +109,4 @@ const SourceWiseTraffic = () => {
   );
 };
 
-export default SourceWiseTraffic;
+export default SourceWiseSale;

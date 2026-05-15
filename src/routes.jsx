@@ -65,7 +65,8 @@ import AvgItemOrderView from 'views/admin/ProductMix/AvgItemOrder/index';
 import CouponsSourceView from 'views/admin/coupons/CouponsSource';
 import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
 import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrandcamp';
-import FunnelView from 'views/admin/ConversionFunnel/Funnel';
+import FunnelView from 'views/admin/ConversionFunnel/Report';
+import SalesAOVView from 'views/admin/ConversionFunnel/Dashboard';
 
 const routes = [
   {
@@ -293,8 +294,8 @@ const routes = [
         icon: (
           <Icon as={MdDashboard} width="20px" height="20px" color="inherit" />
         ),
-        component: <ConversionRate />,
-      },
+        component: <SalesAOVView />,
+      },  
     ],
   },
   {

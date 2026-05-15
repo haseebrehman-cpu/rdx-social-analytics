@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Source Wise Sale
+        Conversion Funnel
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -44,16 +44,24 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Jim Beam', age: 35, city: 'Chicago' },
+  { id: 1, value: 'Sum of Pixel Sessions', date: '4/18/2026' },
+  { id: 2, value: 'Sum of Session %age with add to cart', date: '4/19/2026' },
+  { id: 3, value: 'Sum of Session %age with checkout start', date: '4/20/2026' },
+  { id: 4, value: 'Sum of Session %age with checkout complete', date: '4/21/2026' },
+  { id: 5, value: 'Sum of cvr', date: '4/22/2026' },
+  { id: 6, value: 'Sum of Pixel Purchases', date: '4/23/2026' },
+  { id: 7, value: 'Sum of Combined Gross Sales', date: '4/24/2026' },
 ];
 const columns = [
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'age', headerName: 'Age', flex: 1 },
-  { field: 'city', headerName: 'City', flex: 1 },
+  { field: 'value', headerName: 'Value', flex: 3 },
+  { field: 'date', headerName: '4/18/2026', flex: 1 },
+  { field: 'date', headerName: '4/19/2026', flex: 1 },
+  { field: 'date', headerName: '4/20/2026', flex: 1 },
+  { field: 'date', headerName: '4/21/2026', flex: 1 },
+  { field: 'date', headerName: '4/22/2026', flex: 1 },
+  { field: 'date', headerName: '4/23/2026', flex: 1 },
 ];
-const SourceWiseSale = () => {
+const FunnelGrid = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -77,7 +85,7 @@ const SourceWiseSale = () => {
       }}
     >
       <DataGridPremium
-        label="Source Wise Sale"
+        label="Conversion Funnel"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -91,6 +99,6 @@ const SourceWiseSale = () => {
       />
     </Box>
   );
-};
+}
 
-export default SourceWiseSale;
+export default FunnelGrid
