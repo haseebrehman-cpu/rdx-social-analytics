@@ -141,7 +141,6 @@ export default function HeaderLinks(props) {
           <Image src={navImage} borderRadius="16px" mb="28px" />
         </MenuList>
       </Menu> */}
-
       <Button
         variant="no-hover"
         bg="transparent"
@@ -166,7 +165,7 @@ export default function HeaderLinks(props) {
             _hover={{ cursor: 'pointer' }}
             color="white"
             name="Adela Parkson"
-            bg="#11047A"
+            bg="#422AFB"
             size="sm"
             w="40px"
             h="40px"

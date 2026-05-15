@@ -115,10 +115,6 @@ function DashboardInner(props) {
       <Box>
         <Sidebar routes={routes} {...rest} />
         <Box
-          minHeight="100vh"
-          display="flex"
-          flexDirection="column"
-          overflow="auto"
           position="relative"
           w={{
             base: '100%',
@@ -142,12 +138,10 @@ function DashboardInner(props) {
           </Portal>
 
           <Box
-            flex="1"
             mx="auto"
             w="100%"
-            p={{ base: '20px', md: '15px' }}
-            pe="20px"
-            pt="50px"
+            px={{ base: '20px', md: '15px' }}
+            pt="40px"
           >
             {getRoute() ? (
               <Routes>
@@ -167,9 +161,6 @@ function DashboardInner(props) {
               </Routes>
             ) : null}
           </Box>
-          {/* <Box flexShrink="0">
-            <Footer />
-          </Box> */}
         </Box>
       </Box>
     </Box>

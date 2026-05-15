@@ -87,8 +87,6 @@ export default function AdminNavbar(props) {
             me='10px'
             onClick={onToggle}
             icon={<Icon as={IoMenuOutline} w='22px' h='22px' color={menuIconColor} />}
-            _hover={{ bg: 'purple.500' }}
-            _active={{ bg: 'purple.500' }}
             _focus={{ boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.1)' }}
             borderRadius='10px'
           />

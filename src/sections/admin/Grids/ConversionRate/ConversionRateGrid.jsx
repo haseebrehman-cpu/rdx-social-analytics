@@ -57,7 +57,6 @@ const rows = [
     end_date: new Date('2026-04-18'),
     month: 'January',
     year: 2026,
-    created_at: new Date('2026-04-12'),
     year_month: '2026-01',
   },
   {
@@ -72,7 +71,6 @@ const rows = [
     end_date: new Date('2026-04-22'),
     month: 'February',
     year: 2026,
-    created_at: new Date('2026-04-18'),
     year_month: '2026-02',
   },
   {
@@ -87,7 +85,6 @@ const rows = [
     end_date: new Date('2026-04-28'),
     month: 'March',
     year: 2026,
-    created_at: new Date('2026-04-22'),
     year_month: '2026-03',
   },
   {
@@ -102,7 +99,6 @@ const rows = [
     end_date: new Date('2026-05-04'),
     month: 'April',
     year: 2026,
-    created_at: new Date('2026-04-28'),
     year_month: '2026-04',
   },
   {
@@ -117,7 +113,6 @@ const rows = [
     end_date: new Date('2026-05-08'),
     month: 'May',
     year: 2026,
-    created_at: new Date('2026-05-02'),
     year_month: '2026-05',
   },
   {
@@ -132,7 +127,6 @@ const rows = [
     end_date: new Date('2026-05-14'),
     month: 'June',
     year: 2026,
-    created_at: new Date('2026-05-08'),
     year_month: '2026-06',
   },
 ];
@@ -185,12 +179,6 @@ const columns = [
   {
     field: 'year',
     headerName: 'Year',
-    flex: 1,
-  },
-  {
-    field: 'created_at',
-    headerName: 'Created At',
-    type: 'date',
     flex: 1,
   },
   {

@@ -242,7 +242,6 @@ const routes = [
     items: [
       {
         name: 'Coupons Source',
-
         layout: '/admin',
         path: '/coupons/coupons-source',
         icon: (

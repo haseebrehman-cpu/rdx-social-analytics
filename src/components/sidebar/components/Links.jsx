@@ -48,7 +48,7 @@ export function SidebarLinks(props) {
   );
 
   const iconBoxBg = useColorModeValue('white', 'whiteAlpha.100');
-  const iconBoxBgActive = useColorModeValue('brand.500', 'brand.400');
+  const iconBoxBgActive = useColorModeValue('brand.500', '#422AFB');
   const iconBoxShadow = useColorModeValue(
     '0 6px 14px rgba(112, 144, 176, 0.12)',
     'none',
@@ -90,7 +90,7 @@ export function SidebarLinks(props) {
       minW={`${size}px`}
       borderRadius="10px"
       bg={isActive ? iconBoxBgActive : iconBoxBg}
-      color={isActive ? 'white' : activeIcon}
+      color={isActive ? 'white' : 'gray.500'}
       boxShadow={isActive ? iconBoxShadowActive : iconBoxShadow}
       transition="all 0.2s ease"
     >
@@ -123,7 +123,7 @@ export function SidebarLinks(props) {
             >
               {item.icon && (
                 <Box
-                  color={isItemActive ? activeIcon : textColor}
+                  color={isItemActive ? activeIcon : undefined}
                   me="10px"
                   display="flex"
                   alignItems="center"
@@ -315,7 +315,7 @@ export function SidebarLinks(props) {
               >
                 {route.icon && (
                   <Box
-                    color={isActive ? activeIcon : textColor}
+                    color={isActive ? activeIcon : undefined}
                     me="10px"
                     display="flex"
                     alignItems="center"
