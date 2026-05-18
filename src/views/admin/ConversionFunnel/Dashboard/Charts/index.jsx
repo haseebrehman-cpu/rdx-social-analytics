@@ -37,7 +37,7 @@ const SalesAOVView = () => {
         </Box>
       </SimpleGrid>
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 2, '2xl': 3 }}
+        columns={{ base: 1, md: 1, lg: 3, '2xl': 3 }}
         gap="20px"
         mb="20px"
       >

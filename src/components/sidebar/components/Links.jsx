@@ -172,6 +172,66 @@ export function SidebarLinks(props) {
             {createLinks(route.items, true)}
           </React.Fragment>
         );
+      } else if (route.items && isNested) {
+        const isActive = route.items.some(
+          (item) => item.path && activeRoute(item.path.toLowerCase()),
+        );
+        const [isExpanded, setIsExpanded] = React.useState(isActive);
+
+        return (
+          <Box key={index} mb="2px">
+            <Flex
+              align="center"
+              w="100%"
+              px="10px"
+              py="7px"
+              my="2px"
+              borderRadius="10px"
+              bg={isActive ? itemActiveBg : 'transparent'}
+              _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
+              transition="background 0.15s ease"
+              cursor="pointer"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {route.icon && (
+                <Box
+                  color={isActive ? activeIcon : undefined}
+                  me="10px"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  {route.icon}
+                </Box>
+              )}
+              <Text
+                me="auto"
+                fontSize="sm"
+                color={isActive ? activeColor : textColor}
+                fontWeight={isActive ? '600' : '500'}
+                textAlign="left"
+              >
+                {route.name}
+              </Text>
+              <AccordionIcon
+                color={textColor}
+                transform={isExpanded ? 'rotate(-180deg)' : 'rotate(0deg)'}
+                transition="transform 0.2s"
+              />
+            </Flex>
+            {isExpanded && (
+              <Box pl="14px" pr="0" py="4px">
+                <Box
+                  borderLeft="1px solid"
+                  borderColor={nestedBorderColor}
+                  ps="12px"
+                >
+                  {createLinks(route.items, true)}
+                </Box>
+              </Box>
+            )}
+          </Box>
+        );
       } else if (route.items && !isNested) {
         const isActive = activeRoute(route.path?.toLowerCase?.() ?? '');
 

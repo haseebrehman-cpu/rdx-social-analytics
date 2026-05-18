@@ -155,6 +155,15 @@ function DashboardInner(props) {
                   element={<Navigate to="/admin/conversion-rate-summary" replace />}
                 />
                 <Route
+                  path="/conversion-funnel/dashboard"
+                  element={
+                    <Navigate
+                      to="/admin/conversion-funnel/dashboard/charts"
+                      replace
+                    />
+                  }
+                />
+                <Route
                   path="/"
                   element={<Navigate to="/admin/conversion-rate-summary" replace />}
                 />

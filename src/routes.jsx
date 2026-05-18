@@ -66,7 +66,8 @@ import CouponsSourceView from 'views/admin/coupons/CouponsSource';
 import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
 import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrandcamp';
 import FunnelView from 'views/admin/ConversionFunnel/Report';
-import SalesAOVView from 'views/admin/ConversionFunnel/Dashboard';
+import ConversionGridView from 'views/admin/ConversionFunnel/Dashboard/Data';
+import ConversionChartsView from 'views/admin/ConversionFunnel/Dashboard/Charts';
 
 const routes = [
   {
@@ -290,12 +291,34 @@ const routes = [
       {
         name: 'Dashboard',
         layout: '/admin',
-        path: '/conversion-funnel/dashboard',
+        path: null,
         icon: (
           <Icon as={MdDashboard} width="20px" height="20px" color="inherit" />
         ),
-        component: <SalesAOVView />,
-      },  
+        component: null,
+        secondary: true,
+        collapse: true,
+        items: [
+          {
+            name: 'Charts',
+            layout: '/admin',
+            path: '/conversion-funnel/dashboard/charts',
+            icon: (
+              <Icon as={MdShowChart} width="20px" height="20px" color="inherit" />
+            ),
+            component: <ConversionChartsView />,
+          },
+          {
+            name: 'Data',
+            layout: '/admin',
+            path: '/conversion-funnel/dashboard/data',
+            icon: (
+              <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
+            ),
+            component: <ConversionGridView />,
+          },
+        ],
+      },
     ],
   },
   {

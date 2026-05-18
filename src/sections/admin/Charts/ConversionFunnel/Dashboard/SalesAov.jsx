@@ -64,8 +64,8 @@ const option = {
   grid: {
     left: 0,
     right: 0,
-    top: 70,
-    bottom: 70,
+    top: 10,
+    bottom: 10,
     containLabel: false,
   },
   xAxis: [
