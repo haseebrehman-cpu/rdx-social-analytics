@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Avg Item Order Grid
+        Avg Item Order
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -77,7 +77,7 @@ const AvgItemOrderGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Avg Item Order Grid"
+        label="Avg Item Order"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

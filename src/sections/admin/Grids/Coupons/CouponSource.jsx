@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Coupon Source Grid
+        Coupon Source
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -77,7 +77,7 @@ const CouponSource = () => {
       }}
     >
       <DataGridPremium
-        label="Coupon Source Grid"
+        label="Coupon Source"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

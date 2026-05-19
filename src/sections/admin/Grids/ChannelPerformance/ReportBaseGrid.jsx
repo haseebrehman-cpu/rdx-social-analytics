@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Report Base Grid
+        Report Base
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -184,7 +184,7 @@ const ReportBaseGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Report Base Grid"
+        label="Report Base"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

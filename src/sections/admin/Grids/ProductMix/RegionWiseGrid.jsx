@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Region Wise Grid
+        Region Wise
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -77,7 +77,7 @@ const RegionWiseGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Region Wise Grid"
+        label="Region Wise"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

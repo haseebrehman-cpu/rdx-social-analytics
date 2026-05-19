@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Average Selling Grid
+        Average Selling
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -77,7 +77,7 @@ const AverageSellingGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Average Selling Grid"
+        label="Average Selling"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

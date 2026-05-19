@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Target Grid
+        Target
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -86,12 +86,12 @@ const columns = [
     groupable: true,
     flex: 1,
   },
-    {
-      field: 'target',
-      headerName: 'Target',
-      groupable: true,
-      flex: 1,
-    },
+  {
+    field: 'target',
+    headerName: 'Target',
+    groupable: true,
+    flex: 1,
+  },
 ];
 const TargetGrid = () => {
   const apiRef = useGridApiRef();
@@ -117,7 +117,7 @@ const TargetGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Target Grid"
+        label="Target"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

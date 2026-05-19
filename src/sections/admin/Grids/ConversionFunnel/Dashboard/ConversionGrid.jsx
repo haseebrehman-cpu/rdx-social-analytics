@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Conversion Grid
+        Conversion
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -216,14 +216,14 @@ const ConversionGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Conversion Grid"
+        label="Conversion"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100vw')}
+        sx={getDataGridStyles(isDark, '100%')}
         slots={{
           toolbar: CustomToolbar,
         }}

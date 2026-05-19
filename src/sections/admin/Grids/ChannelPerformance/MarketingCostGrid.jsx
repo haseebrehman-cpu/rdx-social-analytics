@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Marketing Cost Grid
+        Marketing Cost
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -414,7 +414,7 @@ const MarketingCostGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Marketing Cost Grid"
+        label="Marketing Cost"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

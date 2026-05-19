@@ -114,9 +114,9 @@ const routes = [
         component: <MarketingCostView />,
       },
       {
-        name: 'Report',
+        name: 'Final Report',
         layout: '/admin',
-        path: '/channel-performance/report',
+        path: '/channel-performance/final-report',
         icon: (
           <Icon as={MdSummarize} width="20px" height="20px" color="inherit" />
         ),

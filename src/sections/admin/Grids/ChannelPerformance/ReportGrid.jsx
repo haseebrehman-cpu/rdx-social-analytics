@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Report Grid
+        Final Report
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -248,7 +248,7 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 140,
-    valueFormatter: (value) => formatCurrency(value),
+    valueFormatter: (value) => (value),
   },
   {
     field: 'req_rr',
@@ -289,7 +289,7 @@ const ReportGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Report Grid"
+        label="Report"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

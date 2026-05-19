@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Channel Consolidation Grid
+        Channel Consolidation
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -152,7 +152,7 @@ const ChannelConsolidationGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Channel Consolidation Grid"
+        label="Channel Consolidation"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

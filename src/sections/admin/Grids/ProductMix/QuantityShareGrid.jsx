@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Quantity Share Grid
+        Quantity Share
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -77,7 +77,7 @@ const QuantityShareGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Quantity Share Grid"
+        label="Quantity Share"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

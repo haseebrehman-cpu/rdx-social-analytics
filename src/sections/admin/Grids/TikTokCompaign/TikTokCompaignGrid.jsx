@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        TikTok Compaign Grid
+        TikTok Compaign
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -149,7 +149,7 @@ const TikTokCompaignGrid = () => {
       }}
     >
       <DataGridPremium
-        label="TikTok Compaign Grid"
+        label="TikTok Compaign"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
