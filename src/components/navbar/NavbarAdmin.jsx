@@ -68,7 +68,7 @@ export default function AdminNavbar(props) {
       pt='8px'
       px={{ base: paddingX, md: '20px' }}
       top={{ base: '12px', md: '16px', lg: '20px' }}
-      left={{ base: '12px', md: '24px', xl: isOpen ? '300px' : '80px' }}
+      left={{ base: '12px', md: '24px', xl: isOpen ? '320px' : '100px' }}
       right={{ base: '12px', md: '24px' }}>
       <Flex
         w='100%'

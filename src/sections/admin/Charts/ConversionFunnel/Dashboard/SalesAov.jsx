@@ -1,11 +1,6 @@
 import React from 'react';
+import { useColorModeValue } from '@chakra-ui/react';
 import EChart from 'components/Echart/EChart';
-
-const COLOR_BAR = '#4F8FE8';
-const COLOR_LINE = '#F5A742';
-const TEXT_COLOR = '#E5E7EB';
-const TEXT_MUTED = '#9CA3AF';
-const GRID_LINE = 'rgba(255, 255, 255, 0.08)';
 
 const categories = [
   '4/24/2026',
@@ -22,12 +17,23 @@ const sumOfAov = [50.05, 48.17, 39.86, 45.84, 49.74, 41.29];
 const formatNumber = (value) =>
   Number(value).toLocaleString('en-US', { maximumFractionDigits: 2 });
 
-const option = {
+const SalesAov = () => {
+  const COLOR_BAR = '#4F8FE8';
+  const COLOR_LINE = '#F5A742';
+  const TEXT_COLOR = useColorModeValue('#1A202C', '#E5E7EB');
+  const TEXT_MUTED = useColorModeValue('#718096', '#9CA3AF');
+  const GRID_LINE = useColorModeValue('rgba(0, 0, 0, 0.08)', 'rgba(255, 255, 255, 0.08)');
+  const AXIS_LINE = useColorModeValue('rgba(0, 0, 0, 0.18)', 'rgba(255, 255, 255, 0.18)');
+  const TOOLTIP_BG = useColorModeValue('rgba(255, 255, 255, 0.95)', 'rgba(17, 24, 39, 0.95)');
+  const TOOLTIP_BORDER = useColorModeValue('rgba(0, 0, 0, 0.08)', 'rgba(255, 255, 255, 0.08)');
+  const BAR_LABEL_COLOR = useColorModeValue('#1A202C', '#FFFFFF');
+
+  const option = {
   backgroundColor: 'transparent',
   title: {
     text: 'Sales - AOV',
-    left: 'center',
-    top: 6,
+    left: 0,
+    top: 0,
     textStyle: {
       color: TEXT_COLOR,
       fontSize: 16,
@@ -35,18 +41,18 @@ const option = {
       fontFamily: 'DM Sans, sans-serif',
     },
   },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: { type: 'shadow' },
-    backgroundColor: 'rgba(17, 24, 39, 0.95)',
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-    textStyle: { color: TEXT_COLOR, fontFamily: 'DM Sans, sans-serif' },
-    valueFormatter: (value) => formatNumber(value),
-  },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      backgroundColor: TOOLTIP_BG,
+      borderColor: TOOLTIP_BORDER,
+      textStyle: { color: TEXT_COLOR, fontFamily: 'DM Sans, sans-serif' },
+      valueFormatter: (value) => formatNumber(value),
+    },
   legend: {
     orient: 'horizontal',
-    right: 12,
-    bottom: 0,
+    right: 'center',
+    top: 0,
     icon: 'roundRect',
     itemWidth: 14,
     itemHeight: 10,
@@ -56,16 +62,13 @@ const option = {
       fontSize: 12,
       fontFamily: 'DM Sans, sans-serif',
     },
-    data: [
-      { name: 'Total sales' },
-      { name: 'Sum of AOV' },
-    ],
+    data: [{ name: 'Total sales' }, { name: 'Sum of AOV' }],
   },
   grid: {
     left: 0,
     right: 0,
-    top: 10,
-    bottom: 10,
+    top: 70,
+    bottom: 0,
     containLabel: false,
   },
   xAxis: [
@@ -73,7 +76,7 @@ const option = {
       type: 'category',
       data: categories,
       axisTick: { alignWithLabel: true, lineStyle: { color: TEXT_MUTED } },
-      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.18)' } },
+      axisLine: { lineStyle: { color: AXIS_LINE } },
       axisLabel: {
         color: TEXT_MUTED,
         fontFamily: 'DM Sans, sans-serif',
@@ -97,7 +100,7 @@ const option = {
         padding: [0, 0, 8, 0],
         fontFamily: 'DM Sans, sans-serif',
       },
-      axisLine: { show: true, lineStyle: { color: 'rgba(255,255,255,0.18)' } },
+      axisLine: { show: true, lineStyle: { color: AXIS_LINE } },
       axisTick: { show: false },
       axisLabel: {
         color: TEXT_MUTED,
@@ -120,7 +123,7 @@ const option = {
         padding: [0, 0, 8, 0],
         fontFamily: 'DM Sans, sans-serif',
       },
-      axisLine: { show: true, lineStyle: { color: 'rgba(255,255,255,0.18)' } },
+      axisLine: { show: true, lineStyle: { color: AXIS_LINE } },
       axisTick: { show: false },
       axisLabel: {
         color: TEXT_MUTED,
@@ -148,7 +151,7 @@ const option = {
         show: true,
         position: 'inside',
         rotate: 90,
-        color: '#FFFFFF',
+        color: BAR_LABEL_COLOR,
         fontFamily: 'DM Sans, sans-serif',
         fontSize: 11,
         fontWeight: 600,
@@ -177,9 +180,8 @@ const option = {
       data: sumOfAov,
     },
   ],
-};
+  };
 
-const SalesAov = () => {
   return <EChart option={option} height="100%" width="100%" />;
 };
 

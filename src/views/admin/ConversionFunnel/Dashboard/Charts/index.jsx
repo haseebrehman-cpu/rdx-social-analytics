@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import SalesAOV from 'sections/admin/Charts/ConversionFunnel/Dashboard/SalesAov';
 import RegionWiseSales from 'sections/admin/Charts/ConversionFunnel/Dashboard/RegionWiseSales';
 import ChannelWiseSales from 'sections/admin/Charts/ConversionFunnel/Dashboard/ChannelWiseSales';
@@ -11,6 +11,8 @@ import ROASLineChart from 'sections/admin/Charts/ConversionFunnel/Dashboard/ROAS
 import AdSpendLineChart from 'sections/admin/Charts/ConversionFunnel/Dashboard/AdSpendLineChart';
 
 const SalesAOVView = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   return (
     <Box
       pt={{ base: '130px', md: '80px', xl: '80px' }}
@@ -27,7 +29,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -46,7 +48,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -59,7 +61,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -72,7 +74,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -91,7 +93,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -104,7 +106,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -123,7 +125,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -142,7 +144,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
@@ -155,7 +157,7 @@ const SalesAOVView = () => {
           h={{ base: '420px', md: '460px', xl: '500px' }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor: '#1D2939',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',

@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Order Session Grid
+        TikTok Compaign Grid
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -47,62 +47,85 @@ function CustomToolbar() {
 const rows = [
   {
     id: 1,
-    region: 'Region 1',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 1',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
   {
     id: 2,
-    region: 'Region 2',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 2',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
   {
     id: 3,
-    region: 'Region 3',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 3',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
   {
     id: 4,
-    region: 'Region 4',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 4',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
   {
     id: 5,
-    region: 'Region 5',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 5',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
   {
     id: 6,
-    region: 'Region 6',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 6',
+    total_profile_visits: 100,
+    total_paid_followers: 100,
+    total_video_views: 100,
+    total_interactions: 100,
   },
 ];
 
 const columns = [
   {
-    field: 'region',
-    headerName: 'Region',
+    field: 'week',
+    headerName: 'Week',
     groupable: true,
     flex: 1,
   },
   {
-    field: 'Orders',
-    headerName: 'Orders',
+    field: 'total_profile_visits',
+    headerName: 'Total Profile Visits',
     flex: 1,
   },
   {
-    field: 'Sessions',
-    headerName: 'Sessions',
+    field: 'total_paid_followers',
+    headerName: 'Total Paid Followers',
+    flex: 1,
+  },
+  {
+    field: 'total_video_views',
+    headerName: 'Total Video Views',
+    groupable: true,
+    flex: 1,
+  },
+  {
+    field: 'total_interactions',
+    headerName: 'Total Interactions',
     flex: 1,
   },
 ];
 
-const OrderSessionGrid = () => {
+const TikTokCompaignGrid = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -126,7 +149,7 @@ const OrderSessionGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Order Session Grid"
+        label="TikTok Compaign Grid"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -142,4 +165,4 @@ const OrderSessionGrid = () => {
   );
 };
 
-export default OrderSessionGrid;
+export default TikTokCompaignGrid;

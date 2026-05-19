@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Order Session Grid
+        News Letter Grid
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -47,62 +47,90 @@ function CustomToolbar() {
 const rows = [
   {
     id: 1,
-    region: 'Region 1',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 1,
+    newsletter_name: 'News Letter 1',
+    newsletter_description: 'News Letter 1 Description',
+    newsletter_created_at: new Date('2026-04-12'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
   {
     id: 2,
-    region: 'Region 2',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 2,
+    newsletter_name: 'News Letter 2',
+    newsletter_description: 'News Letter 2 Description',
+    newsletter_created_at: new Date('2026-04-18'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
   {
     id: 3,
-    region: 'Region 3',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 3,
+    newsletter_name: 'News Letter 3',
+    newsletter_description: 'News Letter 3 Description',
+    newsletter_created_at: new Date('2026-04-18'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
   {
     id: 4,
-    region: 'Region 4',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 4,
+    newsletter_name: 'News Letter 4',
+    newsletter_description: 'News Letter 4 Description',
+    newsletter_created_at: new Date('2026-04-18'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
   {
     id: 5,
-    region: 'Region 5',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 5,
+    newsletter_name: 'News Letter 5',
+    newsletter_description: 'News Letter 5 Description',
+    newsletter_created_at: new Date('2026-04-18'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
   {
     id: 6,
-    region: 'Region 6',
-    Orders: 100,
-    Sessions: 100,
+    newsletter_id: 6,
+    newsletter_name: 'News Letter 6',
+    newsletter_description: 'News Letter 6 Description',
+    newsletter_created_at: new Date('2026-04-18'),
+    newsletter_updated_at: new Date('2026-04-18'),
   },
 ];
 
 const columns = [
   {
-    field: 'region',
-    headerName: 'Region',
+    field: 'newsletter_id',
+    headerName: 'News Letter ID',
     groupable: true,
     flex: 1,
   },
   {
-    field: 'Orders',
-    headerName: 'Orders',
+    field: 'newsletter_name',
+    headerName: 'News Letter Name',
     flex: 1,
   },
   {
-    field: 'Sessions',
-    headerName: 'Sessions',
+    field: 'newsletter_description',
+    headerName: 'News Letter Description',
+    flex: 1,
+  },
+  {
+    field: 'newsletter_created_at',
+    headerName: 'News Letter Created At',
+    groupable: true,
+    flex: 1,
+  },
+  {
+    field: 'newsletter_updated_at',
+    headerName: 'News Letter Updated At',
+    flex: 1,
+  },
+  {
+    field: 'year',
+    headerName: 'News Letter Updated At',
     flex: 1,
   },
 ];
 
-const OrderSessionGrid = () => {
+const NewsLetterGrid = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -126,7 +154,7 @@ const OrderSessionGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Order Session Grid"
+        label="News Letter Grid"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -142,4 +170,4 @@ const OrderSessionGrid = () => {
   );
 };
 
-export default OrderSessionGrid;
+export default NewsLetterGrid;

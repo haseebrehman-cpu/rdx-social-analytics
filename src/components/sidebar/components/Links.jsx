@@ -108,6 +108,7 @@ export function SidebarLinks(props) {
           item.layout === '/rtl',
       )
       .map((item, idx) => {
+        
         const isItemActive = activeRoute(item.path);
         return (
           <NavLink key={idx} to={item.layout + item.path}>

@@ -29,16 +29,7 @@ import {
   MdTableChart,
   MdVideoLibrary,
 } from 'react-icons/md';
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTiktok,
-} from 'react-icons/fa';
-
-// Admin Imports
-import Profile from 'views/admin/profile';
-import DataTables from 'views/admin/dataTables';
+import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 // Auth Imports
 // import SignInCentered from 'views/auth/signIn';
@@ -68,6 +59,7 @@ import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrand
 import FunnelView from 'views/admin/ConversionFunnel/Report';
 import ConversionGridView from 'views/admin/ConversionFunnel/Dashboard/Data';
 import ConversionChartsView from 'views/admin/ConversionFunnel/Dashboard/Charts';
+import TiktokCompaign from 'views/admin/tiktokCompaign';
 
 const routes = [
   {
@@ -111,18 +103,14 @@ const routes = [
         name: 'Target',
         layout: '/admin',
         path: '/channel-performance/target',
-        icon: (
-          <Icon as={MdFlag} width="20px" height="20px" color="inherit" />
-        ),
+        icon: <Icon as={MdFlag} width="20px" height="20px" color="inherit" />,
         component: <TargetView />,
       },
       {
         name: 'Marketing Cost',
         layout: '/admin',
         path: '/channel-performance/marketing-cost',
-        icon: (
-          <Icon as={MdPaid} width="20px" height="20px" color="inherit" />
-        ),
+        icon: <Icon as={MdPaid} width="20px" height="20px" color="inherit" />,
         component: <MarketingCostView />,
       },
       {
@@ -139,14 +127,7 @@ const routes = [
   {
     name: 'Product Mix',
     layout: '/admin',
-    icon: (
-      <Icon
-        as={MdInventory2}
-        width="20px"
-        height="20px"
-        color="inherit"
-      />
-    ),
+    icon: <Icon as={MdInventory2} width="20px" height="20px" color="inherit" />,
     secondary: true,
     collapse: true,
     items: [
@@ -169,12 +150,7 @@ const routes = [
         layout: '/admin',
         path: '/product-mix/average-selling',
         icon: (
-          <Icon
-            as={MdAttachMoney}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
+          <Icon as={MdAttachMoney} width="20px" height="20px" color="inherit" />
         ),
         component: <AverageSellingView />,
       },
@@ -182,28 +158,14 @@ const routes = [
         name: 'Region Wise',
         layout: '/admin',
         path: '/product-mix/region-wise',
-        icon: (
-          <Icon
-            as={MdPublic}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
-        ),
+        icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
         component: <RegionWiseView />,
       },
       {
         name: 'Gross Sale',
         layout: '/admin',
         path: '/product-mix/gross-sale',
-        icon: (
-          <Icon
-            as={MdSell}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
-        ),
+        icon: <Icon as={MdSell} width="20px" height="20px" color="inherit" />,
         component: <GrossSaleView />,
       },
       {
@@ -211,12 +173,7 @@ const routes = [
         layout: '/admin',
         path: '/product-mix/avg-item-order',
         icon: (
-          <Icon
-            as={MdShoppingBag}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
+          <Icon as={MdShoppingBag} width="20px" height="20px" color="inherit" />
         ),
         component: <AvgItemOrderView />,
       },
@@ -225,12 +182,7 @@ const routes = [
         layout: '/admin',
         path: '/product-mix/quantity-share',
         icon: (
-          <Icon
-            as={MdPieChart}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
+          <Icon as={MdPieChart} width="20px" height="20px" color="inherit" />
         ),
         component: <QuantityShareView />,
       },
@@ -255,9 +207,7 @@ const routes = [
         name: 'Region Wise Sum of applied discounts',
         layout: '/admin',
         path: '/coupons/region-wise-sum',
-        icon: (
-          <Icon as={MdPublic} width="20px" height="20px" color="inherit" />
-        ),
+        icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
         component: <RegionWiseSumView />,
       },
       {
@@ -304,7 +254,12 @@ const routes = [
             layout: '/admin',
             path: '/conversion-funnel/dashboard/charts',
             icon: (
-              <Icon as={MdShowChart} width="20px" height="20px" color="inherit" />
+              <Icon
+                as={MdShowChart}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
             ),
             component: <ConversionChartsView />,
           },
@@ -313,7 +268,12 @@ const routes = [
             layout: '/admin',
             path: '/conversion-funnel/dashboard/data',
             icon: (
-              <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
+              <Icon
+                as={MdTableChart}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
             ),
             component: <ConversionGridView />,
           },
@@ -324,30 +284,16 @@ const routes = [
   {
     name: 'Weekly Organic Order',
     layout: '/admin',
-    path: null,
+    path: '/weekly-organic-order-session/order-session-graph',
     icon: <Icon as={MdTrendingUp} width="20px" height="20px" color="inherit" />,
-    component: null,
-    collapse: true,
-    items: [
-      {
-        name: 'Order Session Graph',
-        layout: '/admin',
-        path: '/weekly-organic-order-session/order-session-graph',
-        icon: (
-          <Icon as={MdShowChart} width="20px" height="20px" color="inherit" />
-        ),
-        component: <WeeklyOrganic />,
-      },
-      {
-        name: 'Order Session Grid',
-        layout: '/admin',
-        path: '/weekly-organic-order-session/order-session-grid/',
-        icon: (
-          <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
-        ),
-        component: <WeeklyOrganic />,
-      },
-    ],
+    component: <WeeklyOrganic />,
+  },
+  {
+    name: 'TikTok Compaign',
+    layout: '/admin',
+    icon: <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />,
+    path: '/tiktok-compaign',
+    component: <TiktokCompaign />,
   },
   {
     name: 'RDX Social Data',
@@ -370,9 +316,7 @@ const routes = [
         name: 'Instagram Stories Data',
         layout: '/admin',
         path: '/rdx-social-data/instagram-stories',
-        icon: (
-          <Icon as={MdMovie} width="20px" height="20px" color="inherit" />
-        ),
+        icon: <Icon as={MdMovie} width="20px" height="20px" color="inherit" />,
         component: <InstagramStories />,
       },
       {
@@ -405,29 +349,25 @@ const routes = [
         layout: '/admin',
         path: '/rdx-social-data/tiktok-video-data',
         icon: (
-          <Icon as={MdVideoLibrary} width="20px" height="20px" color="inherit" />
+          <Icon
+            as={MdVideoLibrary}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
         ),
         component: <TiktokVideo />,
       },
-      {
-        name: 'NewsLetters',
-        layout: '/admin',
-        icon: (
-          <Icon as={MdMarkEmailRead} width="20px" height="20px" color="inherit" />
-        ),
-        path: '/newsletters',
-        component: <NewsLetters />,
-      },
-      {
-        name: 'TikTok Compaign',
-        layout: '/admin',
-        icon: (
-          <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />
-        ),
-        path: '/tiktok-compaign',
-        component: <DataTables />,
-      },
     ],
+  },
+  {
+    name: 'NewsLetters',
+    layout: '/admin',
+    icon: (
+      <Icon as={MdMarkEmailRead} width="20px" height="20px" color="inherit" />
+    ),
+    path: '/newsletters',
+    component: <NewsLetters />,
   },
 ];
 
