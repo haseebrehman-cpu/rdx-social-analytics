@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Region Wise Summary
+        Campaign Performance
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -130,7 +130,7 @@ const columns = [
   },
 ];
 
-const NewsLetterGrid = () => {
+const CampaignPerformance = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -139,6 +139,7 @@ const NewsLetterGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
+        // height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 140px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
@@ -153,7 +154,7 @@ const NewsLetterGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Region Wise Summary"
+        label="Campaign Performance"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -169,4 +170,4 @@ const NewsLetterGrid = () => {
   );
 };
 
-export default NewsLetterGrid;
+export default CampaignPerformance;
