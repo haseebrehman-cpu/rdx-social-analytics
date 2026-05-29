@@ -15,11 +15,11 @@ export default function WeeklyOrganic() {
         gap="20px"
         mb="20px"
         alignItems="center"
-        backgroundColor="#131B3D"
+        backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
         p={4}
         borderRadius="12px"
-        border="1px solid rgba(255, 255, 255, 0.06)"
-        boxShadow="0 4px 16px rgba(0, 0, 0, 0.25)"
+        border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
+        boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
         <Box>
           <Typography variant="body1">Filters</Typography>

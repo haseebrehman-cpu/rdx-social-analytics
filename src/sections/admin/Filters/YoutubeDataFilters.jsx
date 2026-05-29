@@ -2,7 +2,7 @@ import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 
-const TiktokCompaignFilters = () => {
+  const YoutubeDataFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
 
   const [selectedWeek, setSelectedWeek] = useState('');
@@ -62,4 +62,4 @@ const TiktokCompaignFilters = () => {
   );
 };
 
-export default TiktokCompaignFilters;
+export default YoutubeDataFilters;
