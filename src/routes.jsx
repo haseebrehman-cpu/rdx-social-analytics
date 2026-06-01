@@ -312,21 +312,21 @@ const routes = [
         ),
         component: <FBData />,
       },
+      // {
+      //   name: 'Instagram Stories Data',
+      //   layout: '/admin',
+      //   path: '/rdx-social-data/instagram-stories',
+      //   icon: <Icon as={MdMovie} width="20px" height="20px" color="inherit" />,
+      //   component: <InstagramStories />,
+      // },
       {
-        name: 'Instagram Stories Data',
+        name: 'Instagram Posts & Stories Data',
         layout: '/admin',
         path: '/rdx-social-data/instagram-stories',
-        icon: <Icon as={MdMovie} width="20px" height="20px" color="inherit" />,
-        component: <InstagramStories />,
-      },
-      {
-        name: 'Instagram Posts Data',
-        layout: '/admin',
-        path: '/rdx-social-data/instagram-posts',
         icon: (
           <Icon as={FaInstagram} width="20px" height="20px" color="inherit" />
         ),
-        component: <InstagramPosts />,
+        component: <InstagramStories />,
       },
       {
         name: 'Youtube Data',
@@ -338,26 +338,26 @@ const routes = [
         component: <YoutubeData />,
       },
       {
-        name: 'TikTok Overview Data',
+        name: 'TikTok Overview & Video Data',
         layout: '/admin',
         path: '/rdx-social-data/tiktok-overview',
         icon: <Icon as={FaTiktok} width="20px" height="20px" color="inherit" />,
         component: <TiktokOverview />,
       },
-      {
-        name: 'TikTok Video Data',
-        layout: '/admin',
-        path: '/rdx-social-data/tiktok-video-data',
-        icon: (
-          <Icon
-            as={MdVideoLibrary}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
-        ),
-        component: <TiktokVideo />,
-      },
+      // {
+      //   name: 'TikTok Video Data',
+      //   layout: '/admin',
+      //   path: '/rdx-social-data/tiktok-video-data',
+      //   icon: (
+      //     <Icon
+      //       as={MdVideoLibrary}
+      //       width="20px"
+      //       height="20px"
+      //       color="inherit"
+      //     />
+      //   ),
+      //   component: <TiktokVideo />,
+      // },
     ],
   },
   {

@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import React from 'react';
 import OrderSessionGraph from 'sections/admin/Charts/OrderSession/OrderSessionGraph';
 import WeeklyOrganicFilters from 'sections/admin/Filters/WeeklyOrganicFilters';
-import OrderSessionGrid from 'sections/admin/Grids/WeeklyOrganic/OrderSessionGrid';
+// import OrderSessionGrid from 'sections/admin/Grids/WeeklyOrganic/OrderSessionGrid';
 
 export default function WeeklyOrganic() {
   const theme = useTheme();
@@ -35,7 +35,7 @@ export default function WeeklyOrganic() {
       >
         <Box
           w="100%"
-          h={{ base: '420px', md: '460px', xl: '500px' }}
+          h={{ base: '420px', md: '460px', xl: '970px' }}
           p={{ base: 4, md: 5 }}
           sx={{
             backgroundColor:isDark ? '#131B3D' : '#FFFFFF',
@@ -47,7 +47,7 @@ export default function WeeklyOrganic() {
           <OrderSessionGraph />
         </Box>
       </SimpleGrid>
-      <OrderSessionGrid />
+      {/* <OrderSessionGrid /> */}
     </Box>
   );
 }

@@ -44,14 +44,94 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Jim Beam', age: 35, city: 'Chicago' },
+  {
+    id: 1,
+    region: 'USA',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 2,
+    region: 'UK',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 3,
+    region: 'CA',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 4,
+    region: 'DE',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 5,
+    region: 'IT',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 6,
+    region: 'FR',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
+  {
+    id: 7,
+    region: 'IT',
+    date1: 1.23,
+    date2: 1.02,
+    date3: 1.34,
+    grand_total: 3.59,
+  },
 ];
+
 const columns = [
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'age', headerName: 'Age', flex: 1 },
-  { field: 'city', headerName: 'City', flex: 1 },
+  {
+    field: 'region',
+    headerName: 'Region',
+    groupable: true,
+    flex: 1,
+  },
+  {
+    field: 'date1',
+    headerName: '4/26/2026',
+    flex: 1,
+  },
+  {
+    field: 'date2',
+    headerName: '4/27/2026',
+    groupable: true,
+    flex: 1,
+  },
+  {
+    field: 'date3',
+    headerName: '4/28/2026',
+    groupable: true,
+    flex: 1,
+  },
+  {
+    field: 'grand_total',
+    headerName: 'Grand Total',
+    groupable: true,
+    flex: 1,
+  },
 ];
 const AvgItemOrderGrid = () => {
   const apiRef = useGridApiRef();

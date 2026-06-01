@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import {
   DataGridPremium,
   GridToolbarContainer,
@@ -11,7 +12,6 @@ import {
   useGridApiRef,
 } from '@mui/x-data-grid-premium';
 import { getDataGridStyles } from 'utils/gridStyles';
-import { useTheme } from '@mui/material/styles';
 
 function CustomToolbar() {
   return (
@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Gross Sale
+        Instagram Account Name
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -43,97 +43,121 @@ function CustomToolbar() {
     </GridToolbarContainer>
   );
 }
+
 const rows = [
   {
     id: 1,
-    category: 'Activewear',
-    date1: '2.63%',
-    date2: '4.25%',
-    date3: '3.45%',
-    grand_total: '10.33%',
+    account_name: 'James Richard',
+    no_of_post: 5,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '1,442',
+    interaction: '15,552',
+    engagement_rate: '15,153',
   },
   {
     id: 2,
-    category: 'Bottoms',
-    date1: '1.23%',
-    date2: '0.87%',
-    date3: '1.56%',
-    grand_total: '3.66%',
+    account_name: 'IMMAF',
+    no_of_post: 6,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '1,922',
+    interaction: '10,705',
+    engagement_rate: '15,153',
   },
   {
     id: 3,
-    category: 'Weight Lifting Belts',
-    date1: '0.98%',
-    date2: '0.76%',
-    date3: '1.23%',
-    grand_total: '3.97%',
+    account_name: 'Nat Hearn',
+    no_of_post: 7,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '3,442',
+    interaction: '10,705',
+    engagement_rate: '15,153',
   },
   {
     id: 4,
-    category: 'MMA Shin Guards',
-    date1: '0.87%',
-    date2: '1.02%',
-    date3: '1.34%',
-    grand_total: '3.36%',
+    account_name: 'GLimitless',
+    no_of_post: 8,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '1,252',
+    interaction: '10,705',
+    engagement_rate: '15,153',
   },
   {
     id: 5,
-    category: 'Shorts',
-    date1: '1.23%',
-    date2: '1.02%',
-    date3: '1.34%',
-    grand_total: '3.59%',
+    account_name: 'ROMIE',
+    no_of_post: 9,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '0.79%',
+    interaction: '10,705',
+    engagement_rate: '15,153',
   },
   {
     id: 6,
-    category: 'Tank Tops',
-    date1: '1.02%',
-    date2: '1.34%',
-    date3: '1.56%',
-    grand_total: '3.92%',
-  },
-  {
-    id: 7,
-    category: 'Punching & Training Bags',
-    date1: '1.23%',
-    date2: '1.02%',
-    date3: '1.34%',
-    grand_total: '3.59%',
+    account_name: 'Mark',
+    no_of_post: 9,
+    total_views: '10,705',
+    total_likes: '15,153',
+    total_comments: 85,
+    total_shares: '0.79%',
+    interaction: '10,705',
+    engagement_rate: '15,153',
   },
 ];
 
 const columns = [
   {
-    field: 'category',
-    headerName: 'Category',
+    field: 'account_name',
+    headerName: 'Account Name',
     groupable: true,
     flex: 1,
   },
   {
-    field: 'date1',
-    headerName: '4/26/2026',
+    field: 'no_of_post',
+    headerName: 'No of Post',
     flex: 1,
   },
   {
-    field: 'date2',
-    headerName: '4/27/2026',
-    groupable: true,
+    field: 'total_views',
+    headerName: 'Total Views',
     flex: 1,
   },
   {
-    field: 'date3',
-    headerName: '4/28/2026',
-    groupable: true,
+    field: 'total_likes',
+    headerName: 'Total Likes',
     flex: 1,
   },
   {
-    field: 'grand_total',
-    headerName: 'Grand Total',
-    groupable: true,
+    field: 'total_comments',
+    headerName: 'Total Comments',
+    flex: 1,
+  },
+  {
+    field: 'total_shares',
+    headerName: 'Total Shares',
+    flex: 1,
+  },
+  {
+    field: 'interaction',
+    headerName: 'Interaction',
+    flex: 1,
+  },
+  {
+    field: 'engagement_rate',
+    headerName: 'Engagement Rate',
     flex: 1,
   },
 ];
-const GrossSaleGrid = () => {
+
+const InstaAccountName = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -142,7 +166,7 @@ const GrossSaleGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 140px)' },
+        // height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 220px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
@@ -157,14 +181,14 @@ const GrossSaleGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Gross Sale"
+        label="Instagram Account Name"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
         sx={getDataGridStyles(isDark, '100%')}
-        showToolbar
         slots={{
           toolbar: CustomToolbar,
         }}
@@ -173,4 +197,4 @@ const GrossSaleGrid = () => {
   );
 };
 
-export default GrossSaleGrid;
+export default InstaAccountName;

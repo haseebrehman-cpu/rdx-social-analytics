@@ -1,22 +1,28 @@
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import React from 'react';
 import TikTokCompaignGrid from 'sections/admin/Grids/TikTokCompaign/TikTokCompaignGrid';
 import TiktokCompaignFilters from 'sections/admin/Filters/TiktokCompaignFilters';
+import { Typography } from '@mui/material';
 
 const TiktokCompaign = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
-        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
-        gap="20px"
-        mb="20px"
-        alignItems="center"
-        backgroundColor="#131B3D"
-        p={4}
-        borderRadius="12px"
-        border="1px solid rgba(255, 255, 255, 0.06)"
-        boxShadow="0 4px 16px rgba(0, 0, 0, 0.25)"
+       columns={{ base: 1, md: 2, lg: 3, '2xl': 2 }}
+       gap="20px"
+       mb="20px"
+       alignItems="center"
+       backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
+       p={4}
+       borderRadius="12px"
+       border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
+       boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
+        <Box>
+          <Typography variant="body1">Filters</Typography>
+        </Box>
         <Box>
           <TiktokCompaignFilters />
         </Box>

@@ -51,6 +51,7 @@ const rows = [
     month: 'January',
     target: 1000,
     channel: 'Affiliate',
+    achieved: 1000,
   },
   {
     id: 2,
@@ -58,6 +59,7 @@ const rows = [
     month: 'January',
     target: 1000,
     channel: 'Email',
+    achieved: 1000,
   },
   {
     id: 3,
@@ -65,6 +67,7 @@ const rows = [
     month: 'January',
     target: 1000,
     channel: 'Organic',
+    achieved: 1000,
   },
 ];
 
@@ -92,6 +95,7 @@ const columns = [
     groupable: true,
     flex: 1,
   },
+  {field: 'achieved', headerName: 'Achieved', flex: 1},
 ];
 const TargetGrid = () => {
   const apiRef = useGridApiRef();
