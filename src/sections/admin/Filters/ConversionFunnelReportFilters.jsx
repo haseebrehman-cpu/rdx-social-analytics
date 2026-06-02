@@ -2,50 +2,32 @@ import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 
-const NewsLetterFilters = () => {
-  const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
-  const months = [
-    '202501',
-    '202502',
-    '202503',
-    '202504',
-    '202505',
-    '202506',
-    '202507',
-    '202508',
-    '202509',
-    '202510',
-    '202511',
-    '202512',
-  ];
+const ConversionFunnelReportFilters = () => {
+  const period = ['Day', 'Week', 'Month', 'Year'];
   const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
-  const campaignNames = [
-    'Campaign 1',
-    'Campaign 2',
-    'Campaign 3',
-    'Campaign 4',
-    'Campaign 5',
+  const channels = [
+    'Affiliate',
+    'Email',
+    'Paid',
+    'Non-Attributed',
+    'Organic',
   ];
 
-  const [selectedWeek, setSelectedWeek] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedPeriod, setSelectedPeriod] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedCampaign, setSelectedCampaign] = useState('');
+  const [selectedChannel, setSelectedChannel] =
+    useState('');
 
-  const handleWeekChange = (event) => {
-    setSelectedWeek(event.target.value);
-  };
-
-  const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value);
+  const handlePeriodChange = (event) => {
+    setSelectedPeriod(event.target.value);
   };
 
   const handleRegionChange = (event) => {
     setSelectedRegion(event.target.value);
   };
 
-  const handleCampaignChange = (event) => {
-    setSelectedCampaign(event.target.value);
+  const handleChannelChange = (event) => {
+    setSelectedChannel(event.target.value);
   };
 
   const selectStyles = {
@@ -97,40 +79,19 @@ const NewsLetterFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
-            <InputLabel id="week-select-label">Week</InputLabel>
+            <InputLabel id="select-period-select-label">Select Period</InputLabel>
             <Select
-              labelId="week-select-label"
-              id="week-select"
-              value={selectedWeek}
-              label="Week"
-              onChange={handleWeekChange}
+              labelId="select-period-select-label"
+              id="select-period-select"
+              value={selectedPeriod}
+              label="Select Period"
+              onChange={handlePeriodChange}
               sx={selectStyles}
               MenuProps={menuProps}
             >
-              {weeks.map((week) => (
-                <MenuItem key={week} value={week}>
-                  {week}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-
-        <Box minW="200px">
-          <FormControl fullWidth size="small">
-            <InputLabel id="month-select-label">Month</InputLabel>
-            <Select
-              labelId="month-select-label"
-              id="month-select"
-              value={selectedMonth}
-              label="Month"
-              onChange={handleMonthChange}
-              sx={selectStyles}
-              MenuProps={menuProps}
-            >
-              {months.map((month) => (
-                <MenuItem key={month} value={month}>
-                  {month}
+              {period.map((period) => (
+                <MenuItem key={period} value={period}>
+                  {period}
                 </MenuItem>
               ))}
             </Select>
@@ -160,19 +121,22 @@ const NewsLetterFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
-            <InputLabel id="campaign-select-label">Campaign Name</InputLabel>
+            <InputLabel id="channel-select-label">Channel</InputLabel>
             <Select
-              labelId="campaign-select-label"
-              id="campaign-select"
-              value={selectedCampaign}
-              label="Campaign Name"
-              onChange={handleCampaignChange}
+              labelId="channel-select-label"
+              id="channel-select"
+              value={selectedChannel}
+              label="Channel"
+              onChange={handleChannelChange}
               sx={selectStyles}
               MenuProps={menuProps}
             >
-              {campaignNames.map((campaign) => (
-                <MenuItem key={campaign} value={campaign}>
-                  {campaign}
+              {channels.map((channel) => (
+                <MenuItem
+                  key={channel}
+                  value={channel}
+                >
+                  {channel}
                 </MenuItem>
               ))}
             </Select>
@@ -183,4 +147,4 @@ const NewsLetterFilters = () => {
   );
 };
 
-export default NewsLetterFilters;
+export default ConversionFunnelReportFilters;

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const WeeklyOrganicFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
-  const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
+  const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
 
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const FBDataFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
-  const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
+  const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
   const youtubeTitles = [
     'Youtube Title 1',
     'Youtube Title 2',
@@ -120,7 +120,9 @@ const FBDataFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
-            <InputLabel id="youtube-title-select-label">Youtube Title</InputLabel>
+            <InputLabel id="youtube-title-select-label">
+              Youtube Title
+            </InputLabel>
             <Select
               labelId="youtube-title-select-label"
               id="youtube-title-select"

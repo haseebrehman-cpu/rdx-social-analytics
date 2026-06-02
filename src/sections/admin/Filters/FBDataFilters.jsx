@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const FBDataFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
-  const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
+  const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
   const postTypes = [
     'Post Type 1',
     'Post Type 2',

@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 
 const InstagramPostStoriesFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
-  const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
+  const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
   const accountNames = [
-    'Account Name 1',
-    'Account Name 2',
-    'Account Name 3',
-    'Account Name 4',
-    'Account Name 5',
+    'RDX Sports',
+    'Janes Richard',
+    'IMMAF',
+    'Nat Hearn',
+    'GLimitless',
+    'ROMIE',
   ];
 
   const [selectedWeek, setSelectedWeek] = useState('');
