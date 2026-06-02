@@ -29,9 +29,9 @@ import {
   MdCheckCircle,
 } from 'react-icons/md';
 import Button from 'components/Button/Button';
+import { toast } from 'react-toastify';
 
 const BRAND = '#422AFB';
-const BRAND_DARK = '#3311DB';
 const BRAND_SOFT = '#EEEAFF';
 
 const ACCEPTED_EXTENSIONS = ['.csv', '.xlsx', '.xls'];
@@ -113,6 +113,7 @@ const FileUploadDialog = ({
       const validationError = validateFile(next);
       if (validationError) {
         setError(validationError);
+        toast.error(validationError);
         setFile(null);
         return;
       }
@@ -176,6 +177,7 @@ const FileUploadDialog = ({
         });
       }
       setSuccess(true);
+      toast.success('File uploaded successfully.');
       setTimeout(() => {
         setUploading(false);
         onClose?.();
@@ -183,6 +185,7 @@ const FileUploadDialog = ({
     } catch (err) {
       setUploading(false);
       setError(err?.message || 'Upload failed. Please try again.');
+      toast.error('Upload failed. Please try again.');
     }
   };
 
@@ -282,7 +285,9 @@ const FileUploadDialog = ({
               cursor: 'pointer',
               border: '2px dashed',
               borderColor: isDragging ? BRAND : 'rgba(0,0,0,0.15)',
-              backgroundColor: isDragging ? 'gray.100' : theme.palette.background.paper,
+              backgroundColor: isDragging
+                ? 'gray.100'
+                : theme.palette.background.paper,
               borderRadius: '16px',
               px: 3,
               py: 5,
@@ -440,6 +445,7 @@ const FileUploadDialog = ({
           </Box>
         )}
 
+
         {error && (
           <Alert
             severity="error"
@@ -459,7 +465,7 @@ const FileUploadDialog = ({
         >
           Cancel
         </Button>
-     
+
         <Button
           onClick={handleUpload}
           disabled={!file || uploading || !!error}

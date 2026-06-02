@@ -7,6 +7,8 @@ import { ChakraProvider, useColorMode } from '@chakra-ui/react';
 import { ThemeProvider as MUIThemeProvider, createTheme } from '@mui/material/styles';
 import initialTheme from './theme/theme';
 import { useMemo, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AppRoutes({ currentTheme, setCurrentTheme }) {
   const { colorMode } = useColorMode();
@@ -46,6 +48,7 @@ export default function Main() {
   const [currentTheme, setCurrentTheme] = useState(initialTheme);
   return (
     <ChakraProvider theme={currentTheme}>
+      <ToastContainer />
       <AppRoutes
         currentTheme={currentTheme}
         setCurrentTheme={setCurrentTheme}

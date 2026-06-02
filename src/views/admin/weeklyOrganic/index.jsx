@@ -11,15 +11,15 @@ export default function WeeklyOrganic() {
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, '2xl': 2 }}
-        gap="20px"
-        mb="20px"
-        alignItems="center"
-        backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
-        p={4}
-        borderRadius="12px"
-        border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
-        boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
+       columns={{ base: 1, md: 2, lg: 2, '2xl': 2 }}
+       gap="20px"
+       mb="20px"
+       alignItems="center"
+       backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
+       p={4}
+       borderRadius="12px"
+       border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
+       boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
         <Box>
           <Typography variant="body1">Filters</Typography>
@@ -35,7 +35,7 @@ export default function WeeklyOrganic() {
       >
         <Box
           w="100%"
-          h={{ base: '420px', md: '460px', xl: '970px' }}
+          h={{ base: '550px', sm: '550px', md: '600px', lg: '650px', xl: '950px' }}
           p={{ base: 4, md: 5 }}
           sx={{
             backgroundColor:isDark ? '#131B3D' : '#FFFFFF',

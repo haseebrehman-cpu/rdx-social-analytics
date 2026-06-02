@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -12,8 +12,14 @@ import {
 } from '@mui/x-data-grid-premium';
 import { getDataGridStyles } from 'utils/gridStyles';
 import { useTheme } from '@mui/material/styles';
+import Button from 'components/Button/Button';
+import FileUploadDialog from 'components/Dialogs/FileUploadDialog';
+import { MdUpload } from 'react-icons/md';
 
 function CustomToolbar() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <GridToolbarContainer
       sx={{
@@ -40,6 +46,8 @@ function CustomToolbar() {
           '& .MuiInputBase-root': { width: { xs: '100%', sm: 240 } },
         }}
       />
+      <Button startIcon={<MdUpload />} onClick={handleOpen}>Upload File</Button>
+      <FileUploadDialog open={open} onClose={handleClose} />
     </GridToolbarContainer>
   );
 }
@@ -106,7 +114,7 @@ const TargetGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 175px)' },
+        height: { xs: '600px', sm: '600px', md: '640px' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
