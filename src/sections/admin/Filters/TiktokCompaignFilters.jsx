@@ -51,7 +51,7 @@ const TiktokCompaignFilters = () => {
             >
               {weeks.map((week) => (
                 <MenuItem key={week} value={week}>
-                  Week {week}
+                  {week}
                 </MenuItem>
               ))}
             </Select>

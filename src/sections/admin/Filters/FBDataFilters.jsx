@@ -5,17 +5,17 @@ import React, { useState } from 'react';
 const FBDataFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
   const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
-  const youtubeTitles = [
-    'Youtube Title 1',
-    'Youtube Title 2',
-    'Youtube Title 3',
-    'Youtube Title 4',
-    'Youtube Title 5',
+  const postTypes = [
+    'Post Type 1',
+    'Post Type 2',
+    'Post Type 3',
+    'Post Type 4',
+    'Post Type 5',
   ];
 
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedYoutubeTitle, setSelectedYoutubeTitle] = useState('');
+  const [selectedPostType, setSelectedPostType] = useState('');
 
   const handleWeekChange = (event) => {
     setSelectedWeek(event.target.value);
@@ -25,8 +25,8 @@ const FBDataFilters = () => {
     setSelectedRegion(event.target.value);
   };
 
-  const handleYoutubeTitleChange = (event) => {
-    setSelectedYoutubeTitle(event.target.value);
+  const handlePostTypeChange = (event) => {
+    setSelectedPostType(event.target.value);
   };
 
   const selectStyles = {
@@ -120,19 +120,19 @@ const FBDataFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
-            <InputLabel id="youtube-title-select-label">Youtube Title</InputLabel>
+            <InputLabel id="post-type-select-label">Post Type</InputLabel>
             <Select
-              labelId="youtube-title-select-label"
-              id="youtube-title-select"
-              value={selectedYoutubeTitle}
-              label="Youtube Title"
-              onChange={handleYoutubeTitleChange}
+              labelId="post-type-select-label"
+              id="post-type-select"
+              value={selectedPostType}
+              label="Post Type"
+              onChange={handlePostTypeChange}
               sx={selectStyles}
               MenuProps={menuProps}
             >
-              {youtubeTitles.map((youtubeTitle) => (
-                <MenuItem key={youtubeTitle} value={youtubeTitle}>
-                  {youtubeTitle}
+              {postTypes.map((postType) => (
+                <MenuItem key={postType} value={postType}>
+                  {postType}
                 </MenuItem>
               ))}
             </Select>

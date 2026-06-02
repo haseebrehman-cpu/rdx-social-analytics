@@ -2,20 +2,20 @@ import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 
-const FBDataFilters = () => {
+const InstagramPostStoriesFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
   const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
-  const youtubeTitles = [
-    'Youtube Title 1',
-    'Youtube Title 2',
-    'Youtube Title 3',
-    'Youtube Title 4',
-    'Youtube Title 5',
+  const accountNames = [
+    'Account Name 1',
+    'Account Name 2',
+    'Account Name 3',
+    'Account Name 4',
+    'Account Name 5',
   ];
 
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedYoutubeTitle, setSelectedYoutubeTitle] = useState('');
+  const [selectedAccountName, setSelectedAccountName] = useState('');
 
   const handleWeekChange = (event) => {
     setSelectedWeek(event.target.value);
@@ -25,8 +25,8 @@ const FBDataFilters = () => {
     setSelectedRegion(event.target.value);
   };
 
-  const handleYoutubeTitleChange = (event) => {
-    setSelectedYoutubeTitle(event.target.value);
+  const handleAccountNameChange = (event) => {
+    setSelectedAccountName(event.target.value);
   };
 
   const selectStyles = {
@@ -120,19 +120,19 @@ const FBDataFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
-            <InputLabel id="youtube-title-select-label">Youtube Title</InputLabel>
+            <InputLabel id="account-name-select-label">Account Name</InputLabel>
             <Select
-              labelId="youtube-title-select-label"
-              id="youtube-title-select"
-              value={selectedYoutubeTitle}
-              label="Youtube Title"
-              onChange={handleYoutubeTitleChange}
+              labelId="account-name-select-label"
+              id="account-name-select"
+              value={selectedAccountName}
+              label="Account Name"
+              onChange={handleAccountNameChange}
               sx={selectStyles}
               MenuProps={menuProps}
             >
-              {youtubeTitles.map((youtubeTitle) => (
-                <MenuItem key={youtubeTitle} value={youtubeTitle}>
-                  {youtubeTitle}
+              {accountNames.map((accountName) => (
+                <MenuItem key={accountName} value={accountName}>
+                  {accountName}
                 </MenuItem>
               ))}
             </Select>
@@ -143,4 +143,4 @@ const FBDataFilters = () => {
   );
 };
 
-export default FBDataFilters;
+export default InstagramPostStoriesFilters;

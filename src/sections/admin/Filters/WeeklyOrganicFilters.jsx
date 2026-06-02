@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const WeeklyOrganicFilters = () => {
   const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
   const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
-  
+
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
 
@@ -19,7 +19,12 @@ const WeeklyOrganicFilters = () => {
 
   return (
     <Card w="100%" h="100%">
-      <Flex gap={4} alignItems="center" flexWrap="wrap" justifyContent="flex-end">
+      <Flex
+        gap={4}
+        alignItems="center"
+        flexWrap="wrap"
+        justifyContent="flex-end"
+      >
         <Box minW="200px">
           <FormControl fullWidth size="small">
             <InputLabel id="week-select-label">Week</InputLabel>
@@ -29,7 +34,7 @@ const WeeklyOrganicFilters = () => {
               value={selectedWeek}
               label="Week"
               onChange={handleWeekChange}
-              sx={{borderRadius: '8px'}}
+              sx={{ borderRadius: '8px' }}
               MenuProps={{
                 PaperProps: {
                   sx: {
@@ -52,7 +57,7 @@ const WeeklyOrganicFilters = () => {
             >
               {weeks.map((week) => (
                 <MenuItem key={week} value={week}>
-                  Week {week}
+                  {week}
                 </MenuItem>
               ))}
             </Select>
@@ -68,7 +73,7 @@ const WeeklyOrganicFilters = () => {
               value={selectedRegion}
               label="Region"
               onChange={handleRegionChange}
-              sx={{borderRadius: '8px'}}
+              sx={{ borderRadius: '8px' }}
               MenuProps={{
                 PaperProps: {
                   sx: {

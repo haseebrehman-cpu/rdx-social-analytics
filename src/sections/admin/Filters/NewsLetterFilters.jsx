@@ -1,22 +1,36 @@
-import { Card, Text, Box, Flex } from '@chakra-ui/react';
-import { MenuItem, Select, FormControl, InputLabel, TextField } from '@mui/material';
+import { Card, Box, Flex } from '@chakra-ui/react';
+import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 
 const NewsLetterFilters = () => {
-  const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const weeks = Array.from({ length: 10 }, (_, i) => i + 1);
+  const months = [
+    '202501',
+    '202502',
+    '202503',
+    '202504',
+    '202505',
+    '202506',
+    '202507',
+    '202508',
+    '202509',
+    '202510',
+    '202511',
+    '202512',
+  ];
   const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
-  const campaignNames = ['Campaign 1', 'Campaign 2', 'Campaign 3', 'Campaign 4', 'Campaign 5'];
-  
-  const [selectedDate, setSelectedDate] = useState('');
+  const campaignNames = [
+    'Campaign 1',
+    'Campaign 2',
+    'Campaign 3',
+    'Campaign 4',
+    'Campaign 5',
+  ];
+
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedCampaign, setSelectedCampaign] = useState('');
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
 
   const handleWeekChange = (event) => {
     setSelectedWeek(event.target.value);
@@ -35,7 +49,7 @@ const NewsLetterFilters = () => {
   };
 
   const selectStyles = {
-    borderRadius: '8px'
+    borderRadius: '8px',
   };
 
   const menuProps = {
@@ -60,7 +74,12 @@ const NewsLetterFilters = () => {
 
   return (
     <Card w="100%" h="100%">
-      <Flex gap={4} alignItems="center" flexWrap="wrap" justifyContent="flex-end">
+      <Flex
+        gap={4}
+        alignItems="center"
+        flexWrap="wrap"
+        justifyContent="flex-end"
+      >
         {/* <Box minW="200px">
           <TextField
             fullWidth
