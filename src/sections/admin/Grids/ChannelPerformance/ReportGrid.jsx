@@ -274,7 +274,7 @@ const ReportGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: '600px', sm: '600px', md: '640px' },
+        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 130px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
