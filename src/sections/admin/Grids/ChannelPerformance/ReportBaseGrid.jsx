@@ -44,6 +44,45 @@ function CustomToolbar() {
   );
 }
 
+const renderMultiLineHeader = (line1, line2, isDark) => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      lineHeight: 1.2,
+    }}
+  >
+    <span
+      style={{
+        fontWeight: 600,
+        fontSize: '0.875rem',
+        color: isDark ? 'rgba(255, 255, 255, 0.9)' : 'rgb(31 41 55)',
+        textAlign: 'center',
+      }}
+    >
+      {line1}
+    </span>
+    {line2 && (
+      <span
+        style={{
+          fontSize: '0.75rem',
+          color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgb(107 114 128)',
+          textAlign: 'center',
+        }}
+      >
+        {line2}
+      </span>
+    )}
+  </div>
+);
+
+const MultiLineHeader = ({ line1, line2 }) => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+  return renderMultiLineHeader(line1, line2, isDark);
+};
+
 const rows = [
   {
     id: 1,
@@ -54,6 +93,7 @@ const rows = [
     sales: 63,
     sales_percentage: 79.2,
     grand_total_percentage: 75.4,
+    currency_sales: 1000,
     conversion_rate: 0.01,
     sales_in_gbp: 79.251,
     achieved_sales: 79.251,
@@ -67,6 +107,7 @@ const rows = [
     sales: 86,
     sales_percentage: 74.7,
     grand_total_percentage: 74.7,
+    currency_sales: 1000,
     conversion_rate: 0.01,
     sales_in_gbp: 853.43,
     achieved_sales: 853.43,
@@ -80,6 +121,7 @@ const rows = [
     sales: 92,
     sales_percentage: 74.9,
     grand_total_percentage: 75.0,
+    currency_sales: 1000,
     conversion_rate: 0.01,
     sales_in_gbp: 1049.46,
     achieved_sales: 1049.46,
@@ -93,6 +135,7 @@ const rows = [
     sales: 92,
     sales_percentage: 74.9,
     grand_total_percentage: 75.0,
+    currency_sales: 1000,
     conversion_rate: 0.01,
     sales_in_gbp: 1049.81,
     achieved_sales: 1049.81,
@@ -104,54 +147,76 @@ const columns = [
     field: 'region',
     headerName: 'Region',
     groupable: true,
-    flex: 1,
+    width: 80,
   },
   {
     field: 'channel_final',
     headerName: 'Channel final',
-    flex: 1,
+    width: 140,
   },
   {
     field: 'sales_gbp',
     headerName: 'Sales GBP',
     groupable: true,
-    flex: 1,
+    width: 100,
   },
   {
     field: 'grand_total',
     headerName: 'Grand Total',
     groupable: true,
-    flex: 1,
+    width: 120,
   },
   {
     field: 'sales',
     headerName: 'Sales',
     groupable: true,
-    flex: 1,
+    renderHeader: () => (
+      <MultiLineHeader line1="Sales" line2="Sales GBP / Grand Total" />
+    ),
+    width: 140,
   },
   {
     field: 'sales_percentage',
     headerName: 'Sales Percentage',
     groupable: true,
-    flex: 1,
+    width: 160,
   },
   {
     field: 'grand_total_percentage',
     headerName: 'Grand Total Percentage',
     groupable: true,
-    flex: 1,
+    width: 210,
+  },
+  {
+    field: 'currency_sales',
+    headerName: 'Currency Sales',
+    groupable: true,
+    width: 290,
+    align: 'center',
+    renderHeader: () => (
+      <MultiLineHeader
+        line1="Currency Sales"
+        line2="NET SALES + Shipping Charges + DIscounts + Returns"
+      />
+    ),
   },
   {
     field: 'conversion_rate',
     headerName: 'Conversion Rate',
     groupable: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: 'sales_in_gbp',
     headerName: 'Sales in GBP',
     groupable: true,
     flex: 1,
+    renderHeader: () => (
+      <MultiLineHeader
+        line1="Sales in GBP"
+        line2="Currency Sales / Conversion Rate"
+      />
+    ),
   },
   {
     field: 'achieved_sales',

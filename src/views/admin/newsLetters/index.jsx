@@ -3,7 +3,6 @@ import React from 'react';
 import NewsLetterGrid from 'sections/admin/Grids/NewsLetter/NewsLetterGrid';
 import CampaignPerformance from 'sections/admin/Grids/NewsLetter/CampaignPerformance';
 import NewsLetterFilters from 'sections/admin/Filters/NewsLetterFilters';
-import { Typography } from '@mui/material';
 
 const NewsLetters = () => {
   const theme = useTheme();
@@ -11,7 +10,7 @@ const NewsLetters = () => {
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 2, '2xl': 2 }}
+        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"
         mb="20px"
         alignItems="center"
@@ -22,14 +21,11 @@ const NewsLetters = () => {
         boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
         <Box>
-          <Typography variant="body1">Filters</Typography>
-        </Box>
-        <Box>
           <NewsLetterFilters />
         </Box>
       </SimpleGrid>
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 2, '2xl': 1 }}
+        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"
         mb="20px"
       >

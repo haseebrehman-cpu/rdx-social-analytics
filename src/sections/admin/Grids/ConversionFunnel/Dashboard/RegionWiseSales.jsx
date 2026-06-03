@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Conversion Funnel Summary
+        Region Wise Sales
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -192,7 +192,7 @@ const columns = [
   },
 ];
 
-const ConversionGrid = () => {
+const RegionWiseSales = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -216,7 +216,7 @@ const ConversionGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Conversion Funnel Summary"
+        label="Region Wise Sales"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -232,4 +232,4 @@ const ConversionGrid = () => {
   );
 };
 
-export default ConversionGrid;
+export default RegionWiseSales;

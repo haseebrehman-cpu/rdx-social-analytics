@@ -44,14 +44,24 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Jim Beam', age: 35, city: 'Chicago' },
+  { id: 1, region: 'USA', sum_of_applied_discounts: '100' },
+  { id: 2, region: 'UK', sum_of_applied_discounts: '200' },
+  { id: 3, region: 'CA', sum_of_applied_discounts: '300' },
+  { id: 4, region: 'DE', sum_of_applied_discounts: '400' },
+  { id: 5, region: 'IT', sum_of_applied_discounts: '500' },
+  { id: 6, region: 'FR', sum_of_applied_discounts: '600' },
+  { id: 7, region: 'IT', sum_of_applied_discounts: '700' },
+  { id: 8, region: 'IT', sum_of_applied_discounts: '800' },
+  { id: 9, region: 'IT', sum_of_applied_discounts: '900' },
+  { id: 10, region: 'IT', sum_of_applied_discounts: '1000' },
 ];
 const columns = [
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'age', headerName: 'Age', flex: 1 },
-  { field: 'city', headerName: 'City', flex: 1 },
+  { field: 'region', headerName: 'Region', flex: 1 },
+  {
+    field: 'sum_of_applied_discounts',
+    headerName: 'Sum of Applied Discounts',
+    flex: 1,
+  },
 ];
 const RegionWiseSum = () => {
   const apiRef = useGridApiRef();
@@ -62,7 +72,7 @@ const RegionWiseSum = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 140px)' },
+        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 230px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
@@ -91,6 +101,6 @@ const RegionWiseSum = () => {
       />
     </Box>
   );
-}
+};
 
-export default RegionWiseSum
+export default RegionWiseSum;

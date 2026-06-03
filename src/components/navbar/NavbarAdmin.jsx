@@ -1,5 +1,15 @@
 // Chakra Imports
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, IconButton, Icon, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Flex,
+  IconButton,
+  Icon,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext } from 'react';
 import { IoMenuOutline } from 'react-icons/io5';
@@ -17,18 +27,20 @@ export default function AdminNavbar(props) {
     };
   });
 
-  const { secondary, message, brandText } = props;
+  const { secondary, message } = props;
   const { isOpen, onToggle } = useContext(SidebarContext);
 
   // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
   // let mainText = useColorModeValue('navy.700', 'white');
-  let secondaryText = useColorModeValue('gray.700', 'white');
   let menuIconColor = useColorModeValue('gray.700', 'white');
   let navbarPosition = 'fixed';
   let navbarFilter = 'none';
   let navbarBackdrop = 'blur(20px)';
   let navbarShadow = 'none';
-  let navbarBg = useColorModeValue('rgba(244, 247, 254, 0.2)', 'rgba(11,20,55,0.5)');
+  let navbarBg = useColorModeValue(
+    'rgba(244, 247, 254, 0.2)',
+    'rgba(11,20,55,0.5)',
+  );
   let navbarBorder = 'transparent';
   let secondaryMargin = '0px';
   let paddingX = '15px';
@@ -49,48 +61,60 @@ export default function AdminNavbar(props) {
       borderColor={navbarBorder}
       filter={navbarFilter}
       backdropFilter={navbarBackdrop}
-      backgroundPosition='center'
-      backgroundSize='cover'
-      borderRadius='16px'
-      borderWidth='1.5px'
-      borderStyle='solid'
-      transitionDelay='0s, 0s, 0s, 0s'
-      transitionDuration=' 0.25s, 0.25s, 0.25s, 0s'
-      transition-property='box-shadow, background-color, filter, border'
-      transitionTimingFunction='linear, linear, linear, linear'
+      backgroundPosition="center"
+      backgroundSize="cover"
+      borderRadius="16px"
+      borderWidth="1.5px"
+      borderStyle="solid"
+      transitionDelay="0s, 0s, 0s, 0s"
+      transitionDuration=" 0.25s, 0.25s, 0.25s, 0s"
+      transition-property="box-shadow, background-color, filter, border"
+      transitionTimingFunction="linear, linear, linear, linear"
       alignItems={{ base: 'stretch', md: 'center' }}
       display={secondary ? 'block' : 'flex'}
-      minH='75px'
-      lineHeight='25.6px'
+      minH="75px"
+      lineHeight="25.6px"
       mt={secondaryMargin}
-      zIndex='100'
-      pb='8px'
-      pt='8px'
+      zIndex="100"
+      pb="8px"
+      pt="8px"
       px={{ base: paddingX, md: '20px' }}
       top={{ base: '12px', md: '16px', lg: '20px' }}
-      left={{ base: '12px', md: '24px', xl: isOpen ? '320px' : '100px' }}
-      right={{ base: '12px', md: '24px' }}>
+      left={{
+        base: '12px',
+        md: isOpen ? '24px' : '12px',
+        xl: isOpen ? '320px' : '80px',
+      }}
+      right={{ base: '12px', md: '12px' }}
+    >
       <Flex
-        w='100%'
+        w="100%"
         flexDirection={{
           base: 'column',
-          md: 'row'
+          md: 'row',
         }}
         alignItems={{ base: 'flex-start', md: 'center' }}
         gap={{ base: '8px', md: '0' }}
-        mb={gap}>
-        <Flex alignItems='center' mb={{ base: '8px', md: '0px' }}>
+        mb={gap}
+      >
+        <Flex alignItems="center" mb={{ base: '8px', md: '0px' }}>
           <IconButton
-            aria-label='Toggle sidebar'
-            variant='ghost'
-            size='lg'
-            me='10px'
+            aria-label="Toggle sidebar"
+            variant="ghost"
+            size="lg"
             onClick={onToggle}
-            icon={<Icon as={IoMenuOutline} w='22px' h='22px' color={menuIconColor} />}
+            icon={
+              <Icon
+                as={IoMenuOutline}
+                w="30px"
+                h="30px"
+                color={menuIconColor}
+              />
+            }
             _focus={{ boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.1)' }}
-            borderRadius='10px'
+            borderRadius="10px"
           />
-          <Breadcrumb>
+          {/* <Breadcrumb>
             <BreadcrumbItem color={secondaryText} fontSize='md'>
               <BreadcrumbLink href='#' color={secondaryText}>
                 Pages
@@ -102,7 +126,7 @@ export default function AdminNavbar(props) {
                 {brandText}
               </BreadcrumbLink>
             </BreadcrumbItem>
-          </Breadcrumb>
+          </Breadcrumb> */}
           {/* Here we create navbar brand, based on route name */}
           {/* <Link
 						color={mainText}
@@ -133,7 +157,7 @@ export default function AdminNavbar(props) {
           />
         </Box>
       </Flex>
-      {secondary ? <Text color='white'>{message}</Text> : null}
+      {secondary ? <Text color="white">{message}</Text> : null}
     </Box>
   );
 }
@@ -143,5 +167,5 @@ AdminNavbar.propTypes = {
   variant: PropTypes.string,
   secondary: PropTypes.bool,
   fixed: PropTypes.bool,
-  onOpen: PropTypes.func
+  onOpen: PropTypes.func,
 };

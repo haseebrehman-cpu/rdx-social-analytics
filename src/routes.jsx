@@ -107,13 +107,6 @@ const routes = [
         component: <TargetView />,
       },
       {
-        name: 'Marketing Cost',
-        layout: '/admin',
-        path: '/channel-performance/marketing-cost',
-        icon: <Icon as={MdPaid} width="20px" height="20px" color="inherit" />,
-        component: <MarketingCostView />,
-      },
-      {
         name: 'Final Report',
         layout: '/admin',
         path: '/channel-performance/final-report',
@@ -121,6 +114,13 @@ const routes = [
           <Icon as={MdSummarize} width="20px" height="20px" color="inherit" />
         ),
         component: <ReportView />,
+      },
+      {
+        name: 'Marketing Cost',
+        layout: '/admin',
+        path: '/channel-performance/marketing-cost',
+        icon: <Icon as={MdPaid} width="20px" height="20px" color="inherit" />,
+        component: <MarketingCostView />,
       },
     ],
   },

@@ -341,23 +341,69 @@ export function SidebarLinks(props) {
             return null;
           }
           return (
-            <NavLink key={index} to={route.layout + route.path}>
-              <Tooltip
-                label={route.name}
-                placement="right"
-                hasArrow
-                openDelay={200}
-              >
-                <Flex
-                  align="center"
-                  justify="center"
-                  py="6px"
-                  my="4px"
+            <Popover
+              key={index}
+              trigger="hover"
+              placement="right-start"
+              gutter={12}
+              openDelay={100}
+              closeDelay={150}
+            >
+              <PopoverTrigger>
+                <NavLink to={route.layout + route.path}>
+                  <Flex
+                    align="center"
+                    justify="center"
+                    py="6px"
+                    my="4px"
+                    cursor="pointer"
+                  >
+                    {renderIconBox(route, isActive, 40)}
+                  </Flex>
+                </NavLink>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent
+                  w="240px"
+                  bg={popoverBg}
+                  boxShadow={popoverShadow}
+                  border="none"
+                  _focus={{ boxShadow: popoverShadow }}
+                  borderRadius="14px"
                 >
-                  {renderIconBox(route, isActive, 40)}
-                </Flex>
-              </Tooltip>
-            </NavLink>
+                  <PopoverBody p="12px">
+                    <NavLink to={route.layout + route.path}>
+                      <Flex
+                        align="center"
+                        px="10px"
+                        py="8px"
+                        borderRadius="10px"
+                        bg={isActive ? itemActiveBg : 'transparent'}
+                        _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
+                        transition="background 0.15s ease"
+                      >
+                        <Box
+                          color={isActive ? activeIcon : undefined}
+                          me="10px"
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          {route.icon}
+                        </Box>
+                        <Text
+                          fontSize="sm"
+                          color={isActive ? activeColor : textColor}
+                          fontWeight={isActive ? '600' : '500'}
+                        >
+                          {route.name}
+                        </Text>
+                      </Flex>
+                    </NavLink>
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
+            </Popover>
           );
         }
 

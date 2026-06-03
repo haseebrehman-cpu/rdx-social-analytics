@@ -4,34 +4,69 @@ import EChart from 'components/Echart/EChart';
 
 const categories = [
   '4/24/2026',
-  '4/25/2026',
-  '4/26/2026',
-  '4/27/2026',
-  '4/28/2026',
-  '4/29/2026',
+  '5/01/2026',
+  '5/08/2026',
+  '5/15/2026',
+  '5/22/2026',
+  '5/29/2026',
 ];
 
-const totalSales = [6907, 6166, 6857, 9030, 8554, 7757];
-const averageOrderValue = [50.05, 48.17, 39.86, 45.84, 49.74, 41.29];
+const regions = ['USA', 'UK', 'CA', 'DE', 'IT', 'FR'];
+
+const regionData = {
+  USA: [1200, 1500, 1300, 1800, 1700, 1600],
+  UK: [900, 1100, 1000, 1200, 1150, 1080],
+  CA: [700, 800, 750, 900, 850, 820],
+  DE: [1100, 1200, 1150, 1300, 1250, 1220],
+  IT: [600, 650, 620, 700, 680, 660],
+  FR: [800, 850, 820, 950, 900, 880],
+};
+
+const REGION_COLORS = [
+  '#4F8FE8',
+  '#F5A742',
+  '#34D399',
+  '#A78BFA',
+  '#F472B6',
+  '#22D3EE',
+];
+
+const weeklyTotals = categories.map((_, weekIdx) =>
+  regions.reduce((sum, region) => sum + regionData[region][weekIdx], 0),
+);
+
+const weeklyDifference = weeklyTotals.map((total, idx) =>
+  idx === 0 ? null : total - weeklyTotals[idx - 1],
+);
 
 const formatNumber = (value) =>
   Number(value).toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 const OrderSessionGraph = () => {
-  const COLOR_BAR = '#4F8FE8';
-  const COLOR_LINE = '#F5A742';
+  const COLOR_LINE = '#EF4444';
   const TEXT_COLOR = useColorModeValue('#1A202C', '#E5E7EB');
   const TEXT_MUTED = useColorModeValue('#718096', '#9CA3AF');
-  const GRID_LINE = useColorModeValue('rgba(0, 0, 0, 0.08)', 'rgba(255, 255, 255, 0.08)');
-  const AXIS_LINE = useColorModeValue('rgba(0, 0, 0, 0.18)', 'rgba(255, 255, 255, 0.18)');
-  const TOOLTIP_BG = useColorModeValue('rgba(255, 255, 255, 0.95)', 'rgba(17, 24, 39, 0.95)');
-  const TOOLTIP_BORDER = useColorModeValue('rgba(0, 0, 0, 0.08)', 'rgba(255, 255, 255, 0.08)');
-  const BAR_LABEL_COLOR = useColorModeValue('#1A202C', '#FFFFFF');
+  const GRID_LINE = useColorModeValue(
+    'rgba(0, 0, 0, 0.08)',
+    'rgba(255, 255, 255, 0.08)',
+  );
+  const AXIS_LINE = useColorModeValue(
+    'rgba(0, 0, 0, 0.18)',
+    'rgba(255, 255, 255, 0.18)',
+  );
+  const TOOLTIP_BG = useColorModeValue(
+    'rgba(255, 255, 255, 0.95)',
+    'rgba(17, 24, 39, 0.95)',
+  );
+  const TOOLTIP_BORDER = useColorModeValue(
+    'rgba(0, 0, 0, 0.08)',
+    'rgba(255, 255, 255, 0.08)',
+  );
 
   const option = {
     backgroundColor: 'transparent',
     title: {
-      text: 'Weekly Traffic By Organic Search',
+      text: 'Weekly Order Sessions By Region',
       left: 0,
       top: 0,
       textStyle: {
@@ -47,7 +82,20 @@ const OrderSessionGraph = () => {
       backgroundColor: TOOLTIP_BG,
       borderColor: TOOLTIP_BORDER,
       textStyle: { color: TEXT_COLOR, fontFamily: 'DM Sans, sans-serif' },
-      valueFormatter: (value) => formatNumber(value),
+      formatter: (params) => {
+        const items = params.filter(
+          (item) => item.seriesName !== 'Weekly Difference',
+        );
+        if (!items.length) return '';
+        const header = `<div style="font-weight:600;margin-bottom:4px;">${items[0].axisValue}</div>`;
+        const rows = items
+          .map(
+            (item) =>
+              `<div style="display:flex;align-items:center;gap:6px;">${item.marker}<span>${item.seriesName}</span><span style="margin-left:auto;font-weight:600;">${formatNumber(item.value)}</span></div>`,
+          )
+          .join('');
+        return header + rows;
+      },
     },
     legend: {
       orient: 'horizontal',
@@ -62,10 +110,7 @@ const OrderSessionGraph = () => {
         fontSize: 12,
         fontFamily: 'DM Sans, sans-serif',
       },
-      data: [
-        { name: 'Total Order Session' },
-        { name: 'Average Order Value' },
-      ],
+      data: [...regions.map((region) => ({ name: region }))],
     },
     grid: {
       left: 0,
@@ -92,11 +137,9 @@ const OrderSessionGraph = () => {
     yAxis: [
       {
         type: 'value',
-        name: 'Total Order Session',
+        name: 'Order Sessions',
         position: 'left',
         min: 0,
-        max: 10000,
-        interval: 1000,
         nameTextStyle: {
           color: TEXT_MUTED,
           fontSize: 11,
@@ -117,9 +160,6 @@ const OrderSessionGraph = () => {
         type: 'value',
         name: 'Average Order Value',
         position: 'right',
-        min: 0,
-        max: 60,
-        interval: 10,
         nameTextStyle: {
           color: TEXT_MUTED,
           fontSize: 11,
@@ -132,56 +172,48 @@ const OrderSessionGraph = () => {
           color: TEXT_MUTED,
           fontFamily: 'DM Sans, sans-serif',
           fontSize: 11,
-          formatter: (v) => v.toFixed(2),
+          formatter: (v) => formatNumber(v),
         },
         splitLine: { show: false },
       },
     ],
     series: [
-      {
-        name: 'Total Order Session',
+      ...regions.map((region, idx) => ({
+        name: region,
         type: 'bar',
+        stack: 'regions',
         yAxisIndex: 0,
-        barWidth: '38%',
+        barWidth: '45%',
         itemStyle: {
-          color: COLOR_BAR,
-          borderRadius: [4, 4, 0, 0],
+          color: REGION_COLORS[idx % REGION_COLORS.length],
+          borderRadius:
+            idx === regions.length - 1 ? [4, 4, 0, 0] : [0, 0, 0, 0],
         },
-        emphasis: {
-          itemStyle: { color: '#3A7BD5' },
-        },
-        label: {
-          show: true,
-          position: 'inside',
-          rotate: 90,
-          color: BAR_LABEL_COLOR,
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: 11,
-          fontWeight: 600,
-          formatter: (params) => formatNumber(params.value),
-        },
-        data: totalSales,
-      },
-      {
-        name: 'Average Order Value',
-        type: 'line',
-        yAxisIndex: 1,
-        smooth: false,
-        symbol: 'circle',
-        symbolSize: 6,
-        lineStyle: { width: 2.5, color: COLOR_LINE },
-        itemStyle: { color: COLOR_LINE, borderColor: COLOR_LINE },
-        label: {
-          show: true,
-          position: 'top',
-          color: TEXT_COLOR,
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: 11,
-          fontWeight: 600,
-          formatter: (params) => params.value.toFixed(2),
-        },
-        data: averageOrderValue,
-      },
+        emphasis: { focus: 'series' },
+        data: regionData[region],
+      })),
+      // {
+      //   name: 'Weekly Difference',
+      //   type: 'line',
+      //   yAxisIndex: 1,
+      //   smooth: false,
+      //   connectNulls: false,
+      //   symbol: 'circle',
+      //   symbolSize: 7,
+      //   lineStyle: { width: 2.5, color: COLOR_LINE },
+      //   itemStyle: { color: COLOR_LINE, borderColor: COLOR_LINE },
+      //   label: {
+      //     show: true,
+      //     position: 'top',
+      //     color: TEXT_COLOR,
+      //     fontFamily: 'DM Sans, sans-serif',
+      //     fontSize: 11,
+      //     fontWeight: 600,
+      //     formatter: (params) =>
+      //       params.value == null ? '' : formatNumber(params.value),
+      //   },
+      //   data: weeklyDifference,
+      // },
     ],
   };
 

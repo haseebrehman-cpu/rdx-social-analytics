@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -44,7 +44,7 @@ function CustomToolbar() {
   );
 }
 
-const rows = [
+const initialRows = [
   {
     id: 1,
     region: 'UK',
@@ -93,14 +93,24 @@ const columns = [
     field: 'target',
     headerName: 'Target',
     groupable: true,
+    editable: true,
     flex: 1,
   },
-  {field: 'achieved', headerName: 'Achieved', flex: 1},
+  { field: 'achieved', headerName: 'Achieved', flex: 1 },
 ];
 const TargetGrid = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const [rows, setRows] = useState(initialRows);
+
+  const processRowUpdate = useCallback((newRow) => {
+    setRows((prevRows) =>
+      prevRows.map((row) => (row.id === newRow.id ? newRow : row)),
+    );
+    return newRow;
+  }, []);
+
   return (
     <Box
       sx={{
@@ -125,6 +135,9 @@ const TargetGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        editMode="cell"
+        processRowUpdate={processRowUpdate}
+        onProcessRowUpdateError={(error) => console.error(error)}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
         sx={getDataGridStyles(isDark, '100%')}

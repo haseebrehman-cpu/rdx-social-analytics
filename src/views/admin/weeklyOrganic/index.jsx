@@ -1,9 +1,8 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import { Typography } from '@mui/material';
 import React from 'react';
 import OrderSessionGraph from 'sections/admin/Charts/OrderSession/OrderSessionGraph';
 import WeeklyOrganicFilters from 'sections/admin/Filters/WeeklyOrganicFilters';
-// import OrderSessionGrid from 'sections/admin/Grids/WeeklyOrganic/OrderSessionGrid';
+import OrderSessionGrid from 'sections/admin/Grids/WeeklyOrganic/OrderSessionGrid';
 
 export default function WeeklyOrganic() {
   const theme = useTheme();
@@ -11,19 +10,16 @@ export default function WeeklyOrganic() {
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
-       columns={{ base: 1, md: 2, lg: 2, '2xl': 2 }}
-       gap="20px"
-       mb="20px"
-       alignItems="center"
-       backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
-       p={4}
-       borderRadius="12px"
-       border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
-       boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
+        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
+        gap="20px"
+        mb="20px"
+        alignItems="center"
+        backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
+        p={4}
+        borderRadius="12px"
+        border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
+        boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
-        <Box>
-          <Typography variant="body1">Filters</Typography>
-        </Box>
         <Box>
           <WeeklyOrganicFilters />
         </Box>
@@ -35,10 +31,16 @@ export default function WeeklyOrganic() {
       >
         <Box
           w="100%"
-          h={{ base: '550px', sm: '550px', md: '600px', lg: '650px', xl: '950px' }}
+          h={{
+            base: '550px',
+            sm: '550px',
+            md: '600px',
+            lg: '650px',
+            xl: '750px',
+          }}
           p={{ base: 4, md: 5 }}
           sx={{
-            backgroundColor:isDark ? '#131B3D' : '#FFFFFF',
+            backgroundColor: isDark ? '#131B3D' : '#FFFFFF',
             borderRadius: '12px',
             border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`,
             boxShadow: `0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`,
@@ -46,8 +48,10 @@ export default function WeeklyOrganic() {
         >
           <OrderSessionGraph />
         </Box>
+        <Box>
+          <OrderSessionGrid />
+        </Box>
       </SimpleGrid>
-      {/* <OrderSessionGrid /> */}
     </Box>
   );
 }

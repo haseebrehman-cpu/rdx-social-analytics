@@ -9,7 +9,7 @@ import AOVLineChart from 'sections/admin/Charts/ConversionFunnel/Dashboard/AOVLi
 import TrafficCVR from 'sections/admin/Charts/ConversionFunnel/Dashboard/TrafficCVR';
 import ROASLineChart from 'sections/admin/Charts/ConversionFunnel/Dashboard/ROASLineChart';
 import AdSpendLineChart from 'sections/admin/Charts/ConversionFunnel/Dashboard/AdSpendLineChart';
-
+import ConversionDashboardDataFilters from 'sections/admin/Filters/ConversionDashboardData';
 const SalesAOVView = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -19,6 +19,21 @@ const SalesAOVView = () => {
       pb={{ base: '20px', xl: '24px' }}
       boxSizing="border-box"
     >
+      <SimpleGrid
+        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
+        gap="20px"
+        mb="20px"
+        alignItems="center"
+        backgroundColor={isDark ? '#131B3D' : '#FFFFFF'}
+        p={4}
+        borderRadius="12px"
+        border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
+        boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
+      >
+        <Box>
+          <ConversionDashboardDataFilters />
+        </Box>
+      </SimpleGrid>
       <SimpleGrid
         columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"

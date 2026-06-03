@@ -44,14 +44,24 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Jim Beam', age: 35, city: 'Chicago' },
+  { id: 1, channel: 'Welcome', week: 'Week 1', month: 'Month 1', conversion_rate: '10%', discount_in_gbp: '100', sales_in_gbp: '100' },
+  { id: 2, channel: 'Affiliate', week: 'Week 2', month: 'Month 2', conversion_rate: '11%', discount_in_gbp: '200', sales_in_gbp: '200' },
+  { id: 3, channel: 'Bundle', week: 'Week 3', month: 'Month 3', conversion_rate: '12%', discount_in_gbp: '300', sales_in_gbp: '300' },
+  { id: 4, channel: 'Email', week: 'Week 4', month: 'Month 4', conversion_rate: '13%', discount_in_gbp: '400', sales_in_gbp: '400' },
+  { id: 5, channel: 'Free Sample', week: 'Week 5', month: 'Month 5', conversion_rate: '14%', discount_in_gbp: '500', sales_in_gbp: '500' },
+  { id: 6, channel: 'Social', week: 'Week 6', month: 'Month 6', conversion_rate: '15%', discount_in_gbp: '600', sales_in_gbp: '600' },
+  { id: 7, channel: 'ONWARDS', week: 'Week 7', month: 'Month 7', conversion_rate: '16%', discount_in_gbp: '700', sales_in_gbp: '700' },
+  { id: 8, channel: 'AE Website Launch', week: 'Week 8', month: 'Month 8', conversion_rate: '17%', discount_in_gbp: '800', sales_in_gbp: '800' },
+  { id: 9, channel: 'USA2024', week: 'Week 9', month: 'Month 9', conversion_rate: '18%', discount_in_gbp: '900', sales_in_gbp: '900' },
+  { id: 10, channel: 'Website Development', week: 'Week 10', month: 'Month 10', conversion_rate: '19%', discount_in_gbp: '1000', sales_in_gbp: '1000' },
 ];
 const columns = [
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'age', headerName: 'Age', flex: 1 },
-  { field: 'city', headerName: 'City', flex: 1 },
+  { field: 'channel', headerName: 'Channel', flex: 1 },
+  { field: 'week', headerName: 'Week', flex: 1 },
+  { field: 'month', headerName: 'Month', flex: 1 },
+  { field: 'conversion_rate', headerName: 'Conversion Rate', flex: 1 },
+  { field: 'discount_in_gbp', headerName: 'Discount in GBP', flex: 1 },
+  { field: 'sales_in_gbp', headerName: 'Sales in GBP', flex: 1 },
 ];
 const CouponSource = () => {
   const apiRef = useGridApiRef();
@@ -62,7 +72,7 @@ const CouponSource = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 140px)' },
+        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 230px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,

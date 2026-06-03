@@ -3,7 +3,6 @@ import React from 'react';
 import FbKpi from 'sections/admin/Grids/RDXSocialData/FBData/FbKpi';
 import FbPostType from 'sections/admin/Grids/RDXSocialData/FBData/FbPostType';
 import FBDataFilters from 'sections/admin/Filters/FBDataFilters';
-import { Typography } from '@mui/material';
 
 const FBData = () => {
   const theme = useTheme();
@@ -11,7 +10,7 @@ const FBData = () => {
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, '2xl': 2 }}
+        columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"
         mb="20px"
         alignItems="center"
@@ -21,9 +20,6 @@ const FBData = () => {
         border={`1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`}
         boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
-        <Box>
-          <Typography variant="body1">Filters</Typography>
-        </Box>
         <Box>
           <FBDataFilters />
         </Box>

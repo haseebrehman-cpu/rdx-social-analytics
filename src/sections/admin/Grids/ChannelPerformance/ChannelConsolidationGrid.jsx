@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Channel Consolidationss
+        Channel Consolidation
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -126,18 +126,27 @@ const columns = [
     headerName: 'Channel final',
     groupable: true,
     flex: 1,
+    editable: true,
   },
 ];
 const ChannelConsolidationGrid = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const [rowsData, setRowsData] = useState(rows)
+
+  const processRowUpdate = useCallback((newRow) => {
+    setRowsData((prevRows) =>
+      prevRows.map((row) => (row.id === newRow.id ? newRow : row)),
+    );
+    return newRow;
+  }, [])
   return (
     <Box
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 200px)' },
+        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 240px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
@@ -154,8 +163,11 @@ const ChannelConsolidationGrid = () => {
       <DataGridPremium
         label="Channel Consolidation"
         apiRef={apiRef}
-        rows={rows}
+        rows={rowsData}
         columns={columns}
+        editMode="cell"
+        processRowUpdate={processRowUpdate}
+        onProcessRowUpdateError={(error) => console.error(error)}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
         sx={getDataGridStyles(isDark, '100%')}
