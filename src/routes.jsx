@@ -15,7 +15,6 @@ import {
   MdFlag,
   MdInventory2,
   MdMarkEmailRead,
-  MdMovie,
   MdPaid,
   MdPercent,
   MdPieChart,
@@ -27,7 +26,6 @@ import {
   MdShowChart,
   MdSummarize,
   MdTableChart,
-  MdVideoLibrary,
 } from 'react-icons/md';
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
@@ -37,10 +35,8 @@ import WeeklyOrganic from 'views/admin/weeklyOrganic';
 import NewsLetters from 'views/admin/newsLetters';
 import FBData from 'views/admin/fbData';
 import InstagramStories from 'views/admin/instagramStories';
-import InstagramPosts from 'views/admin/InstagramPosts';
 import YoutubeData from 'views/admin/youtubeData';
 import TiktokOverview from 'views/admin/tiktokOverview';
-import TiktokVideo from 'views/admin/tiktokVideo';
 import ConversionRate from 'views/admin/conversionRate';
 import TargetView from 'views/admin/ChannelPerformance/Target';
 import MarketingCostView from 'views/admin/ChannelPerformance/MarketingCost';
@@ -132,7 +128,7 @@ const routes = [
     collapse: true,
     items: [
       {
-        name: 'Quantity Ordered',
+        name: 'Quantity Ordered-Category Wise',
         layout: '/admin',
         path: '/product-mix/quantity-ordered',
         icon: (
@@ -146,7 +142,7 @@ const routes = [
         component: <QuantityOrderedView />,
       },
       {
-        name: 'Average Selling',
+        name: 'Average Selling Price',
         layout: '/admin',
         path: '/product-mix/average-selling',
         icon: (
@@ -155,21 +151,21 @@ const routes = [
         component: <AverageSellingView />,
       },
       {
-        name: 'Region Wise',
+        name: 'Region Wise Gross Sale',
         layout: '/admin',
         path: '/product-mix/region-wise',
         icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
         component: <RegionWiseView />,
       },
       {
-        name: 'Gross Sale',
+        name: 'Gross Sales Share',
         layout: '/admin',
         path: '/product-mix/gross-sale',
         icon: <Icon as={MdSell} width="20px" height="20px" color="inherit" />,
         component: <GrossSaleView />,
       },
       {
-        name: 'Avg Item Order',
+        name: 'Avg Item Per Order',
         layout: '/admin',
         path: '/product-mix/avg-item-order',
         icon: (

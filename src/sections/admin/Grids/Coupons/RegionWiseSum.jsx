@@ -43,6 +43,7 @@ function CustomToolbar() {
     </GridToolbarContainer>
   );
 }
+
 const rows = [
   { id: 1, region: 'USA', sum_of_applied_discounts: '100' },
   { id: 2, region: 'UK', sum_of_applied_discounts: '200' },
@@ -55,6 +56,7 @@ const rows = [
   { id: 9, region: 'IT', sum_of_applied_discounts: '900' },
   { id: 10, region: 'IT', sum_of_applied_discounts: '1000' },
 ];
+
 const columns = [
   { field: 'region', headerName: 'Region', flex: 1 },
   {
@@ -63,6 +65,7 @@ const columns = [
     flex: 1,
   },
 ];
+
 const RegionWiseSum = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();

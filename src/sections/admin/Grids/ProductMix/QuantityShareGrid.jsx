@@ -171,6 +171,6 @@ const QuantityShareGrid = () => {
       />
     </Box>
   );
-}
+};
 
-export default QuantityShareGrid
+export default QuantityShareGrid;

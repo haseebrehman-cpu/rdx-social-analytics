@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Quantity Ordered
+        Quantity Ordered-Category Wise
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -197,7 +197,7 @@ const QuantityOrderedGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Quantity Ordered"
+        label="Quantity Ordered-Category Wise"
         apiRef={apiRef}
         rows={rows}
         columns={columns}

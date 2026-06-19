@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Gross Sale
+        Gross Sales Share
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -157,7 +157,7 @@ const GrossSaleGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Gross Sale"
+        label="Gross Sales Share"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
