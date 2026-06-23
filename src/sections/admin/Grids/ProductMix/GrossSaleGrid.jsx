@@ -113,10 +113,10 @@ const sumPercent = (field) => {
 const totalRow = {
   id: 'grand-total',
   category: 'Grand Total',
-  date1: sumPercent('date1').toFixed(2),
-  date2: sumPercent('date2').toFixed(2),
-  date3: sumPercent('date3').toFixed(2),
-  grand_total: sumPercent('grand_total').toFixed(2),
+  date1: sumPercent('date1'),
+  date2: sumPercent('date2'),
+  date3: sumPercent('date3'),
+  grand_total: sumPercent('grand_total'),
 };
 
 const columns = [
