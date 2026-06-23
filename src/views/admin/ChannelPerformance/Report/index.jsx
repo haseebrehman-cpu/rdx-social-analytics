@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import ReportGrid from 'sections/admin/Grids/ChannelPerformance/ReportGrid';
+import MtdAchievedFinalGrid from 'sections/admin/Grids/ChannelPerformance/MtdAchievedFinalGrid';
+import MtdFinalTargetRegion from 'sections/admin/Grids/ChannelPerformance/MtdFinalTargetRegion';
+import MtdFinalTargetChannel from 'sections/admin/Grids/ChannelPerformance/MtdFinalTargetChannel';
 
 const ReportView = () => {
   return (
@@ -10,7 +12,9 @@ const ReportView = () => {
         gap="20px"
         mb="20px"
       >
-        <ReportGrid />
+        <MtdAchievedFinalGrid />
+        <MtdFinalTargetRegion />
+        <MtdFinalTargetChannel />
       </SimpleGrid>
     </Box>
   );

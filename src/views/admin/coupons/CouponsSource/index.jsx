@@ -1,11 +1,14 @@
 import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import CouponSource from 'sections/admin/Grids/Coupons/CouponSource';
-import CouponsFilters from 'sections/admin/Filters/CouponsFilters';
-
+import { toast } from 'react-toastify';
+import CouponsHeaderFilter from 'sections/admin/Filters/CouponsHeaderFilter';
 const CouponsSourceView = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const onLoadReport = () => {
+    toast.success('Report loaded successfully');
+  };
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
@@ -20,7 +23,7 @@ const CouponsSourceView = () => {
         boxShadow={`0 4px 16px ${isDark ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.05)'}`}
       >
         <Box>
-          <CouponsFilters />
+          <CouponsHeaderFilter onLoadReport={onLoadReport}/>
         </Box>
       </SimpleGrid>
       <SimpleGrid

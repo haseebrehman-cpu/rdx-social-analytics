@@ -102,6 +102,18 @@ const rows = [
   },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  date1: sumField('date1'),
+  date2: sumField('date2'),
+  date3: sumField('date3'),
+  grand_total: sumField('grand_total'),
+};
+
 const columns = [
   {
     field: 'region',
@@ -161,9 +173,21 @@ const RegionWiseGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

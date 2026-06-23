@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -44,29 +44,72 @@ function CustomToolbar() {
   );
 }
 const rows = [
-  { id: 1, channel: 'Welcome', week: 'Week 1', month: 'Month 1', conversion_rate: '10%', discount_in_gbp: '100', sales_in_gbp: '100' },
-  { id: 2, channel: 'Affiliate', week: 'Week 2', month: 'Month 2', conversion_rate: '11%', discount_in_gbp: '200', sales_in_gbp: '200' },
-  { id: 3, channel: 'Bundle', week: 'Week 3', month: 'Month 3', conversion_rate: '12%', discount_in_gbp: '300', sales_in_gbp: '300' },
-  { id: 4, channel: 'Email', week: 'Week 4', month: 'Month 4', conversion_rate: '13%', discount_in_gbp: '400', sales_in_gbp: '400' },
-  { id: 5, channel: 'Free Sample', week: 'Week 5', month: 'Month 5', conversion_rate: '14%', discount_in_gbp: '500', sales_in_gbp: '500' },
-  { id: 6, channel: 'Social', week: 'Week 6', month: 'Month 6', conversion_rate: '15%', discount_in_gbp: '600', sales_in_gbp: '600' },
-  { id: 7, channel: 'ONWARDS', week: 'Week 7', month: 'Month 7', conversion_rate: '16%', discount_in_gbp: '700', sales_in_gbp: '700' },
-  { id: 8, channel: 'AE Website Launch', week: 'Week 8', month: 'Month 8', conversion_rate: '17%', discount_in_gbp: '800', sales_in_gbp: '800' },
-  { id: 9, channel: 'USA2024', week: 'Week 9', month: 'Month 9', conversion_rate: '18%', discount_in_gbp: '900', sales_in_gbp: '900' },
-  { id: 10, channel: 'Website Development', week: 'Week 10', month: 'Month 10', conversion_rate: '19%', discount_in_gbp: '1000', sales_in_gbp: '1000' },
+  {
+    id: 1,
+    coupons: '10106',
+    channels: 'Affiliate',
+  },
+  {
+    id: 2,
+    coupons: '10GOSU',
+    channels: 'Affiliate',
+  },
+  {
+    id: 3,
+    coupons: '2CFXNDF5',
+    channels: 'Early Bird',
+  },
+  {
+    id: 4,
+    coupons: '2JGFBW9D',
+    channels: 'Early bird',
+  },
+  {
+    id: 5,
+    coupons: '3T7LJP79',
+    channels: 'Email',
+  },
+  {
+    id: 6,
+    coupons: '10WOSI',
+    channels: 'Affiliate',
+  },
+  {
+    id: 7,
+    coupons: '4N75T9R2',
+    channels: 'Affiliate',
+  },
+  {
+    id: 8,
+    coupons: '5TP9XC7H',
+    channels: 'ALONSO10',
+  },
+  {
+    id: 9,
+    coupons: 'bfcmbrowse3WJS2GKH',
+    channels: 'BFCM',
+  },
+  {
+    id: 10,
+    coupons: 'CAMPOS10',
+    channels: 'CAMPOS10',
+  },
 ];
 const columns = [
-  { field: 'channel', headerName: 'Channel', flex: 1 },
-  { field: 'week', headerName: 'Week', flex: 1 },
-  { field: 'month', headerName: 'Month', flex: 1 },
-  { field: 'conversion_rate', headerName: 'Conversion Rate', flex: 1 },
-  { field: 'discount_in_gbp', headerName: 'Discount in GBP', flex: 1 },
-  { field: 'sales_in_gbp', headerName: 'Sales in GBP', flex: 1 },
+  { field: 'coupons', headerName: 'Coupons', flex: 1 },
+  { field: 'channels', headerName: 'Channel', flex: 1, editable: true },
 ];
 const CouponSource = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const [rowsData, setRowsData] = useState(rows)
+  const processRowUpdate = useCallback((newRow) => {
+    setRowsData((prevRows) =>
+      prevRows.map((row) => (row.id === newRow.id ? newRow : row)),
+    );
+    return newRow;
+  }, [])
   return (
     <Box
       sx={{
@@ -89,8 +132,9 @@ const CouponSource = () => {
       <DataGridPremium
         label="Coupon Source"
         apiRef={apiRef}
-        rows={rows}
+        rows={rowsData}
         columns={columns}
+        processRowUpdate={processRowUpdate}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
         sx={getDataGridStyles(isDark, '100%')}

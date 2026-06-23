@@ -81,7 +81,7 @@ const rows = [
     category: 'Shorts',
     date1: '-',
     date2: 35.99,
-    date3: 22.20,
+    date3: 22.2,
     grand_total: 1000,
   },
   {
@@ -102,6 +102,24 @@ const rows = [
   },
 ];
 
+const toNumber = (value) =>
+  value === '-' || value === '' || value == null ? null : Number(value);
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => {
+    const num = toNumber(row[field]);
+    return acc + (num ?? 0);
+  }, 0);
+
+const totalRow = {
+  id: 'grand-total',
+  category: 'Grand Total',
+  date1: sumField('date1').toFixed(2),
+  date2: sumField('date2').toFixed(2),
+  date3: sumField('date3').toFixed(2),
+  grand_total: sumField('grand_total').toFixed(2),
+};
+
 const columns = [
   {
     field: 'category',
@@ -117,21 +135,18 @@ const columns = [
   {
     field: 'date2',
     headerName: '4/27/2026',
-    groupable: true,
     flex: 1,
   },
   {
     field: 'date3',
     headerName: '4/28/2026',
-    groupable: true,
     flex: 1,
   },
   {
     field: 'grand_total',
     headerName: 'Grand Total',
-    groupable: true,
     flex: 1,
-  }
+  },
 ];
 const AverageSellingGrid = () => {
   const apiRef = useGridApiRef();
@@ -161,9 +176,21 @@ const AverageSellingGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,
@@ -171,6 +198,6 @@ const AverageSellingGrid = () => {
       />
     </Box>
   );
-}
+};
 
 export default AverageSellingGrid;

@@ -27,7 +27,7 @@ function CustomToolbar() {
       }}
     >
       <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: 'auto' }}>
-        Final Report
+        MTD Target Vs Achieved by Channel
       </Typography>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
@@ -47,20 +47,8 @@ function CustomToolbar() {
 const formatNumber = (value) =>
   value == null ? '' : new Intl.NumberFormat('en-US').format(value);
 
-const formatCurrency = (value) =>
-  value == null
-    ? ''
-    : new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-      }).format(value);
-
 const formatPercent = (value) =>
   value == null ? '' : `${Number(value).toFixed(2)}%`;
-
-const formatRatio = (value) =>
-  value == null ? '' : `${Number(value).toFixed(2)}x`;
 
 const rows = [
   {
@@ -248,7 +236,7 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 140,
-    valueFormatter: (value) => (value),
+    valueFormatter: (value) => value,
   },
   {
     field: 'req_rr',
@@ -265,7 +253,7 @@ const columns = [
     width: 130,
   },
 ];
-const ReportGrid = () => {
+const MtdFinalTargetChannel = () => {
   const apiRef = useGridApiRef();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -274,7 +262,7 @@ const ReportGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 130px)' },
+        // height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 130px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,
@@ -289,7 +277,7 @@ const ReportGrid = () => {
       }}
     >
       <DataGridPremium
-        label="Report"
+        label="MTD Final Target Channel"
         apiRef={apiRef}
         rows={rows}
         columns={columns}
@@ -305,4 +293,4 @@ const ReportGrid = () => {
   );
 };
 
-export default ReportGrid;
+export default MtdFinalTargetChannel;

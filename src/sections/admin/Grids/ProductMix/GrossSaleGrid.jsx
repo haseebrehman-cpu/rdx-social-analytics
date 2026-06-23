@@ -102,6 +102,23 @@ const rows = [
   },
 ];
 
+const sumPercent = (field) => {
+  const total = rows.reduce((acc, row) => {
+    const num = parseFloat(String(row[field]).replace('%', ''));
+    return acc + (Number.isNaN(num) ? 0 : num);
+  }, 0);
+  return `${total.toFixed(2)}%`;
+};
+
+const totalRow = {
+  id: 'grand-total',
+  category: 'Grand Total',
+  date1: sumPercent('date1').toFixed(2),
+  date2: sumPercent('date2').toFixed(2),
+  date3: sumPercent('date3').toFixed(2),
+  grand_total: sumPercent('grand_total').toFixed(2),
+};
+
 const columns = [
   {
     field: 'category',
@@ -161,9 +178,21 @@ const GrossSaleGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,
