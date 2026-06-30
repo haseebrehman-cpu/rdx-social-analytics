@@ -1,4 +1,3 @@
-import React from 'react';
 import { useColorModeValue } from '@chakra-ui/react';
 import EChart from 'components/Echart/EChart';
 

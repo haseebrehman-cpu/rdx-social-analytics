@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import { useTheme } from '@mui/material/styles';
 import SourceWiseTraffic from 'sections/admin/Grids/ConversionFunnel/Report/SourceWiseTraffic';

@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import NewsLetterGrid from 'sections/admin/Grids/NewsLetter/NewsLetterGrid';
 import CampaignPerformance from 'sections/admin/Grids/NewsLetter/CampaignPerformance';
 import NewsLetterFilters from 'sections/admin/Filters/NewsLetterFilters';

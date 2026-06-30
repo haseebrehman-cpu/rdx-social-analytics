@@ -7,7 +7,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // Custom components
-import React from "react";
 
 export default function Default(props) {
   const { id, label, extra, placeholder, type, mb, ...rest } = props;

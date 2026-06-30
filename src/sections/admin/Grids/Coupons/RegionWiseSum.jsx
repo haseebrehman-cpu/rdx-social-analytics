@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -57,6 +56,15 @@ const rows = [
   { id: 10, region: 'IT', sum_of_applied_discounts: '1000' },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  sum_of_applied_discounts: String(sumField('sum_of_applied_discounts')),
+};
+
 const columns = [
   { field: 'region', headerName: 'Region', flex: 1 },
   {
@@ -94,9 +102,21 @@ const RegionWiseSum = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

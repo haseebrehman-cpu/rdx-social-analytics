@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button as MuiButton, Box } from '@mui/material';
 
 const Button = ({ children, startIcon, ...props }) => {

@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import OrderSessionGraph from 'sections/admin/Charts/OrderSession/OrderSessionGraph';
 import WeeklyOrganicFilters from 'sections/admin/Filters/WeeklyOrganicFilters';
 import OrderSessionGrid from 'sections/admin/Grids/WeeklyOrganic/OrderSessionGrid';

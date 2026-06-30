@@ -1,33 +1,26 @@
 import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import React, { useState } from 'react';
+import { useMemo, useState } from 'react';
+
+const months = ['March', 'April', 'May'];
+const weeks = ['14', '15', '16', '17', '18'];
+const regions = ['AE', 'CA', 'EU', 'Global', 'UK', 'USA'];
+const channels = ['Affiliate', 'Email', 'Paid', 'Non-Attributed', 'Organic'];
 
 const CouponsFilters = () => {
-  const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
-  const channels = ['Affiliate', 'Email', 'Paid', 'Non-Attributed', 'Organic'];
-  const months = [
-    '202501',
-    '202502',
-    '202503',
-    '202504',
-    '202505',
-    '202506',
-  ];
+  const dates = useMemo(() => {
+    const result = [];
+    for (let day = 1; day <= 30; day += 1) {
+      result.push(`4/${day}/2026`);
+    }
+    return result;
+  }, []);
+
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedWeek, setSelectedWeek] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedChannel, setSelectedChannel] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-
-  const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value);
-  };
-
-  const handleRegionChange = (event) => {
-    setSelectedRegion(event.target.value);
-  };
-
-  const handleChannelChange = (event) => {
-    setSelectedChannel(event.target.value);
-  };
 
   const selectStyles = {
     borderRadius: '8px',
@@ -37,6 +30,7 @@ const CouponsFilters = () => {
     PaperProps: {
       sx: {
         bgcolor: '#0B1437',
+        maxHeight: 320,
         '& .MuiMenuItem-root': {
           color: 'white',
           '&:hover': {
@@ -69,7 +63,7 @@ const CouponsFilters = () => {
               id="month-select"
               value={selectedMonth}
               label="Month"
-              onChange={handleMonthChange}
+              onChange={(event) => setSelectedMonth(event.target.value)}
               sx={selectStyles}
               MenuProps={menuProps}
             >
@@ -84,13 +78,55 @@ const CouponsFilters = () => {
 
         <Box minW="200px">
           <FormControl fullWidth size="small">
+            <InputLabel id="week-select-label">Week</InputLabel>
+            <Select
+              labelId="week-select-label"
+              id="week-select"
+              value={selectedWeek}
+              label="Week"
+              onChange={(event) => setSelectedWeek(event.target.value)}
+              sx={selectStyles}
+              MenuProps={menuProps}
+            >
+              {weeks.map((week) => (
+                <MenuItem key={week} value={week}>
+                  {week}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+
+        <Box minW="200px">
+          <FormControl fullWidth size="small">
+            <InputLabel id="date-select-label">Date</InputLabel>
+            <Select
+              labelId="date-select-label"
+              id="date-select"
+              value={selectedDate}
+              label="Date"
+              onChange={(event) => setSelectedDate(event.target.value)}
+              sx={selectStyles}
+              MenuProps={menuProps}
+            >
+              {dates.map((date) => (
+                <MenuItem key={date} value={date}>
+                  {date}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+
+        <Box minW="200px">
+          <FormControl fullWidth size="small">
             <InputLabel id="region-select-label">Region</InputLabel>
             <Select
               labelId="region-select-label"
               id="region-select"
               value={selectedRegion}
               label="Region"
-              onChange={handleRegionChange}
+              onChange={(event) => setSelectedRegion(event.target.value)}
               sx={selectStyles}
               MenuProps={menuProps}
             >
@@ -111,7 +147,7 @@ const CouponsFilters = () => {
               id="channel-select"
               value={selectedChannel}
               label="Channel"
-              onChange={handleChannelChange}
+              onChange={(event) => setSelectedChannel(event.target.value)}
               sx={selectStyles}
               MenuProps={menuProps}
             >

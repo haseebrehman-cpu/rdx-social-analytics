@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -50,128 +49,114 @@ const formatNumber = (value) =>
 const formatPercent = (value) =>
   value == null ? '' : `${Number(value).toFixed(2)}%`;
 
+const parseValue = (value) => {
+  if (value == null || value === '') return 0;
+  const num = parseFloat(String(value).replace(/,/g, '').replace('%', ''));
+  return Number.isNaN(num) ? 0 : num;
+};
+
 const rows = [
   {
     id: 1,
     region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    sum_of_target: "1,979",
+    sum_of_achieved: "938,711",
+    achieved_percentage: "70%",
+    time_gone: "30%",
+    current_rr: "0.70%",
+    difference: "45",
+    req_rr: "5",
+    rr_difference: "189",
   },
   {
     id: 2,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    region: 'CA',
+    sum_of_target: "2,279",
+    sum_of_achieved: "1,138,711",
+    achieved_percentage: "50%",
+    time_gone: "50%",
+    current_rr: "0.50%",
+    difference: "114,122",
+    req_rr: "11,387",
+    rr_difference: "102,735",
   },
   {
     id: 3,
     region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    sum_of_target: "2,479",
+    sum_of_achieved: "1,238,711",
+    achieved_percentage: "70%",
+    time_gone: "30%",
+    current_rr: "0.70%",
+    difference: "124,122",
+    req_rr: "15,387",
+    rr_difference: "108,735",
   },
   {
     id: 4,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    region: 'EU',
+    sum_of_target: "2,679",
+    sum_of_achieved: "1,038,711",
+    achieved_percentage: "50%",
+    time_gone: "50%",
+    current_rr: "0.50%",
+    difference: "144,122",
+    req_rr: "17,387",
+    rr_difference: "126,735",
   },
   {
     id: 5,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    region: 'INT',
+    sum_of_target: "2,879",
+    sum_of_achieved: "1,338,711",
+    achieved_percentage: "50%",
+    time_gone: "50%",
+    current_rr: "0.50%",
+    difference: "164,122",
+    req_rr: "19,387",
+    rr_difference: "144,735",
   },
   {
     id: 6,
     region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    sum_of_target: "3,079",
+    sum_of_achieved: "1,438,711",
+    achieved_percentage: "50%",
+    time_gone: "50%",
+    current_rr: "0.50%",
+    difference: "184,122",
+    req_rr: "21,387",
+    rr_difference: "164,735",
   },
   {
     id: 7,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
-  },
-  {
-    id: 8,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
-  },
-  {
-    id: 9,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
-  },
-  {
-    id: 10,
-    region: 'UK',
-    sum_of_target: 1000,
-    sum_of_achieved: 1000,
-    achieved_percentage: 1000,
-    time_gone: 1000,
-    current_rr: 1000,
-    difference: 1000,
-    req_rr: 1000,
-    rr_difference: 1000,
+    region: 'US',
+    sum_of_target: "3,279",
+    sum_of_achieved: "1,538,711",
+    achieved_percentage: "50%",
+    time_gone: "50%",
+    current_rr: "0.50%",
+    difference: "204,122",
+    req_rr: "23,387",
+    rr_difference: "180,735",
   },
 ];
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  sum_of_target: formatNumber(sumField('sum_of_target')),
+  sum_of_achieved: formatNumber(sumField('sum_of_achieved')),
+  achieved_percentage: formatPercent(sumField('achieved_percentage')),
+  time_gone: formatPercent(sumField('time_gone')),
+  current_rr: formatPercent(sumField('current_rr')),
+  difference: formatNumber(sumField('difference')),
+  req_rr: formatNumber(sumField('req_rr')),
+  rr_difference: formatNumber(sumField('rr_difference')),
+};
 
 const columns = [
   {
@@ -194,7 +179,6 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 130,
-    valueFormatter: (value) => formatNumber(value),
   },
   {
     field: 'achieved_percentage',
@@ -202,7 +186,6 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 130,
-    valueFormatter: (value) => formatNumber(value),
   },
   {
     field: 'time_gone',
@@ -210,7 +193,6 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 120,
-    valueFormatter: (value) => formatNumber(value),
   },
   {
     field: 'current_rr',
@@ -218,7 +200,6 @@ const columns = [
     type: 'number',
     flex: 1,
     width: 130,
-    valueFormatter: (value) => formatPercent(value),
   },
   {
     field: 'difference',
@@ -271,9 +252,21 @@ const MtdFinalTargetRegion = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

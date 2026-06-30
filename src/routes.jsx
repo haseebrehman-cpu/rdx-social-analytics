@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Icon } from '@chakra-ui/react';
 import {
   MdLocalOffer,
@@ -50,7 +48,7 @@ import RegionWiseView from 'views/admin/ProductMix/RegionWise/index';
 import GrossSaleView from 'views/admin/ProductMix/GrossSale/index';
 import AvgItemOrderView from 'views/admin/ProductMix/AvgItemOrder/index';
 import CouponsSourceView from 'views/admin/coupons/CouponsSource';
-import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
+// import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
 import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrandcamp';
 import FunnelView from 'views/admin/ConversionFunnel/Report';
 import ConversionGridView from 'views/admin/ConversionFunnel/Dashboard/Data';
@@ -66,57 +64,79 @@ const routes = [
     component: <ConversionRate />,
   },
   {
-    name: 'Channel Performance',
-    layout: '/admin',
-    path: '/channel-performance',
-    icon: <Icon as={MdAssessment} width="20px" height="20px" color="inherit" />,
-    collapse: true,
+    name: 'Shopify',
+    category: true,
     items: [
       {
-        name: 'Channel Consolidation',
+        name: 'Channel Performance',
         layout: '/admin',
-        path: '/channel-performance/channel-consolidation',
+        path: '/channel-performance',
         icon: (
-          <Icon
-            as={MdCompareArrows}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
+          <Icon as={MdAssessment} width="20px" height="20px" color="inherit" />
         ),
-        component: <ChannelConsolidationView />,
-      },
-      {
-        name: 'Report Base',
-        layout: '/admin',
-        path: '/channel-performance/report-base',
-        icon: (
-          <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
-        ),
-        component: <ReportBaseView />,
-      },
-      {
-        name: 'Target',
-        layout: '/admin',
-        path: '/channel-performance/target',
-        icon: <Icon as={MdFlag} width="20px" height="20px" color="inherit" />,
-        component: <TargetView />,
-      },
-      {
-        name: 'Final Report',
-        layout: '/admin',
-        path: '/channel-performance/final-report',
-        icon: (
-          <Icon as={MdSummarize} width="20px" height="20px" color="inherit" />
-        ),
-        component: <ReportView />,
-      },
-      {
-        name: 'Marketing Cost',
-        layout: '/admin',
-        path: '/channel-performance/marketing-cost',
-        icon: <Icon as={MdPaid} width="20px" height="20px" color="inherit" />,
-        component: <MarketingCostView />,
+        collapse: true,
+        items: [
+          {
+            name: 'Channel Consolidation',
+            layout: '/admin',
+            path: '/channel-performance/channel-consolidation',
+            icon: (
+              <Icon
+                as={MdCompareArrows}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
+            ),
+            component: <ChannelConsolidationView />,
+          },
+          {
+            name: 'Report Base',
+            layout: '/admin',
+            path: '/channel-performance/report-base',
+            icon: (
+              <Icon
+                as={MdTableChart}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
+            ),
+            component: <ReportBaseView />,
+          },
+          {
+            name: 'Target',
+            layout: '/admin',
+            path: '/channel-performance/target',
+            icon: (
+              <Icon as={MdFlag} width="20px" height="20px" color="inherit" />
+            ),
+            component: <TargetView />,
+          },
+          {
+            name: 'Final Report',
+            layout: '/admin',
+            path: '/channel-performance/final-report',
+            icon: (
+              <Icon
+                as={MdSummarize}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
+            ),
+            component: <ReportView />,
+          },
+          {
+            name: 'Marketing Cost',
+            layout: '/admin',
+            path: '/channel-performance/marketing-cost',
+            icon: (
+              <Icon as={MdPaid} width="20px" height="20px" color="inherit" />
+            ),
+            component: <MarketingCostView />,
+          },
+        ],
       },
     ],
   },
@@ -199,13 +219,13 @@ const routes = [
         ),
         component: <CouponsSourceView />,
       },
-      {
-        name: 'Region Wise Sum of applied discounts',
-        layout: '/admin',
-        path: '/coupons/region-wise-sum',
-        icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
-        component: <RegionWiseSumView />,
-      },
+      // {
+      //   name: 'Region Wise Sum of applied discounts',
+      //   layout: '/admin',
+      //   path: '/coupons/region-wise-sum',
+      //   icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
+      //   component: <RegionWiseSumView />,
+      // },
       {
         name: 'Coupons Without Brandcamp Cost',
         layout: '/admin',
@@ -217,14 +237,19 @@ const routes = [
       },
     ],
   },
+
   {
-    name: 'Conversion Funnel',
-    layout: '/admin',
-    path: null,
-    icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
-    component: null,
-    collapse: true,
+    name: 'Tripple Whale',
+    category: true,
     items: [
+      {
+        name: 'Conversion Funnel',
+        layout: '/admin',
+        path: null,
+        icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
+        component: null,
+        collapse: true,
+        items: [
       {
         name: 'Report',
         layout: '/admin',
@@ -274,6 +299,8 @@ const routes = [
             component: <ConversionGridView />,
           },
         ],
+      },
+    ],
       },
     ],
   },

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -47,59 +46,96 @@ function CustomToolbar() {
 const rows = [
   {
     id: 1,
-    region: 'Region 1',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 1',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
   {
     id: 2,
-    region: 'Region 2',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 2',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
   {
     id: 3,
-    region: 'Region 3',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 3',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
   {
     id: 4,
-    region: 'Region 4',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 4',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
   {
     id: 5,
-    region: 'Region 5',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 5',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
   {
     id: 6,
-    region: 'Region 6',
-    Orders: 100,
-    Sessions: 100,
+    week: 'Week 6',
+    no_of_videos: 100,
+    total_impressions: 100,
+    total_views: 100,
+    total_subcribers: 100,
   },
 ];
 
+const parseValue = (value) => Number(value) || 0;
+
+const formatNumber = (value) =>
+  new Intl.NumberFormat('en-US').format(Math.round(parseValue(value)));
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const NUMERIC_FIELDS = [
+  'no_of_videos',
+  'total_impressions',
+  'total_views',
+  'total_subcribers',
+];
+
+const totalRow = {
+  id: 'grand-total',
+  week: 'Grand Total',
+  ...Object.fromEntries(
+    NUMERIC_FIELDS.map((field) => [field, sumField(field)]),
+  ),
+};
+
+const numericColumn = (field, headerName, flex) => ({
+  field,
+  headerName,
+  flex,
+  type: 'number',
+  valueFormatter: (value) => formatNumber(value),
+});
+
 const columns = [
   {
-    field: 'region',
-    headerName: 'Region',
+    field: 'week',
+    headerName: 'Week',
     groupable: true,
     flex: 1,
   },
-  {
-    field: 'Orders',
-    headerName: 'Orders',
-    flex: 1,
-  },
-  {
-    field: 'Sessions',
-    headerName: 'Sessions',
-    flex: 1,
-  },
+  numericColumn('no_of_videos', 'No of Videos', 1),
+  numericColumn('total_impressions', 'Total Impressions', 1),
+  numericColumn('total_views', 'Total Views', 1),
+  numericColumn('total_subcribers', 'Total Subcribers', 1),
 ];
 
 const YTWeeklySummary = () => {
@@ -129,10 +165,22 @@ const YTWeeklySummary = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         slots={{
           toolbar: CustomToolbar,
         }}

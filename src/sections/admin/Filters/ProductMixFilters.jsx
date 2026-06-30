@@ -1,6 +1,6 @@
 import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ProductMixFilters = () => {
   const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];

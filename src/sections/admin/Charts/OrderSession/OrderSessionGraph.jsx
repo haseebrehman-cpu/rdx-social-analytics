@@ -1,4 +1,3 @@
-import React from 'react';
 import { useColorModeValue } from '@chakra-ui/react';
 import EChart from 'components/Echart/EChart';
 
@@ -31,19 +30,10 @@ const REGION_COLORS = [
   '#22D3EE',
 ];
 
-const weeklyTotals = categories.map((_, weekIdx) =>
-  regions.reduce((sum, region) => sum + regionData[region][weekIdx], 0),
-);
-
-const weeklyDifference = weeklyTotals.map((total, idx) =>
-  idx === 0 ? null : total - weeklyTotals[idx - 1],
-);
-
 const formatNumber = (value) =>
   Number(value).toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 const OrderSessionGraph = () => {
-  const COLOR_LINE = '#EF4444';
   const TEXT_COLOR = useColorModeValue('#1A202C', '#E5E7EB');
   const TEXT_MUTED = useColorModeValue('#718096', '#9CA3AF');
   const GRID_LINE = useColorModeValue(

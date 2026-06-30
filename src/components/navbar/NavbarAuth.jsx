@@ -1,11 +1,9 @@
 import PropTypes from "prop-types";
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 // Chakra imports
 import {
   Box,
-  Button,
   Flex,
   Grid,
   HStack,
@@ -32,7 +30,7 @@ import { GoChevronDown, GoChevronRight } from "react-icons/go";
 import routes from "routes.js";
 
 export default function AuthNavbar(props) {
-  const { logo, logoText, secondary, sidebarWidth, ...rest } = props;
+  const { logoText, sidebarWidth, ...rest } = props;
   const { colorMode } = useColorMode();
   // Menu States
   const {
@@ -60,7 +58,6 @@ export default function AuthNavbar(props) {
     let foundRoute = routes.filter(function (route) {
       return route.items && route.name === routeName;
     });
-    console.log(foundRoute);
     return foundRoute[0].items;
   }
   function getLinksCollapse(routeName) {
@@ -86,8 +83,6 @@ export default function AuthNavbar(props) {
   let mainText = "#fff";
   let navbarBg = "none";
   let navbarShadow = "initial";
-  let bgButton = "white";
-  let colorButton = "brand.500";
   let navbarPosition = "absolute";
 
   let brand = (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -131,6 +130,24 @@ const rows = [
   },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  date: null,
+  sum_of_add_spend: sumField('sum_of_add_spend'),
+  total_roas: sumField('total_roas'),
+  traffic: sumField('traffic'),
+  cal_cvr: sumField('cal_cvr'),
+  sum_of_aov: sumField('sum_of_aov'),
+  orders: sumField('orders'),
+  sales: sumField('sales'),
+  channel_total_sales: sumField('channel_total_sales'),
+  day_wise_sales: sumField('day_wise_sales'),
+  region_wise_sales: sumField('region_wise_sales'),
+};
+
 const columns = [
   {
     field: 'date',
@@ -138,6 +155,8 @@ const columns = [
     type: 'date',
     groupable: true,
     flex: 1,
+    renderCell: (params) =>
+      params.row.id === 'grand-total' ? 'Grand Total' : params.formattedValue,
   },
   {
     field: 'sum_of_add_spend',
@@ -220,10 +239,22 @@ const ChannelWiseSales = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         slots={{
           toolbar: CustomToolbar,
         }}

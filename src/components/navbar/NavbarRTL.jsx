@@ -10,11 +10,15 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import AdminNavbarLinks from "components/navbar/NavbarLinksAdmin";
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
+
+  const changeNavbar = useCallback(() => {
+    setScrolled(window.scrollY > 1);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", changeNavbar);
@@ -22,7 +26,7 @@ export default function AdminNavbar(props) {
     return () => {
       window.removeEventListener("scroll", changeNavbar);
     };
-  });
+  }, [changeNavbar]);
 
   const { secondary, message, brandText } = props;
 
@@ -41,13 +45,6 @@ export default function AdminNavbar(props) {
   let secondaryMargin = "0px";
   let paddingX = "15px";
   let gap = "0px";
-  const changeNavbar = () => {
-    if (window.scrollY > 1) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
 
   return (
     <Box

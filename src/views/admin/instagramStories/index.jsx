@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import InstaStoriesPost from 'sections/admin/Grids/RDXSocialData/InstagramStoriesAndPosts/InstaStoriesPost';
 import InstaAccountName from 'sections/admin/Grids/RDXSocialData/InstagramStoriesAndPosts/InstaAccountName';
 import InstagramPostStoriesFilters from 'sections/admin/Filters/InstagramPostStoriesFilters';

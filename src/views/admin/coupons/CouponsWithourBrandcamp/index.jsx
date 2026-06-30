@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import CouponsWithoutBrandcamp from 'sections/admin/Grids/Coupons/CouponsWithoutBrandcamp';
 import CouponsFilters from 'sections/admin/Filters/CouponsFilters';

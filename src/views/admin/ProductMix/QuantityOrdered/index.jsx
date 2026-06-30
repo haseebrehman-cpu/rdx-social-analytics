@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import QuantityOrderedGrid from 'sections/admin/Grids/ProductMix/QuantityOrderedGrid';
 import ProductMixFilters from 'sections/admin/Filters/ProductMixFilters';

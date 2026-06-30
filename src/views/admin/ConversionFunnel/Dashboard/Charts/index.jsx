@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import SalesAOV from 'sections/admin/Charts/ConversionFunnel/Dashboard/SalesAov';
 import RegionWiseSales from 'sections/admin/Charts/ConversionFunnel/Dashboard/RegionWiseSales';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import MtdAchievedFinalGrid from 'sections/admin/Grids/ChannelPerformance/MtdAchievedFinalGrid';
 import MtdFinalTargetRegion from 'sections/admin/Grids/ChannelPerformance/MtdFinalTargetRegion';

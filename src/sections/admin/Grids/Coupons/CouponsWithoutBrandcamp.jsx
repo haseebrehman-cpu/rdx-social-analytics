@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -55,13 +54,39 @@ const rows = [
   { id: 9, channels: 'USA2024', total_orders: 140, sum_of_discount_in_gbp: -500, sales: "5,000", discount_rate: '-12%', grand_total: "4,500" },
   { id: 10, channels: 'Website Development', total_orders: 35, sum_of_discount_in_gbp: -200, sales: "2,000", discount_rate: '-10%', grand_total: "1,800" },
 ];
+const parseValue = (value) => {
+  const num = parseFloat(String(value).replace(/,/g, '').replace('%', ''));
+  return Number.isNaN(num) ? 0 : num;
+};
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const formatCurrency = (value) =>
+  new Intl.NumberFormat('en-US').format(Math.round(value));
+
+const totalSales = sumField('sales');
+const totalDiscount = sumField('sum_of_discount_in_gbp');
+
+const totalRow = {
+  id: 'grand-total',
+  channels: 'Grand Total',
+  total_orders: sumField('total_orders'),
+  sum_of_discount_in_gbp: totalDiscount,
+  sales: formatCurrency(totalSales),
+  discount_rate: totalSales
+    ? `${((totalDiscount / totalSales) * 100).toFixed(0)}%`
+    : '',
+  grand_total: formatCurrency(sumField('grand_total')),
+};
+
 const columns = [
   { field: 'channels', headerName: 'Channels', flex: 1 },
   { field: 'total_orders', headerName: 'Total Orders', flex: 1 },
   { field: 'sum_of_discount_in_gbp', headerName: 'Sum of Discount in GBP', flex: 1 },
   { field: 'sales', headerName: 'Sales', flex: 1 },
   { field: 'discount_rate', headerName: 'Discount Rate', flex: 1 },
-  { field: 'grand_total', headerName: 'Grand Total', flex: 1 },
+  // { field: 'grand_total', headerName: 'Grand Total', flex: 1 },
 ];
 const CouponsWithoutBrandcamp = () => {
   const apiRef = useGridApiRef();
@@ -91,9 +116,21 @@ const CouponsWithoutBrandcamp = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

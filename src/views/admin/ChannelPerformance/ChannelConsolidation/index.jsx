@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import ChannelConsolidationGrid from 'sections/admin/Grids/ChannelPerformance/ChannelConsolidationGrid';
 import Button from 'components/Button/Button';
@@ -6,6 +6,8 @@ import FileUploadDialog from 'components/Dialogs/FileUploadDialog';
 import { MdUpload } from 'react-icons/md';
 import { Alert } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { IoRefresh } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 const ChannelConsolidationView = () => {
   const [open, setOpen] = useState(false);
@@ -13,6 +15,9 @@ const ChannelConsolidationView = () => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const handleLoadReport = () => {
+    toast.success('Load Report initiated');
+  };
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
@@ -33,10 +38,17 @@ const ChannelConsolidationView = () => {
             Incase of any missing value, please contact SEO Team
           </Alert>
         </Box>
-        <Box>
-          <Button startIcon={<MdUpload />} onClick={handleOpen}>
-            Upload File
-          </Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box>
+            <Button startIcon={<IoRefresh />} onClick={handleLoadReport}>
+              Load Report
+            </Button>
+          </Box>
+          <Box>
+            <Button startIcon={<MdUpload />} onClick={handleOpen}>
+              Upload File
+            </Button>
+          </Box>
         </Box>
       </SimpleGrid>
 

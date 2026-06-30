@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import TikTokWeeklySummary from 'sections/admin/Grids/RDXSocialData/TikTokOverviewVideo/TikTokWeeklySummary';
 import TikTokContentSummary from 'sections/admin/Grids/RDXSocialData/TikTokOverviewVideo/TikTokContentSummary';
 import TikTokOverviewFilters from 'sections/admin/Filters/TikTokOverviewFilters';

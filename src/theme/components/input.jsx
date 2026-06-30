@@ -36,7 +36,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600", fontWeight: "400" },
           },
         }),
-        authSecondary: (props) => ({
+        authSecondary: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -45,7 +45,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        search: (props) => ({
+        search: (_props) => ({
           field: {
             border: "none",
             py: "11px",
@@ -63,7 +63,7 @@ export const inputStyles = {
       },
 
       variants: {
-        main: (props) => ({
+        main: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -73,7 +73,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        auth: (props) => ({
+        auth: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -83,7 +83,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        authSecondary: (props) => ({
+        authSecondary: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -93,7 +93,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        search: (props) => ({
+        search: (_props) => ({
           field: {
             border: "none",
             py: "11px",
@@ -136,7 +136,7 @@ export const inputStyles = {
             color: "secondaryGray.600",
           },
         }),
-        subtle: (props) => ({
+        subtle: (_props) => ({
           box: {
             width: "unset",
           },
@@ -174,7 +174,7 @@ export const inputStyles = {
             right: "0px",
           },
         }),
-        auth: (props) => ({
+        auth: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -184,7 +184,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        authSecondary: (props) => ({
+        authSecondary: (_props) => ({
           field: {
             bg: "transparent",
             border: "1px solid",
@@ -194,7 +194,7 @@ export const inputStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        search: (props) => ({
+        search: (_props) => ({
           field: {
             border: "none",
             py: "11px",

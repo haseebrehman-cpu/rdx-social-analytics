@@ -1,9 +1,6 @@
 // Chakra Imports
 import {
   Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
   Flex,
   IconButton,
   Icon,
@@ -11,7 +8,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { IoMenuOutline } from 'react-icons/io5';
 import AdminNavbarLinks from 'components/navbar/NavbarLinksAdmin';
 import { SidebarContext } from 'contexts/SidebarContext';
@@ -19,13 +16,17 @@ import { SidebarContext } from 'contexts/SidebarContext';
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
 
+  const changeNavbar = useCallback(() => {
+    setScrolled(window.scrollY > 1);
+  }, []);
+
   useEffect(() => {
     window.addEventListener('scroll', changeNavbar);
 
     return () => {
       window.removeEventListener('scroll', changeNavbar);
     };
-  });
+  }, [changeNavbar]);
 
   const { secondary, message } = props;
   const { isOpen, onToggle } = useContext(SidebarContext);
@@ -45,13 +46,6 @@ export default function AdminNavbar(props) {
   let secondaryMargin = '0px';
   let paddingX = '15px';
   let gap = '0px';
-  const changeNavbar = () => {
-    if (window.scrollY > 1) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
 
   return (
     <Box

@@ -1,4 +1,3 @@
-import React from "react";
 
 // Chakra imports
 import { Flex, Box, Icon, Text, Spacer } from "@chakra-ui/react";

@@ -1,9 +1,8 @@
 import { Card, Box, Flex } from '@chakra-ui/react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ConversionFunnelDashboardDataFIlter = () => {
-  const period = ['Day', 'Week', 'Month', 'Year'];
   const regions = ['AE', 'CA', 'EU', 'UK', 'USA'];
   const channels = [
     'Affiliate',
@@ -13,14 +12,9 @@ const ConversionFunnelDashboardDataFIlter = () => {
     'Organic',
   ];
 
-  const [selectedPeriod, setSelectedPeriod] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedChannel, setSelectedChannel] =
     useState('');
-
-  const handlePeriodChange = (event) => {
-    setSelectedPeriod(event.target.value);
-  };
 
   const handleRegionChange = (event) => {
     setSelectedRegion(event.target.value);

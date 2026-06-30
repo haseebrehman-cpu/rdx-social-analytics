@@ -6,7 +6,7 @@ import Navbar from 'components/navbar/NavbarRTL';
 import Sidebar from 'components/sidebar/Sidebar';
 import { RtlProvider } from 'components/rtlProvider/RtlProvider';
 import { SidebarContext } from 'contexts/SidebarContext';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from 'routes';
 
@@ -103,7 +103,10 @@ export default function Dashboard(props) {
       }
     });
   };
-  document.documentElement.dir = 'rtl';
+  useEffect(() => {
+    document.documentElement.dir = 'rtl';
+  }, []);
+
   const { onOpen } = useDisclosure();
   return (
     <RtlProvider>

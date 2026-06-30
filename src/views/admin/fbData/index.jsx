@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import FbKpi from 'sections/admin/Grids/RDXSocialData/FBData/FbKpi';
 import FbPostType from 'sections/admin/Grids/RDXSocialData/FBData/FbPostType';
 import FBDataFilters from 'sections/admin/Filters/FBDataFilters';

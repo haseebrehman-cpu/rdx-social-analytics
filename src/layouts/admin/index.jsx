@@ -4,7 +4,7 @@ import { Portal, Box } from '@chakra-ui/react';
 import Navbar from 'components/navbar/NavbarAdmin';
 import Sidebar from 'components/sidebar/Sidebar';
 import { SidebarProvider, SidebarContext } from 'contexts/SidebarContext';
-import React, { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import routes from 'routes';
 
@@ -97,6 +97,9 @@ function DashboardInner(props) {
   };
   const getRoutes = (routes) => {
     return routes.map((route, key) => {
+      if (route.category) {
+        return getRoutes(route.items);
+      }
       if (route.collapse) {
         return getRoutes(route.items);
       }
@@ -109,7 +112,10 @@ function DashboardInner(props) {
       }
     });
   };
-  document.documentElement.dir = 'ltr';
+  useEffect(() => {
+    document.documentElement.dir = 'ltr';
+  }, []);
+
   return (
     <Box>
       <Box>

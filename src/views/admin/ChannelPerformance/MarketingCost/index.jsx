@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import MarketingCostGrid from 'sections/admin/Grids/ChannelPerformance/MarketingCostGrid';
 

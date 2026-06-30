@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -11,7 +10,6 @@ import {
   PopoverContent,
   PopoverBody,
   Text,
-  Tooltip,
   useColorModeValue,
   Accordion,
   AccordionItem,
@@ -177,61 +175,101 @@ export function SidebarLinks(props) {
         const isActive = route.items.some(
           (item) => item.path && activeRoute(item.path.toLowerCase()),
         );
-        const [isExpanded, setIsExpanded] = React.useState(isActive);
+
+        if (!isOpen) {
+          return (
+            <Popover
+              key={index}
+              trigger="hover"
+              placement="right-start"
+              gutter={12}
+              openDelay={100}
+              closeDelay={150}
+            >
+              <PopoverTrigger>
+                <Flex
+                  align="center"
+                  justify="center"
+                  py="6px"
+                  my="4px"
+                  cursor="pointer"
+                >
+                  {renderIconBox(route, isActive, 40)}
+                </Flex>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent
+                  w="240px"
+                  bg={popoverBg}
+                  boxShadow={popoverShadow}
+                  border="none"
+                  _focus={{ boxShadow: popoverShadow }}
+                  borderRadius="14px"
+                >
+                  <PopoverBody p="12px">
+                    <Text
+                      px="10px"
+                      pb="8px"
+                      fontSize="xs"
+                      fontWeight="700"
+                      textTransform="uppercase"
+                      letterSpacing="0.08em"
+                      color={sectionHeaderColor}
+                    >
+                      {route.name}
+                    </Text>
+                    {renderFlyoutItems(route.items)}
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
+            </Popover>
+          );
+        }
 
         return (
-          <Box key={index} mb="2px">
-            <Flex
-              align="center"
-              w="100%"
-              px="10px"
-              py="7px"
-              my="2px"
-              borderRadius="10px"
-              bg={isActive ? itemActiveBg : 'transparent'}
-              _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
-              transition="background 0.15s ease"
-              cursor="pointer"
-              onClick={() => setIsExpanded(!isExpanded)}
+          <AccordionItem border="none" key={index} mb="4px">
+            <AccordionButton
+              p="0"
+              _hover={{ bg: 'transparent' }}
+              _focus={{ boxShadow: 'none' }}
+              borderRadius="12px"
             >
-              {route.icon && (
-                <Box
-                  color={isActive ? activeIcon : undefined}
-                  me="10px"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  {route.icon}
-                </Box>
-              )}
-              <Text
-                me="auto"
-                fontSize="sm"
-                color={isActive ? activeColor : textColor}
-                fontWeight={isActive ? '600' : '500'}
-                textAlign="left"
+              <Flex
+                align="center"
+                w="100%"
+                py="8px"
+                px="10px"
+                borderRadius="12px"
+                bg={isActive ? itemActiveBg : 'transparent'}
+                _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
+                transition="background 0.15s ease"
               >
-                {route.name}
-              </Text>
-              <AccordionIcon
-                color={textColor}
-                transform={isExpanded ? 'rotate(-180deg)' : 'rotate(0deg)'}
-                transition="transform 0.2s"
-              />
-            </Flex>
-            {isExpanded && (
-              <Box pl="14px" pr="0" py="4px">
-                <Box
-                  borderLeft="1px solid"
-                  borderColor={nestedBorderColor}
-                  ps="12px"
+                {renderIconBox(route, isActive)}
+                <Text
+                  ms="12px"
+                  me="auto"
+                  fontSize="sm"
+                  color={isActive ? activeColor : textColor}
+                  fontWeight={isActive ? '600' : '500'}
+                  textAlign="left"
                 >
+                  {route.name}
+                </Text>
+                <AccordionIcon color={textColor} />
+              </Flex>
+            </AccordionButton>
+            <AccordionPanel pl="22px" pr="0" py="6px">
+              <Box
+                borderLeft="1px solid"
+                borderColor={nestedBorderColor}
+                ps="14px"
+              >
+                <Accordion allowMultiple variant="unstyled">
                   {createLinks(route.items, true)}
-                </Box>
+                </Accordion>
               </Box>
-            )}
-          </Box>
+            </AccordionPanel>
+          </AccordionItem>
         );
       } else if (route.items && !isNested) {
         const isActive = activeRoute(route.path?.toLowerCase?.() ?? '');
@@ -324,7 +362,9 @@ export function SidebarLinks(props) {
                 borderColor={nestedBorderColor}
                 ps="14px"
               >
-                {createLinks(route.items, true)}
+                <Accordion allowMultiple variant="unstyled">
+                  {createLinks(route.items, true)}
+                </Accordion>
               </Box>
             </AccordionPanel>
           </AccordionItem>

@@ -44,7 +44,7 @@ function AppRoutes({ currentTheme, setCurrentTheme }) {
 }
 
 export default function Main() {
-  // eslint-disable-next-line
+   
   const [currentTheme, setCurrentTheme] = useState(initialTheme);
   return (
     <ChakraProvider theme={currentTheme}>

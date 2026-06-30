@@ -22,7 +22,7 @@ export const textareaStyles = {
             _placeholder: { color: "secondaryGray.400" },
           },
         }),
-        auth: (props) => ({
+        auth: (_props) => ({
           field: {
             bg: "white",
             border: "1px solid",
@@ -31,7 +31,7 @@ export const textareaStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        authSecondary: (props) => ({
+        authSecondary: (_props) => ({
           field: {
             bg: "white",
             border: "1px solid",
@@ -41,7 +41,7 @@ export const textareaStyles = {
             _placeholder: { color: "secondaryGray.600" },
           },
         }),
-        search: (props) => ({
+        search: (_props) => ({
           field: {
             border: "none",
             py: "11px",

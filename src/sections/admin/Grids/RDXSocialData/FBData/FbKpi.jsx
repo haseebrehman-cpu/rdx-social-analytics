@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -101,6 +100,43 @@ const rows = [
   },
 ];
 
+const parseValue = (value) => {
+  const num = parseFloat(String(value).replace(/,/g, '').replace('%', ''));
+  return Number.isNaN(num) ? 0 : num;
+};
+
+const formatNumber = (value) =>
+  new Intl.NumberFormat('en-US').format(Math.round(parseValue(value)));
+
+const formatPercent = (value) => `${parseValue(value).toFixed(2)}%`;
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const NUMERIC_FIELDS = [
+  'no_of_post',
+  'total_reach',
+  'total_views',
+  'interactions',
+  'engagement_rate',
+];
+
+const totalRow = {
+  id: 'grand-total',
+  week: 'Grand Total',
+  ...Object.fromEntries(
+    NUMERIC_FIELDS.map((field) => [field, sumField(field)]),
+  ),
+};
+
+const numericColumn = (field, headerName, flex, formatter = formatNumber) => ({
+  field,
+  headerName,
+  flex,
+  type: 'number',
+  valueFormatter: (value) => formatter(value),
+});
+
 const columns = [
   {
     field: 'week',
@@ -108,31 +144,11 @@ const columns = [
     groupable: true,
     flex: 1,
   },
-  {
-    field: 'no_of_post',
-    headerName: 'No of Post',
-    flex: 1,
-  },
-  {
-    field: 'total_reach',
-    headerName: 'Total Reach',
-    flex: 1,
-  },
-  {
-    field: 'total_views',
-    headerName: 'Total Views',
-    flex: 1,
-  },
-  {
-    field: 'interactions',
-    headerName: 'Interactions',
-    flex: 1,
-  },
-  {
-    field: 'engagement_rate',
-    headerName: 'Engagement Rate',
-    flex: 1,
-  },
+  numericColumn('no_of_post', 'No of Post', 1),
+  numericColumn('total_reach', 'Total Reach', 1),
+  numericColumn('total_views', 'Total Views', 1),
+  numericColumn('interactions', 'Interactions', 1),
+  numericColumn('engagement_rate', 'Engagement Rate', 1, formatPercent),
 ];
 
 const FbKpi = () => {
@@ -163,10 +179,22 @@ const FbKpi = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         slots={{
           toolbar: CustomToolbar,
         }}

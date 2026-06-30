@@ -1,7 +1,5 @@
-import React from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import { useTheme } from '@mui/material/styles';
-import { Typography } from '@mui/material';
 import ConversionGrid from 'sections/admin/Grids/ConversionFunnel/Dashboard/ConversionGrid';
 import ChannelWiseSales from 'sections/admin/Grids/ConversionFunnel/Dashboard/ChannelWiseSales';
 import ConversionFunnelDashboardDataFIlter from 'sections/admin/Filters/ConversionFunnelDashboardDataFIlter';

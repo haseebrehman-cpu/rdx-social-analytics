@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import RegionWiseGrid from 'sections/admin/Grids/ProductMix/RegionWiseGrid';
 import ProductMixFilters from 'sections/admin/Filters/ProductMixFilters';

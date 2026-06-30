@@ -4,7 +4,6 @@ import {
   Button,
   Flex,
   Icon,
-  Image,
   Menu,
   MenuButton,
   MenuItem,
@@ -16,10 +15,7 @@ import {
 // Custom Components
 // import { SearchBar } from 'components/navbar/searchBar/SearchBar';
 import PropTypes from 'prop-types';
-import React from 'react';
 // Assets
-import navImage from 'assets/img/layout/Navbar.png';
-import { MdInfoOutline } from 'react-icons/md';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 export default function HeaderLinks(props) {
   const { secondary } = props;

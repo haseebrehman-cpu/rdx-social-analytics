@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -116,7 +116,7 @@ const TargetGrid = () => {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 170px)' },
+        height: { xs: 'calc(100vh - 200px)', md: 'calc(100vh - 240px)' },
         minHeight: '400px',
         px: { xs: 2, sm: 3 },
         pt: 2,

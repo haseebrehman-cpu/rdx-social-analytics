@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import CouponSource from 'sections/admin/Grids/Coupons/CouponSource';
 import { toast } from 'react-toastify';

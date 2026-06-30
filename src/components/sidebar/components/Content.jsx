@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 
 import Brand from 'components/sidebar/components/Brand';
@@ -35,7 +35,7 @@ function SidebarContent(props) {
             textAlign="center"
             letterSpacing="0.02em"
           >
-          &copy;  A Product of{' '}
+          &copy;  A Solution By{' '}
             <Text as="span" fontWeight="700">
               AI Team
             </Text>

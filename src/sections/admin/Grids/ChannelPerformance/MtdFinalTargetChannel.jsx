@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -183,6 +182,22 @@ const rows = [
   },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  channel: 'Grand Total',
+  sum_of_target: sumField('sum_of_target'),
+  sum_of_achieved: sumField('sum_of_achieved'),
+  achieved_percentage: sumField('achieved_percentage'),
+  time_gone: sumField('time_gone'),
+  current_rr: sumField('current_rr'),
+  difference: sumField('difference'),
+  req_rr: sumField('req_rr'),
+  rr_difference: sumField('rr_difference'),
+};
+
 const columns = [
   {
     field: 'channel',
@@ -281,9 +296,21 @@ const MtdFinalTargetChannel = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

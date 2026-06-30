@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -277,6 +276,37 @@ const rows = [
   },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  mtd_sales: sumField('mtd_sales'),
+  google_cost: sumField('google_cost'),
+  sa360_cost: sumField('sa360_cost'),
+  facebook_cost: sumField('facebook_cost'),
+  snap_chat_cost: sumField('snap_chat_cost'),
+  pinterest: sumField('pinterest'),
+  criteo: sumField('criteo'),
+  tiktok: sumField('tiktok'),
+  affiliate: sumField('affiliate'),
+  klaviyo: sumField('klaviyo'),
+  coupon: sumField('coupon'),
+  meta: sumField('meta'),
+  stack_adapt: sumField('stack_adapt'),
+  mntn: sumField('mntn'),
+  google: sumField('google'),
+  cost_without_branding: sumField('cost_without_branding'),
+  acos_without_branding: sumField('acos_without_branding'),
+  cost_without_sa360: sumField('cost_without_sa360'),
+  cost_without_sa360_cost: sumField('cost_without_sa360_cost'),
+  cost_with_branding: sumField('cost_with_branding'),
+  acos_with_branding: sumField('acos_with_branding'),
+  cost_without_coupons: sumField('cost_without_coupons'),
+  acos_without_coupons: sumField('acos_without_coupons'),
+};
+
 const columns = [
   {
     field: 'region',
@@ -418,9 +448,21 @@ const MarketingCostGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

@@ -1,6 +1,5 @@
-import React, {
+import {
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -11,12 +10,10 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
-  Button as MuiButton,
   Box,
   Stack,
   Typography,
   LinearProgress,
-  Chip,
   Tooltip,
   Alert,
   useTheme,
@@ -86,10 +83,6 @@ const FileUploadDialog = ({
     setSuccess(false);
     if (inputRef.current) inputRef.current.value = '';
   }, []);
-
-  useEffect(() => {
-    if (!open) resetState();
-  }, [open, resetState]);
 
   const validateFile = useCallback(
     (candidate) => {
@@ -180,7 +173,7 @@ const FileUploadDialog = ({
       toast.success('File uploaded successfully.');
       setTimeout(() => {
         setUploading(false);
-        onClose?.();
+        handleDismiss();
       }, 600);
     } catch (err) {
       setUploading(false);
@@ -189,9 +182,14 @@ const FileUploadDialog = ({
     }
   };
 
+  const handleDismiss = useCallback(() => {
+    resetState();
+    onClose?.();
+  }, [resetState, onClose]);
+
   const handleClose = (_, reason) => {
     if (uploading && reason === 'backdropClick') return;
-    onClose?.();
+    handleDismiss();
   };
 
   return (
@@ -244,7 +242,7 @@ const FileUploadDialog = ({
           </Box>
         </Stack>
         <IconButton
-          onClick={onClose}
+        onClick={handleDismiss}
           disabled={uploading}
           size="small"
           sx={{ color: 'text.secondary' }}
@@ -458,7 +456,7 @@ const FileUploadDialog = ({
 
       <DialogActions sx={{ px: 3, pb: 3, pt: 2, gap: 1 }}>
         <Button
-          onClick={onClose}
+        onClick={handleDismiss}
           disabled={uploading}
           variant="outlined"
           startIcon={<MdClose />}

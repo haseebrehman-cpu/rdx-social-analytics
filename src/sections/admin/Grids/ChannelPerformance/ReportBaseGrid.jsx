@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   DataGridPremium,
@@ -142,6 +141,24 @@ const rows = [
   },
 ];
 
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + (Number(row[field]) || 0), 0);
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  channel_final: '',
+  sales_gbp: sumField('sales_gbp'),
+  grand_total: sumField('grand_total'),
+  sales: sumField('sales').toFixed(2),
+  sales_percentage: sumField('sales_percentage').toFixed(2),
+  grand_total_percentage: sumField('grand_total_percentage').toFixed(2),
+  currency_sales: sumField('currency_sales'),
+  conversion_rate: sumField('conversion_rate').toFixed(2),
+  sales_in_gbp: sumField('sales_in_gbp').toFixed(2),
+  achieved_sales: sumField('achieved_sales').toFixed(2),
+};
+
 const columns = [
   {
     field: 'region',
@@ -253,9 +270,21 @@ const ReportBaseGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         showToolbar
         slots={{
           toolbar: CustomToolbar,

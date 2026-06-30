@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import React from 'react';
 import ContentWiseSummaryYT from 'sections/admin/Grids/RDXSocialData/YoutubeData/ContentWiseSummaryYT';
 import YTContentWiseViews from 'sections/admin/Grids/RDXSocialData/YoutubeData/YTContentWiseViews';
 import YTWeeklySummary from 'sections/admin/Grids/RDXSocialData/YoutubeData/YTWeeklySummary';

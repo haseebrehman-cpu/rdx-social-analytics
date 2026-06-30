@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -47,41 +46,55 @@ function CustomToolbar() {
 const rows = [
   {
     id: 1,
-    region: 'Region 1',
-    Orders: 100,
-    Sessions: 100,
+    region: 'UK',
+    Orders: 66,
+    Sessions: 1298,
   },
   {
     id: 2,
-    region: 'Region 2',
-    Orders: 100,
-    Sessions: 100,
+    region: 'UK',
+    Orders: 101,
+    Sessions: 1230,
   },
   {
     id: 3,
-    region: 'Region 3',
-    Orders: 100,
-    Sessions: 100,
+    region: 'UK',
+    Orders: 102,
+    Sessions: 2131,
   },
   {
     id: 4,
-    region: 'Region 4',
-    Orders: 100,
-    Sessions: 100,
-  },
-  {
-    id: 5,
-    region: 'Region 5',
-    Orders: 100,
-    Sessions: 100,
-  },
-  {
-    id: 6,
-    region: 'Region 6',
-    Orders: 100,
-    Sessions: 100,
+    region: 'UK',
+    Orders: 221,
+    Sessions: 1132,
   },
 ];
+
+const parseValue = (value) => Number(value) || 0;
+
+const formatNumber = (value) =>
+  new Intl.NumberFormat('en-US').format(Math.round(parseValue(value)));
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const NUMERIC_FIELDS = ['Orders', 'Sessions'];
+
+const totalRow = {
+  id: 'grand-total',
+  region: 'Grand Total',
+  ...Object.fromEntries(
+    NUMERIC_FIELDS.map((field) => [field, sumField(field)]),
+  ),
+};
+
+const numericColumn = (field, headerName, flex) => ({
+  field,
+  headerName,
+  flex,
+  type: 'number',
+  valueFormatter: (value) => formatNumber(value),
+});
 
 const columns = [
   {
@@ -90,16 +103,8 @@ const columns = [
     groupable: true,
     flex: 1,
   },
-  {
-    field: 'Orders',
-    headerName: 'Orders',
-    flex: 1,
-  },
-  {
-    field: 'Sessions',
-    headerName: 'Sessions',
-    flex: 1,
-  },
+  numericColumn('Orders', 'Orders', 1),
+  numericColumn('Sessions', 'Sessions', 1),
 ];
 
 const OrderSessionGrid = () => {
@@ -130,10 +135,22 @@ const OrderSessionGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100%')}
+        sx={{
+          ...getDataGridStyles(isDark, '100%'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         slots={{
           toolbar: CustomToolbar,
         }}

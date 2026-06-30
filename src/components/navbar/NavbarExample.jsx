@@ -1,7 +1,6 @@
 // Chakra imports
 import {
   Box,
-  Button,
   Flex,
   Grid,
   HStack,
@@ -10,7 +9,6 @@ import {
   Menu,
   MenuItem,
   MenuList,
-  MenuButton,
   Stack,
   Text,
   useColorModeValue,
@@ -21,7 +19,6 @@ import {
 import IconBox from "components/icons/IconBox";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import PropTypes from "prop-types";
-import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { GoChevronDown, GoChevronRight } from "react-icons/go";
 import { NavLink } from "react-router-dom";
@@ -29,7 +26,7 @@ import { SidebarContext } from "contexts/SidebarContext";
 import routes from "routes.js";
 
 export default function AuthNavbar(props) {
-  const { logo, logoText, secondary, sidebarWidth, ...rest } = props;
+  const { logoText, sidebarWidth, ...rest } = props;
   const { colorMode } = useColorMode();
   // Menu States
   const {
@@ -96,8 +93,6 @@ export default function AuthNavbar(props) {
   let mainText = "#fff";
   let navbarBg = "none";
   let navbarShadow = "initial";
-  let bgButton = useColorModeValue("white", "navy.900");
-  let colorButton = useColorModeValue("gray.700", "white");
   let navbarPosition = "absolute";
 
   let brand = (
@@ -164,7 +159,7 @@ export default function AuthNavbar(props) {
       }
       if (link.name === "Pricing Page") {
         return (
-          <Stack direction='column'>
+          <Stack key={link.name} direction='column'>
             <Stack
               direction='row'
               spacing='6px'
@@ -184,7 +179,7 @@ export default function AuthNavbar(props) {
       }
       if (link.authIcon) {
         return (
-          <Stack direction='column'>
+          <Stack key={link.name} direction='column'>
             <Stack
               direction='row'
               spacing='6px'
@@ -204,7 +199,7 @@ export default function AuthNavbar(props) {
       } else {
         if (link.component) {
           return (
-            <NavLink to={link.layout + link.path}>
+            <NavLink key={link.name} to={link.layout + link.path}>
               <MenuItem
                 ps='36px'
                 py='0px'
@@ -226,7 +221,7 @@ export default function AuthNavbar(props) {
   const createExtraLinks = (routes) => {
     return routes.map((link) => {
       return (
-        <NavLink to={link.layout + link.path}>
+        <NavLink key={link.name} to={link.layout + link.path}>
           <MenuItem
             ps='36px'
             py='0px'
@@ -245,7 +240,7 @@ export default function AuthNavbar(props) {
     return routes.map((link) => {
       if (link.authIcon && link.collapse === true) {
         return (
-          <Stack direction='column' my='auto'>
+          <Stack key={link.name} direction='column' my='auto'>
             <Stack
               direction='row'
               spacing='0px'
@@ -270,7 +265,7 @@ export default function AuthNavbar(props) {
         );
       } else {
         return (
-          <NavLink to={link.layout + link.path}>
+          <NavLink key={link.name} to={link.layout + link.path}>
             <Text color='red' fontSize='sm' fontWeight='normal'>
               {link.name}
             </Text>
@@ -283,7 +278,7 @@ export default function AuthNavbar(props) {
   const createApplicationLinks = (routes) => {
     return routes.map((link) => {
       return (
-        <NavLink to={link.layout + link.path}>
+        <NavLink key={link.name} to={link.layout + link.path}>
           <Stack direction='row' spacing='12px' align='center' cursor='pointer'>
             <IconBox bg='blue.500' color='white' h='30px' w='30px'>
               {link.authIcon}
@@ -301,7 +296,7 @@ export default function AuthNavbar(props) {
     return routes.map((link) => {
       if (link.authIcon) {
         return (
-          <Stack direction='column'>
+          <Stack key={link.name} direction='column'>
             <Stack
               direction='row'
               spacing='6px'
@@ -321,7 +316,7 @@ export default function AuthNavbar(props) {
       } else {
         if (link.component) {
           return (
-            <NavLink to={link.layout + link.path}>
+            <NavLink key={link.name} to={link.layout + link.path}>
               <MenuItem
                 ps='36px'
                 py='0px'

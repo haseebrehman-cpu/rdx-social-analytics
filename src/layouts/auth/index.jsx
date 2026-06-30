@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from 'routes';
 
@@ -31,7 +31,11 @@ export default function Auth() {
     });
   };
   const authBg = useColorModeValue('white', 'navy.900');
-  document.documentElement.dir = 'ltr';
+
+  useEffect(() => {
+    document.documentElement.dir = 'ltr';
+  }, []);
+
   return (
     <Box>
       <SidebarContext.Provider

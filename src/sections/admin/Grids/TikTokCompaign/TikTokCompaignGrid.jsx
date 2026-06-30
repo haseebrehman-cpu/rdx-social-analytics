@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -95,6 +94,37 @@ const rows = [
   },
 ];
 
+const parseValue = (value) => Number(value) || 0;
+
+const formatNumber = (value) =>
+  new Intl.NumberFormat('en-US').format(Math.round(parseValue(value)));
+
+const sumField = (field) =>
+  rows.reduce((acc, row) => acc + parseValue(row[field]), 0);
+
+const NUMERIC_FIELDS = [
+  'total_profile_visits',
+  'total_paid_followers',
+  'total_video_views',
+  'total_interactions',
+];
+
+const totalRow = {
+  id: 'grand-total',
+  week: 'Grand Total',
+  ...Object.fromEntries(
+    NUMERIC_FIELDS.map((field) => [field, sumField(field)]),
+  ),
+};
+
+const numericColumn = (field, headerName, flex) => ({
+  field,
+  headerName,
+  flex,
+  type: 'number',
+  valueFormatter: (value) => formatNumber(value),
+});
+
 const columns = [
   {
     field: 'week',
@@ -102,27 +132,10 @@ const columns = [
     groupable: true,
     flex: 1,
   },
-  {
-    field: 'total_profile_visits',
-    headerName: 'Total Profile Visits',
-    flex: 1,
-  },
-  {
-    field: 'total_paid_followers',
-    headerName: 'Total Paid Followers',
-    flex: 1,
-  },
-  {
-    field: 'total_video_views',
-    headerName: 'Total Video Views',
-    groupable: true,
-    flex: 1,
-  },
-  {
-    field: 'total_interactions',
-    headerName: 'Total Interactions',
-    flex: 1,
-  },
+  numericColumn('total_profile_visits', 'Total Profile Visits', 1),
+  numericColumn('total_paid_followers', 'Total Paid Followers', 1),
+  numericColumn('total_video_views', 'Total Video Views', 1),
+  numericColumn('total_interactions', 'Total Interactions', 1),
 ];
 
 const TikTokCompaignGrid = () => {
@@ -153,10 +166,22 @@ const TikTokCompaignGrid = () => {
         apiRef={apiRef}
         rows={rows}
         columns={columns}
+        pinnedRows={{ bottom: [totalRow] }}
         showToolbar
         pagination
         pageSizeOptions={[10, 25, 50, 100]}
-        sx={getDataGridStyles(isDark, '100vw')}
+        sx={{
+          ...getDataGridStyles(isDark, '100vw'),
+          '& .MuiDataGrid-row--pinned': {
+            backgroundColor: isDark
+              ? 'rgba(255, 255, 255, 0.06) !important'
+              : 'rgba(0, 0, 0, 0.04) !important',
+          },
+          '& .MuiDataGrid-row--pinned .MuiDataGrid-cell': {
+            fontWeight: 700,
+            color: isDark ? '#ffffff' : '#101828',
+          },
+        }}
         slots={{
           toolbar: CustomToolbar,
         }}

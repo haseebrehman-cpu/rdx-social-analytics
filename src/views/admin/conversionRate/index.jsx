@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from '@chakra-ui/react';
 import ConversionRateGrid from 'sections/admin/Grids/ConversionRate/ConversionRateGrid';
 // import IconBox from 'components/icons/IconBox';

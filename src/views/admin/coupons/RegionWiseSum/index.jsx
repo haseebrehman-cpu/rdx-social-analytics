@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
 import RegionWiseSum from 'sections/admin/Grids/Coupons/RegionWiseSum';
 import CouponsFilters from 'sections/admin/Filters/CouponsFilters';
