@@ -18,6 +18,9 @@ const ChannelConsolidationView = () => {
   const handleLoadReport = () => {
     toast.success('Load Report initiated');
   };
+  const handleRefreshReport = () => {
+    toast.success('Refresh Report initiated');
+  };
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
@@ -39,6 +42,7 @@ const ChannelConsolidationView = () => {
           </Alert>
         </Box>
         <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button variant="outlined" size="medium" onClick={handleRefreshReport} sx={{ borderRadius: '8px' }} startIcon={<IoRefresh />}>Refresh Report</Button>
           <Box>
             <Button
               variant="outlined"

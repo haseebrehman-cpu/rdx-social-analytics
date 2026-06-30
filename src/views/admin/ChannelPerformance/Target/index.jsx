@@ -33,6 +33,10 @@ const TargetView = () => {
     toast.success('Load Report initiated');
   };
 
+  const handleRefreshReport = () => {
+    toast.success('Refresh Report initiated');
+  };
+
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
       <SimpleGrid
@@ -49,6 +53,15 @@ const TargetView = () => {
         justifyContent="flex-end"
       >
         <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button
+            variant="outlined"
+            size="medium"
+            onClick={handleRefreshReport}
+            sx={{ borderRadius: '8px' }}
+            startIcon={<IoRefresh />}
+          >
+            Refresh Report
+          </Button>
           <Button
             variant="outlined"
             size="medium"

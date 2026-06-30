@@ -377,7 +377,7 @@ export function SidebarLinks(props) {
         const isActive = activeRoute(route.path.toLowerCase());
 
         if (!isOpen) {
-          if (isNested || !route.icon) {
+          if (!route.icon) {
             return null;
           }
           return (
@@ -449,37 +449,32 @@ export function SidebarLinks(props) {
 
         if (isNested) {
           return (
-            <NavLink key={index} to={route.layout + route.path}>
-              <Flex
-                align="center"
-                px="10px"
-                py="7px"
-                my="2px"
-                borderRadius="10px"
-                bg={isActive ? itemActiveBg : 'transparent'}
-                _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
-                transition="background 0.15s ease"
-              >
-                {route.icon && (
-                  <Box
-                    color={isActive ? activeIcon : undefined}
-                    me="10px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    {route.icon}
-                  </Box>
-                )}
-                <Text
-                  fontSize="sm"
-                  color={isActive ? activeColor : textColor}
-                  fontWeight={isActive ? '600' : '500'}
+            <Box key={index} mb="4px">
+              <NavLink to={route.layout + route.path}>
+                <Flex
+                  align="center"
+                  w="100%"
+                  py="8px"
+                  px="10px"
+                  borderRadius="12px"
+                  bg={isActive ? itemActiveBg : 'transparent'}
+                  _hover={{ bg: isActive ? itemActiveBg : itemHoverBg }}
+                  transition="background 0.15s ease"
                 >
-                  {route.name}
-                </Text>
-              </Flex>
-            </NavLink>
+                  {route.icon && renderIconBox(route, isActive)}
+                  <Text
+                    ms="12px"
+                    me="auto"
+                    fontSize="sm"
+                    color={isActive ? activeColor : textColor}
+                    fontWeight={isActive ? '600' : '500'}
+                    textAlign="left"
+                  >
+                    {route.name}
+                  </Text>
+                </Flex>
+              </NavLink>
+            </Box>
           );
         }
 

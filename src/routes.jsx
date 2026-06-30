@@ -3,7 +3,6 @@ import {
   MdLocalOffer,
   MdFilterAlt,
   MdTrendingUp,
-  MdShare,
   MdCampaign,
   MdAssessment,
   MdAttachMoney,
@@ -27,8 +26,6 @@ import {
 } from 'react-icons/md';
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
-// Auth Imports
-// import SignInCentered from 'views/auth/signIn';
 import WeeklyOrganic from 'views/admin/weeklyOrganic';
 import NewsLetters from 'views/admin/newsLetters';
 import FBData from 'views/admin/fbData';
@@ -48,7 +45,6 @@ import RegionWiseView from 'views/admin/ProductMix/RegionWise/index';
 import GrossSaleView from 'views/admin/ProductMix/GrossSale/index';
 import AvgItemOrderView from 'views/admin/ProductMix/AvgItemOrder/index';
 import CouponsSourceView from 'views/admin/coupons/CouponsSource';
-// import RegionWiseSumView from 'views/admin/coupons/RegionWiseSum';
 import CouponsWithoutBrandcampView from 'views/admin/coupons/CouponsWithourBrandcamp';
 import FunnelView from 'views/admin/ConversionFunnel/Report';
 import ConversionGridView from 'views/admin/ConversionFunnel/Dashboard/Data';
@@ -63,6 +59,7 @@ const routes = [
     icon: <Icon as={MdPercent} width="20px" height="20px" color="inherit" />,
     component: <ConversionRate />,
   },
+
   {
     name: 'Shopify',
     category: true,
@@ -140,6 +137,7 @@ const routes = [
       },
     ],
   },
+
   {
     name: 'Product Mix',
     layout: '/admin',
@@ -204,6 +202,7 @@ const routes = [
       },
     ],
   },
+
   {
     name: 'Coupons',
     layout: '/admin',
@@ -219,13 +218,6 @@ const routes = [
         ),
         component: <CouponsSourceView />,
       },
-      // {
-      //   name: 'Region Wise Sum of applied discounts',
-      //   layout: '/admin',
-      //   path: '/coupons/region-wise-sum',
-      //   icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
-      //   component: <RegionWiseSumView />,
-      // },
       {
         name: 'Coupons Without Brandcamp Cost',
         layout: '/admin',
@@ -239,68 +231,80 @@ const routes = [
   },
 
   {
-    name: 'Tripple Whale',
+    name: 'Triple Whale',
     category: true,
     items: [
       {
         name: 'Conversion Funnel',
         layout: '/admin',
         path: null,
-        icon: <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />,
-        component: null,
-        collapse: true,
-        items: [
-      {
-        name: 'Report',
-        layout: '/admin',
-        path: '/conversion-funnel/report',
         icon: (
-          <Icon as={MdQueryStats} width="20px" height="20px" color="inherit" />
-        ),
-        component: <FunnelView />,
-      },
-      {
-        name: 'Dashboard',
-        layout: '/admin',
-        path: null,
-        icon: (
-          <Icon as={MdDashboard} width="20px" height="20px" color="inherit" />
+          <Icon as={MdFilterAlt} width="20px" height="20px" color="inherit" />
         ),
         component: null,
-        secondary: true,
         collapse: true,
         items: [
           {
-            name: 'Charts',
+            name: 'Report',
             layout: '/admin',
-            path: '/conversion-funnel/dashboard/charts',
+            path: '/conversion-funnel/report',
             icon: (
               <Icon
-                as={MdShowChart}
+                as={MdQueryStats}
                 width="20px"
                 height="20px"
                 color="inherit"
               />
             ),
-            component: <ConversionChartsView />,
+            component: <FunnelView />,
           },
           {
-            name: 'Data',
+            name: 'Dashboard',
             layout: '/admin',
-            path: '/conversion-funnel/dashboard/data',
+            path: null,
             icon: (
               <Icon
-                as={MdTableChart}
+                as={MdDashboard}
                 width="20px"
                 height="20px"
                 color="inherit"
               />
             ),
-            component: <ConversionGridView />,
+            component: null,
+            secondary: true,
+            collapse: true,
+            items: [
+              {
+                name: 'Charts',
+                layout: '/admin',
+                path: '/conversion-funnel/dashboard/charts',
+                icon: (
+                  <Icon
+                    as={MdShowChart}
+                    width="20px"
+                    height="20px"
+                    color="inherit"
+                  />
+                ),
+                component: <ConversionChartsView />,
+              },
+              {
+                name: 'Data',
+                layout: '/admin',
+                path: '/conversion-funnel/dashboard/data',
+                icon: (
+                  <Icon
+                    as={MdTableChart}
+                    width="20px"
+                    height="20px"
+                    color="inherit"
+                  />
+                ),
+                component: <ConversionGridView />,
+              },
+            ],
           },
         ],
-      },
-    ],
       },
     ],
   },
@@ -311,20 +315,33 @@ const routes = [
     icon: <Icon as={MdTrendingUp} width="20px" height="20px" color="inherit" />,
     component: <WeeklyOrganic />,
   },
+
   {
-    name: 'TikTok Compaign',
-    layout: '/admin',
-    icon: <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />,
-    path: '/tiktok-compaign',
-    component: <TiktokCompaign />,
+    name: 'TikTok',
+    category: true,
+    items: [
+      {
+        name: 'TikTok Compaign',
+        layout: '/admin',
+        icon: (
+          <Icon as={MdCampaign} width="20px" height="20px" color="inherit" />
+        ),
+        path: '/tiktok-compaign',
+        component: <TiktokCompaign />,
+      },
+      {
+        name: 'TikTok Overview & Video Data',
+        layout: '/admin',
+        path: '/rdx-social-data/tiktok-overview',
+        icon: <Icon as={FaTiktok} width="20px" height="20px" color="inherit" />,
+        component: <TiktokOverview />,
+      },
+    ],
   },
+
   {
-    name: 'RDX Social Data',
-    layout: '/admin',
-    path: null,
-    icon: <Icon as={MdShare} width="20px" height="20px" color="inherit" />,
-    component: null,
-    collapse: true,
+    name: 'Meta',
+    category: true,
     items: [
       {
         name: 'FB Data',
@@ -335,15 +352,8 @@ const routes = [
         ),
         component: <FBData />,
       },
-      // {
-      //   name: 'Instagram Stories Data',
-      //   layout: '/admin',
-      //   path: '/rdx-social-data/instagram-stories',
-      //   icon: <Icon as={MdMovie} width="20px" height="20px" color="inherit" />,
-      //   component: <InstagramStories />,
-      // },
       {
-        name: 'Instagram Posts & Stories Data',
+        name: 'Instagram Posts & Stories',
         layout: '/admin',
         path: '/rdx-social-data/instagram-stories',
         icon: (
@@ -351,6 +361,13 @@ const routes = [
         ),
         component: <InstagramStories />,
       },
+    ],
+  },
+
+  {
+    name: 'Youtube',
+    category: true,
+    items: [
       {
         name: 'Youtube Data',
         layout: '/admin',
@@ -360,37 +377,28 @@ const routes = [
         ),
         component: <YoutubeData />,
       },
-      {
-        name: 'TikTok Overview & Video Data',
-        layout: '/admin',
-        path: '/rdx-social-data/tiktok-overview',
-        icon: <Icon as={FaTiktok} width="20px" height="20px" color="inherit" />,
-        component: <TiktokOverview />,
-      },
-      // {
-      //   name: 'TikTok Video Data',
-      //   layout: '/admin',
-      //   path: '/rdx-social-data/tiktok-video-data',
-      //   icon: (
-      //     <Icon
-      //       as={MdVideoLibrary}
-      //       width="20px"
-      //       height="20px"
-      //       color="inherit"
-      //     />
-      //   ),
-      //   component: <TiktokVideo />,
-      // },
     ],
   },
+
   {
-    name: 'NewsLetters',
-    layout: '/admin',
-    icon: (
-      <Icon as={MdMarkEmailRead} width="20px" height="20px" color="inherit" />
-    ),
-    path: '/newsletters',
-    component: <NewsLetters />,
+    name: 'Klaviyo',
+    category: true,
+    items: [
+      {
+        name: 'NewsLetters',
+        layout: '/admin',
+        icon: (
+          <Icon
+            as={MdMarkEmailRead}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        path: '/newsletters',
+        component: <NewsLetters />,
+      },
+    ],
   },
 ];
 
