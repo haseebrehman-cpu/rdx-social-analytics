@@ -49,10 +49,24 @@ const TargetView = () => {
         justifyContent="flex-end"
       >
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button startIcon={<IoRefresh />} onClick={handleLoadReport}>
+          <Button
+            variant="outlined"
+            size="medium"
+            onClick={handleLoadReport}
+            sx={{ borderRadius: '8px' }}
+            color="primary"
+            startIcon={<IoRefresh />}
+          >
             Load Report
           </Button>
-          <Button startIcon={<MdUpload />} onClick={handleOpen}>
+          <Button
+            variant="outlined"
+            size="medium"
+            onClick={handleOpen}
+            sx={{ borderRadius: '8px' }}
+            color="primary"
+            startIcon={<MdUpload />}
+          >
             Upload File
           </Button>
         </Box>

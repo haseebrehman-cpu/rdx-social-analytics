@@ -40,12 +40,26 @@ const ChannelConsolidationView = () => {
         </Box>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Box>
-            <Button startIcon={<IoRefresh />} onClick={handleLoadReport}>
+            <Button
+              variant="outlined"
+              size="medium"
+              onClick={handleLoadReport}
+              sx={{ borderRadius: '8px' }}
+              color="primary"
+              startIcon={<IoRefresh />}
+            >
               Load Report
             </Button>
           </Box>
           <Box>
-            <Button startIcon={<MdUpload />} onClick={handleOpen}>
+            <Button
+              variant="outlined"
+              size="medium"
+              onClick={handleOpen}
+              sx={{ borderRadius: '8px' }}
+              color="primary"
+              startIcon={<MdUpload />}
+            >
               Upload File
             </Button>
           </Box>
