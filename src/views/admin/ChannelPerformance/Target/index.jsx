@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import TargetGrid from 'sections/admin/Grids/ChannelPerformance/TargetGrid';
-import Button from 'components/Button/Button';
+import CustomButton from 'components/Button/Button';
 import { MdUpload } from 'react-icons/md';
 import FileUploadDialog from 'components/Dialogs/FileUploadDialog';
 import { useTheme } from '@mui/material/styles';
 import { IoRefresh } from 'react-icons/io5';
 import { toast } from 'react-toastify';
+import DropdownField from 'components/fields/dropdownField';
 
 const TargetView = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,15 @@ const TargetView = () => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const [targetType, setTargetType] = useState('first_click');
+  const handleTargetTypeChange = (event) => {
+    setTargetType(event.target.value);
+  };
 
+  const targetTypeOptions = [
+    { value: 'first_click', label: 'First Click' },
+    { value: 'last_click', label: 'Last Click' },
+  ];
   const handleUpload = async (file, onProgress) => {
     await new Promise((resolve) => {
       let pct = 0;
@@ -53,35 +62,40 @@ const TargetView = () => {
         justifyContent="flex-end"
       >
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button
+          <CustomButton
             variant="outlined"
-            size="medium"
+            size="small"
             onClick={handleRefreshReport}
-            sx={{ borderRadius: '8px' }}
+            sx={{ borderRadius: '8px', color: 'white' }}
             startIcon={<IoRefresh />}
           >
             Refresh Report
-          </Button>
-          <Button
+          </CustomButton> 
+          <CustomButton
             variant="outlined"
-            size="medium"
+            size="small"
             onClick={handleLoadReport}
-            sx={{ borderRadius: '8px' }}
-            color="primary"
+            sx={{ borderRadius: '8px', color: 'white' }}
             startIcon={<IoRefresh />}
           >
             Load Report
-          </Button>
-          <Button
+          </CustomButton>
+          <CustomButton
             variant="outlined"
-            size="medium"
+            size="small"
             onClick={handleOpen}
-            sx={{ borderRadius: '8px' }}
-            color="primary"
+            sx={{ borderRadius: '8px', color: 'white' }}
             startIcon={<MdUpload />}
           >
             Upload File
-          </Button>
+          </CustomButton>
+          <DropdownField
+            value={targetType}
+            onChange={handleTargetTypeChange}
+            options={targetTypeOptions}
+            labelId="target-type-label"
+            id="target-type"
+          />
         </Box>
       </SimpleGrid>
       <SimpleGrid

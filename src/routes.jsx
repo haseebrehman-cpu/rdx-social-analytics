@@ -12,7 +12,7 @@ import {
   MdFlag,
   MdInventory2,
   MdMarkEmailRead,
-  MdPaid,
+  // MdPaid,
   MdPercent,
   MdPieChart,
   MdPublic,
@@ -34,7 +34,7 @@ import YoutubeData from 'views/admin/youtubeData';
 import TiktokOverview from 'views/admin/tiktokOverview';
 import ConversionRate from 'views/admin/conversionRate';
 import TargetView from 'views/admin/ChannelPerformance/Target';
-import MarketingCostView from 'views/admin/ChannelPerformance/MarketingCost';
+// import MarketingCostView from 'views/admin/ChannelPerformance/MarketingCost';
 import ReportBaseView from 'views/admin/ChannelPerformance/ReportBase';
 import ReportView from 'views/admin/ChannelPerformance/Report';
 import ChannelConsolidationView from 'views/admin/ChannelPerformance/ChannelConsolidation/index';
@@ -65,140 +65,89 @@ const routes = [
     category: true,
     items: [
       {
-        name: 'Channel Performance',
+        name: 'Product Mix',
         layout: '/admin',
-        path: '/channel-performance',
         icon: (
-          <Icon as={MdAssessment} width="20px" height="20px" color="inherit" />
+          <Icon as={MdInventory2} width="20px" height="20px" color="inherit" />
         ),
+        secondary: true,
         collapse: true,
         items: [
           {
-            name: 'Channel Consolidation',
+            name: 'Quantity Ordered-Category Wise',
             layout: '/admin',
-            path: '/channel-performance/channel-consolidation',
+            path: '/product-mix/quantity-ordered',
             icon: (
               <Icon
-                as={MdCompareArrows}
+                as={MdShoppingCartCheckout}
                 width="20px"
                 height="20px"
                 color="inherit"
               />
             ),
-            component: <ChannelConsolidationView />,
+            component: <QuantityOrderedView />,
           },
           {
-            name: 'Report Base',
+            name: 'Average Selling Price',
             layout: '/admin',
-            path: '/channel-performance/report-base',
+            path: '/product-mix/average-selling',
             icon: (
               <Icon
-                as={MdTableChart}
+                as={MdAttachMoney}
                 width="20px"
                 height="20px"
                 color="inherit"
               />
             ),
-            component: <ReportBaseView />,
+            component: <AverageSellingView />,
           },
           {
-            name: 'Target',
+            name: 'Region Wise Gross Sale',
             layout: '/admin',
-            path: '/channel-performance/target',
+            path: '/product-mix/region-wise',
             icon: (
-              <Icon as={MdFlag} width="20px" height="20px" color="inherit" />
+              <Icon as={MdPublic} width="20px" height="20px" color="inherit" />
             ),
-            component: <TargetView />,
+            component: <RegionWiseView />,
           },
           {
-            name: 'Final Report',
+            name: 'Gross Sales Share',
             layout: '/admin',
-            path: '/channel-performance/final-report',
+            path: '/product-mix/gross-sale',
+            icon: (
+              <Icon as={MdSell} width="20px" height="20px" color="inherit" />
+            ),
+            component: <GrossSaleView />,
+          },
+          {
+            name: 'Avg Item Per Order',
+            layout: '/admin',
+            path: '/product-mix/avg-item-order',
             icon: (
               <Icon
-                as={MdSummarize}
+                as={MdShoppingBag}
                 width="20px"
                 height="20px"
                 color="inherit"
               />
             ),
-            component: <ReportView />,
+            component: <AvgItemOrderView />,
           },
           {
-            name: 'Marketing Cost',
+            name: 'Quantity Share',
             layout: '/admin',
-            path: '/channel-performance/marketing-cost',
+            path: '/product-mix/quantity-share',
             icon: (
-              <Icon as={MdPaid} width="20px" height="20px" color="inherit" />
+              <Icon
+                as={MdPieChart}
+                width="20px"
+                height="20px"
+                color="inherit"
+              />
             ),
-            component: <MarketingCostView />,
+            component: <QuantityShareView />,
           },
         ],
-      },
-    ],
-  },
-
-  {
-    name: 'Product Mix',
-    layout: '/admin',
-    icon: <Icon as={MdInventory2} width="20px" height="20px" color="inherit" />,
-    secondary: true,
-    collapse: true,
-    items: [
-      {
-        name: 'Quantity Ordered-Category Wise',
-        layout: '/admin',
-        path: '/product-mix/quantity-ordered',
-        icon: (
-          <Icon
-            as={MdShoppingCartCheckout}
-            width="20px"
-            height="20px"
-            color="inherit"
-          />
-        ),
-        component: <QuantityOrderedView />,
-      },
-      {
-        name: 'Average Selling Price',
-        layout: '/admin',
-        path: '/product-mix/average-selling',
-        icon: (
-          <Icon as={MdAttachMoney} width="20px" height="20px" color="inherit" />
-        ),
-        component: <AverageSellingView />,
-      },
-      {
-        name: 'Region Wise Gross Sale',
-        layout: '/admin',
-        path: '/product-mix/region-wise',
-        icon: <Icon as={MdPublic} width="20px" height="20px" color="inherit" />,
-        component: <RegionWiseView />,
-      },
-      {
-        name: 'Gross Sales Share',
-        layout: '/admin',
-        path: '/product-mix/gross-sale',
-        icon: <Icon as={MdSell} width="20px" height="20px" color="inherit" />,
-        component: <GrossSaleView />,
-      },
-      {
-        name: 'Avg Item Per Order',
-        layout: '/admin',
-        path: '/product-mix/avg-item-order',
-        icon: (
-          <Icon as={MdShoppingBag} width="20px" height="20px" color="inherit" />
-        ),
-        component: <AvgItemOrderView />,
-      },
-      {
-        name: 'Quantity Share',
-        layout: '/admin',
-        path: '/product-mix/quantity-share',
-        icon: (
-          <Icon as={MdPieChart} width="20px" height="20px" color="inherit" />
-        ),
-        component: <QuantityShareView />,
       },
     ],
   },
@@ -227,6 +176,62 @@ const routes = [
         ),
         component: <CouponsWithoutBrandcampView />,
       },
+    ],
+  },
+
+  {
+    name: 'Channel Performance',
+    layout: '/admin',
+    path: '/channel-performance',
+    icon: <Icon as={MdAssessment} width="20px" height="20px" color="inherit" />,
+    collapse: true,
+    items: [
+      {
+        name: 'Channel Consolidation',
+        layout: '/admin',
+        path: '/channel-performance/channel-consolidation',
+        icon: (
+          <Icon
+            as={MdCompareArrows}
+            width="20px"
+            height="20px"
+            color="inherit"
+          />
+        ),
+        component: <ChannelConsolidationView />,
+      },
+      {
+        name: 'Report Base',
+        layout: '/admin',
+        path: '/channel-performance/report-base',
+        icon: (
+          <Icon as={MdTableChart} width="20px" height="20px" color="inherit" />
+        ),
+        component: <ReportBaseView />,
+      },
+      {
+        name: 'Target',
+        layout: '/admin',
+        path: '/channel-performance/target',
+        icon: <Icon as={MdFlag} width="20px" height="20px" color="inherit" />,
+        component: <TargetView />,
+      },
+      {
+        name: 'Final Report',
+        layout: '/admin',
+        path: '/channel-performance/final-report',
+        icon: (
+          <Icon as={MdSummarize} width="20px" height="20px" color="inherit" />
+        ),
+        component: <ReportView />,
+      },
+      // {
+      //   name: 'Marketing Cost',
+      //   layout: '/admin',
+      //   path: '/channel-performance/marketing-cost',
+      //   icon: <Icon as={MdPaid} width="20px" height="20px" color="inherit" />,
+      //   component: <MarketingCostView />,
+      // },
     ],
   },
 
@@ -308,6 +313,7 @@ const routes = [
       },
     ],
   },
+
   {
     name: 'Weekly Organic Order',
     layout: '/admin',

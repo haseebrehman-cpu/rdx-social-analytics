@@ -2,6 +2,7 @@
   "name": "rdx-social-dashboard",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
     "@chakra-ui/icons": "^2.0.19",
