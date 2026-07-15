@@ -2,24 +2,24 @@ import { Box, SimpleGrid } from '@chakra-ui/react';
 import MtdAchievedFinalGrid from 'sections/admin/Grids/ChannelPerformance/MtdAchievedFinalGrid';
 import MtdFinalTargetRegion from 'sections/admin/Grids/ChannelPerformance/MtdFinalTargetRegion';
 import MtdFinalTargetChannel from 'sections/admin/Grids/ChannelPerformance/MtdFinalTargetChannel';
-import DropdownField from 'components/fields/dropdownField';
-import { useState } from 'react';
-import { useTheme } from '@mui/material';
+// import DropdownField from 'components/fields/dropdownField';
+// import { useState } from 'react';
+// import { useTheme } from '@mui/material';
 
 const ReportView = () => {
-  const [reportType, setReportType] = useState('first_click');
-  const handleReportTypeChange = (event) => {
-    setReportType(event.target.value);
-  };
-  const reportTypeOptions = [
-    { value: 'first_click', label: 'First Click' },
-    { value: 'last_click', label: 'Last Click' },
-  ];
-  const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
+  // const [reportType, setReportType] = useState('first_click');
+  // const handleReportTypeChange = (event) => {
+  //   setReportType(event.target.value);
+  // };
+  // const reportTypeOptions = [
+  //   { value: 'first_click', label: 'First Click' },
+  //   { value: 'last_click', label: 'Last Click' },
+  // ];
+  // const theme = useTheme();
+  // const isDark = theme.palette.mode === 'dark';
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
-      <SimpleGrid
+      {/* <SimpleGrid
         columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"
         mb="20px"
@@ -39,7 +39,7 @@ const ReportView = () => {
           labelId="report-type-label"
           id="report-type"
         />
-      </SimpleGrid>
+      </SimpleGrid> */}
       <SimpleGrid
         columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"

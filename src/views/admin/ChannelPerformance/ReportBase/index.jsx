@@ -1,23 +1,23 @@
-import { Box, SimpleGrid, useTheme } from '@chakra-ui/react';
-import DropdownField from 'components/fields/dropdownField';
-import { useState } from 'react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
+// import DropdownField from 'components/fields/dropdownField';
+// import { useState } from 'react';
 import ReportBaseGrid from 'sections/admin/Grids/ChannelPerformance/ReportBaseGrid';
 
-const conversionTypeOptions = [
-  { value: 'first_click', label: 'First Click' },
-  { value: 'last_click', label: 'Last Click' },
-];
+// const conversionTypeOptions = [
+//   { value: 'first_click', label: 'First Click' },
+//   { value: 'last_click', label: 'Last Click' },
+// ];
 
 const ReportBaseView = () => {
-  const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
-  const [conversionType, setConversionType] = useState('first_click');
-  const handleConversionTypeChange = (event) => {
-    setConversionType(event.target.value);
-  };
+  // const theme = useTheme();
+  // const isDark = theme.palette.mode === 'dark';
+  // const [conversionType, setConversionType] = useState('first_click');
+  // const handleConversionTypeChange = (event) => {
+  //   setConversionType(event.target.value);
+  // };
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
-      <SimpleGrid
+      {/* <SimpleGrid
         columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"
         mb="20px"
@@ -37,7 +37,7 @@ const ReportBaseView = () => {
           labelId="conversion-type-label"
           id="conversion-type"
         />
-      </SimpleGrid>
+      </SimpleGrid> */}
       <SimpleGrid
         columns={{ base: 1, md: 1, lg: 1, '2xl': 1 }}
         gap="20px"

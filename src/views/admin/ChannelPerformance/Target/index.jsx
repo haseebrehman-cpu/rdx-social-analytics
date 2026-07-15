@@ -7,7 +7,7 @@ import FileUploadDialog from 'components/Dialogs/FileUploadDialog';
 import { useTheme } from '@mui/material/styles';
 import { IoRefresh } from 'react-icons/io5';
 import { toast } from 'react-toastify';
-import DropdownField from 'components/fields/dropdownField';
+// import DropdownField from 'components/fields/dropdownField';
 
 const TargetView = () => {
   const [open, setOpen] = useState(false);
@@ -15,15 +15,15 @@ const TargetView = () => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
-  const [targetType, setTargetType] = useState('first_click');
-  const handleTargetTypeChange = (event) => {
-    setTargetType(event.target.value);
-  };
+  // const [targetType, setTargetType] = useState('first_click');
+  // const handleTargetTypeChange = (event) => {
+  //   setTargetType(event.target.value);
+  // };
 
-  const targetTypeOptions = [
-    { value: 'first_click', label: 'First Click' },
-    { value: 'last_click', label: 'Last Click' },
-  ];
+  // const targetTypeOptions = [
+  //   { value: 'first_click', label: 'First Click' },
+  //   { value: 'last_click', label: 'Last Click' },
+  // ];
   const handleUpload = async (file, onProgress) => {
     await new Promise((resolve) => {
       let pct = 0;
@@ -89,13 +89,13 @@ const TargetView = () => {
           >
             Upload File
           </CustomButton>
-          <DropdownField
+          {/* <DropdownField
             value={targetType}
             onChange={handleTargetTypeChange}
             options={targetTypeOptions}
             labelId="target-type-label"
             id="target-type"
-          />
+          /> */}
         </Box>
       </SimpleGrid>
       <SimpleGrid
